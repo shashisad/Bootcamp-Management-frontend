@@ -1,0 +1,77 @@
+<div class="content-container height-100" >
+  <div style="height:100%; width: 100% ; padding-left: 50px !important;">
+    <br>
+    <clr-tabs>
+      <clr-tab>
+        <button clrTabLink>Individual Assignments </button>
+        <clr-tab-content *clrIfActive>
+          <div id="rootCard" class="card">
+            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                <div class="card-header" style="text-align: center">
+                  Assignment Title
+                  <clr-icon shape="event" class="has-badge"></clr-icon>
+                </div>
+                <div class="card-block">
+                  <div class="card-title">
+                   Content
+                  </div>
+                  <div class="card-text">
+                    ...
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <button class="btn btn-sm btn-link " (click)="lgOpen = true">
+                    Submit
+                  </button>
+                </div>
+              </div>
+          </div>
+          <clr-wizard #wizardmd [(clrWizardOpen)]="lgOpen" clrWizardSize="md">
+            <clr-wizard-title>Submission</clr-wizard-title>
+            <clr-wizard-button [type]="'cancel'">Cancel</clr-wizard-button>
+            <clr-wizard-button [type]="'previous'">Back</clr-wizard-button>
+            <clr-wizard-button [type]="'next'">Next</clr-wizard-button>
+            <clr-wizard-button [type]="'finish'">Finish</clr-wizard-button>
+
+            <clr-wizard-page>
+              <ng-template clrPageTitle>Assignment</ng-template>
+              Description in detail ...
+            </clr-wizard-page>
+            <clr-wizard-page>
+              <ng-template clrPageTitle>Upload Answer</ng-template>
+              <h4>Link..</h4>
+            </clr-wizard-page>
+          </clr-wizard>
+
+        </clr-tab-content>
+      </clr-tab>
+
+      <clr-tab>
+        <button clrTabLink> Team Assignments</button>
+        <clr-tab-content *clrIfActive>
+          <div id="rootCard1" class="card">
+            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+              <div class="card-header" style="text-align: center">
+                Title
+                <clr-icon shape="event" class="has-badge"></clr-icon>
+              </div>
+              <div class="card-block">
+                <div class="card-title">
+                  Content
+                </div>
+                <div class="card-text">
+                  ...
+                </div>
+              </div>
+              <div class="card-footer">
+                <button class="btn btn-sm btn-link ">
+                  Submit
+                </button>
+              </div>
+            </div>
+          </div>
+        </clr-tab-content>
+      </clr-tab>
+    </clr-tabs>
+  </div>
+</div>
