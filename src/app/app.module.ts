@@ -7,12 +7,16 @@ import {FormsModule} from "@angular/forms";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { HeaderComponent } from './components/header/header.component';
 import { SideNavComponent } from './components/side-nav/side-nav.component';
+import { AssignmentComponent } from './assignment/assignment.component';
+import { NcgComponent } from './ncg/ncg.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    SideNavComponent
+    SideNavComponent,
+    AssignmentComponent,
+    NcgComponent
   ],
   imports: [
     BrowserModule,
