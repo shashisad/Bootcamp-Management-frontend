@@ -1,0 +1,38 @@
+<div class="card">
+  <h4 class="card-header " style="color: white; text-align: center">Register</h4>
+  <div class="card-body">
+    <br>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <h6 style="color: white; text-align: left"> Name</h6>
+        <input type="text" formControlName="firstName" class="form-control" style=" border: none; width: 100%; border-radius: 3px; padding: 10px;"/>
+        <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+          <div *ngIf="f.firstName.errors.required">First Name is required</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <h6 style="color: white; text-align: left"> Email</h6>
+        <input type="text" formControlName="username" class="form-control" style=" border: none; width: 100%; border-radius: 3px; padding: 10px;"/>
+        <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+          <div *ngIf="f.username.errors.required">Username is required</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <h6 style="color: white; text-align: left"> Password</h6>
+        <input type="password" formControlName="password" class="form-control" style=" border: none; width: 100%; border-radius: 3px; padding: 10px;"/>
+        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+          <div *ngIf="f.password.errors.required">Password is required</div>
+          <div *ngIf="f.password.errors.minlength">Password must be at least 8 characters</div>
+        </div>
+      </div>
+      <br>
+      <div class="form-group">
+        <button [disabled]="loading" class="btn btn-primary">
+          <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+          Register
+        </button>
+        <a routerLink="../login" class="btn btn-link" style="color: white">Cancel</a>
+      </div>
+    </form>
+  </div>
+</div>
