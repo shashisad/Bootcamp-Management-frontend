@@ -14,25 +14,13 @@
   <clr-dg-column>Credit</clr-dg-column>
   <clr-dg-column>Due Date</clr-dg-column>
   <clr-dg-placeholder >
-    Fetching NCGs... <span class="spinner spinner-sm"></span>
+    Fetching Assignments... <span class="spinner spinner-sm"></span>
   </clr-dg-placeholder>
-  <clr-dg-row>
-    <clr-dg-cell>11111</clr-dg-cell>
-    <clr-dg-cell>Life @ VMware</clr-dg-cell>
-    <clr-dg-cell>3</clr-dg-cell>
-    <clr-dg-cell>12/07/2022</clr-dg-cell>
-  </clr-dg-row>
-  <clr-dg-row>
-    <clr-dg-cell>11112</clr-dg-cell>
-    <clr-dg-cell>abc</clr-dg-cell>
-    <clr-dg-cell>4</clr-dg-cell>
-    <clr-dg-cell>18/07/2022</clr-dg-cell>
-  </clr-dg-row>
-  <clr-dg-row>
-    <clr-dg-cell>11111</clr-dg-cell>
-    <clr-dg-cell>UI</clr-dg-cell>
-    <clr-dg-cell>3</clr-dg-cell>
-    <clr-dg-cell>22/07/2022</clr-dg-cell>
+  <clr-dg-row  *clrDgItems="let assignment of allAssignments">
+    <clr-dg-cell>{{assignment._id}}</clr-dg-cell>
+    <clr-dg-cell>{{assignment.title}}</clr-dg-cell>
+    <clr-dg-cell>{{assignment.credit}}</clr-dg-cell>
+    <clr-dg-cell>{{assignment.dueDate}}</clr-dg-cell>
   </clr-dg-row>
 
   <clr-dg-footer>
