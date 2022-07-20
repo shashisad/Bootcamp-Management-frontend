@@ -6,4 +6,8 @@ import {HttpClient} from "@angular/common/http";
 export class AssignmentService {
 
   constructor(private http: HttpClient) { }
+
+  getAssignments() {
+
+  }
 }

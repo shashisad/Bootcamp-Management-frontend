@@ -1,4 +1,6 @@
+
 import {Component, OnInit, ViewChild} from '@angular/core';
+import {NcgService} from "./ncg.service";
 
 @Component({
   selector: 'app-ncg',
@@ -6,11 +8,23 @@ import {Component, OnInit, ViewChild} from '@angular/core';
   styleUrls: ['./ncg.component.css']
 })
 export class NcgComponent implements OnInit {
-  @ViewChild("wizardmd") wizardMedium:  any;
+  @ViewChild("wizardmd") wizardMedium: any;
   lgOpen: boolean = false;
-  constructor() { }
+  ncgs :any;
 
-  ngOnInit(): void {
+  constructor( private ncgService: NcgService ) { }
+
+
+  ngOnInit() {
+    this.getNcg();
   }
 
+  getNcg() {
+    this.ncgService.getNcg()
+      .subscribe(data => {
+          this.ncgs = data;
+          console.log(this.ncgs);
+        }
+      );
+  }
 }

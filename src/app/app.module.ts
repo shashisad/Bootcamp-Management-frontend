@@ -3,15 +3,21 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {ClarityModule} from "@clr/angular";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { HeaderComponent } from './components/header/header.component';
 import { SideNavComponent } from './components/side-nav/side-nav.component';
-import { AssignmentComponent } from './assignment/assignment.component';
+import { AssignmentComponent } from './assignment/ncg-assignment/assignment.component';
 import { NcgComponent } from './ncg/ncg.component';
 import { TeamComponent } from './team/team.component';
 import { ConfirmationModalComponent } from './components/confirmation-modal/confirmation-modal.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
+import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component';
+import { LayoutComponent } from './layout/layout.component';
+import { HttpClientModule } from '@angular/common/http';
+import { AdminAssignmentComponent } from './assignment/admin-assignment/admin-assignment.component';
+
 
 @NgModule({
   declarations: [
@@ -22,7 +28,12 @@ import { LandingPageComponent } from './components/landing-page/landing-page.com
     NcgComponent,
     TeamComponent,
     ConfirmationModalComponent,
-    LandingPageComponent
+    LandingPageComponent,
+    RegisterComponent,
+    LoginComponent,
+    LayoutComponent,
+    AdminAssignmentComponent
+
   ],
   imports: [
     BrowserModule,
@@ -30,6 +41,8 @@ import { LandingPageComponent } from './components/landing-page/landing-page.com
     ClarityModule,
     FormsModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
