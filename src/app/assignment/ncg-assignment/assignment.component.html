@@ -15,12 +15,15 @@
                   <div class="card-title">
                    Content
                   </div>
-                  <div class="card-text">
-                    ...
+                  <div class="card-text" [ngClass]="{'limitTextHeight': readMore}">
+                    <div>
+                      {{(readMore) ? longText : longText | slice:0:150}} <span *ngIf="!readMore">...</span>
+                      <a href="javascript:;" *ngIf="!readMore" (click)="lgOpen = true"> Read More</a>
+                    </div>
                   </div>
                 </div>
                 <div class="card-footer">
-                  <button class="btn btn-sm btn-link " (click)="lgOpen = true">
+                  <button class="btn btn-sm btn-primary" (click)="lgOpen = true">
                     Submit
                   </button>
                 </div>
@@ -35,11 +38,18 @@
 
             <clr-wizard-page>
               <ng-template clrPageTitle>Assignment</ng-template>
-              Description in detail ...
+              Description in detail
+              <div>{{ longText}} </div>
             </clr-wizard-page>
             <clr-wizard-page>
               <ng-template clrPageTitle>Upload Answer</ng-template>
-              <h4>Link..</h4>
+              <form clrForm>
+                <clr-input-container>
+                  <label>Link</label>
+                  <input clrInput placeholder="Fill me in the link"  />
+                </clr-input-container>
+              </form>
+              <h4>Last date to submission - 31 July 2022</h4>
             </clr-wizard-page>
           </clr-wizard>
 
@@ -59,17 +69,21 @@
                 <div class="card-title">
                   Content
                 </div>
-                <div class="card-text">
-                  ...
+                <div class="card-text" [ngClass]="{'limitTextHeight': readMore}">
+                  <div>
+                    {{(readMore) ? longText : longText | slice:0:150}} <span *ngIf="!readMore">...</span>
+                    <a href="javascript:;" *ngIf="!readMore"> Read More</a>
+                  </div>
                 </div>
               </div>
               <div class="card-footer">
-                <button class="btn btn-sm btn-link ">
+                <button class="btn btn-sm btn-primary ">
                   Submit
                 </button>
               </div>
             </div>
           </div>
+
         </clr-tab-content>
       </clr-tab>
     </clr-tabs>

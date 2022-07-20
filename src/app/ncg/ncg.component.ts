@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import {NcgService} from "./ncg.service"
+
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {NcgService} from "./ncg.service";
 
 @Component({
   selector: 'app-ncg',
@@ -7,6 +8,8 @@ import {NcgService} from "./ncg.service"
   styleUrls: ['./ncg.component.css']
 })
 export class NcgComponent implements OnInit {
+  @ViewChild("wizardmd") wizardMedium: any;
+  lgOpen: boolean = false;
   ncgs :any;
 
   constructor( private ncgService: NcgService ) { }
