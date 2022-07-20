@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder} from '@angular/forms';
 import { TokenStorageService } from './token-storage.service';
 import { AuthService} from './auth.service';
+import {Router} from "@angular/router";
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -17,13 +18,16 @@ export class LoginComponent implements OnInit {
   isLoginFailed = false;
   errorMessage = '';
   roles: string[] = [];
-
   loading = false;
   submitted = false;
 
   constructor(
     private formBuilder: FormBuilder,
-    private authService: AuthService, private tokenStorage: TokenStorageService) { }
+    private router: Router,
+    private authService: AuthService, private tokenStorage: TokenStorageService) {
+
+    const navigation = this.router.getCurrentNavigation();
+  }
 
   ngOnInit() {
     if (this.tokenStorage.getToken()) {
@@ -52,5 +56,9 @@ export class LoginComponent implements OnInit {
   }
   reloadPage(): void {
     window.location.reload();
+  }
+
+  onLoggedIn() {
+    this.router.navigate(['/admin-assignments']);
   }
 }

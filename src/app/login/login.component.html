@@ -32,23 +32,21 @@
              minlength="8"
              #password="ngModel"
              style="margin-top: 10px; margin-bottom: 10px ">
-      <div class="error active">
+      <div class="error active"  *ngIf="f.submitted && isLoginFailed">
         Invalid email or password
       </div>
       <button type="submit" class="btn btn-primary">Login</button>
-<!--      <a href="javascript://" class="signup">Register</a>-->
       <div class="form-group">
         <div
           class="alert alert-danger"
           role="alert"
-          *ngIf="f.submitted && isLoginFailed"
-        >
+          *ngIf="f.submitted && isLoginFailed">
           Login failed: {{ errorMessage }}
         </div>
       </div>
     </div>
   </form>
-<!--  <div *ngIf="isLoggedIn">-->
-<!--    <a href="/ncg" class="nav-link" routerLink="ncg"></a>-->
-<!--  </div>-->
+  <div *ngIf="isLoggedIn" >
+   {{onLoggedIn()}}
+  </div>
 </div>
