@@ -9,6 +9,9 @@ import { HeaderComponent } from './components/header/header.component';
 import { SideNavComponent } from './components/side-nav/side-nav.component';
 import { AssignmentComponent } from './assignment/assignment.component';
 import { NcgComponent } from './ncg/ncg.component';
+import { TeamComponent } from './team/team.component';
+import { ConfirmationModalComponent } from './components/confirmation-modal/confirmation-modal.component';
+import { LandingPageComponent } from './components/landing-page/landing-page.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +19,10 @@ import { NcgComponent } from './ncg/ncg.component';
     HeaderComponent,
     SideNavComponent,
     AssignmentComponent,
-    NcgComponent
+    NcgComponent,
+    TeamComponent,
+    ConfirmationModalComponent,
+    LandingPageComponent
   ],
   imports: [
     BrowserModule,

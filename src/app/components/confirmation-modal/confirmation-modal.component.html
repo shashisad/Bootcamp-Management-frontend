@@ -1,0 +1,10 @@
+<clr-modal [(clrModalOpen)]="basic">
+  <h3 class="modal-title">Delete </h3>
+  <div class="modal-body">
+    <p>Are you store you want to delete? This action is permanent and can not be recovered.</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline" (click)="basic = false">Cancel</button>
+    <button type="button" class="btn btn-danger" (click)="basic = false">Ok</button>
+  </div>
+</clr-modal>

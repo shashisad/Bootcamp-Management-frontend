@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 
 @Component({
   selector: 'app-ncg',
@@ -6,7 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./ncg.component.css']
 })
 export class NcgComponent implements OnInit {
-
+  @ViewChild("wizardmd") wizardMedium:  any;
+  lgOpen: boolean = false;
   constructor() { }
 
   ngOnInit(): void {

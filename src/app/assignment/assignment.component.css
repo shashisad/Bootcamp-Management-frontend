@@ -3,7 +3,9 @@
   display: block;
   background-color: #fff;
   width: 100%;
-  margin-top: 1rem;
+  margin-top: 2rem;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  border-radius: 0.5rem;
 }
 .card-title {
   color: #000;
@@ -11,8 +13,14 @@
   font-weight: 160;
   letter-spacing: normal;
 }
-.card-block, .card-footer {
+.card-block {
   padding: 0.5rem 0.5rem;
+   height:10rem;
+}
+.card-footer{
+  margin-bottom: 55px;
+  text-align: right;
+  align-items: end;
 }
 .card-block {
   border-bottom: 1px solid #eee;
@@ -25,6 +33,7 @@
   size: 18px;
 }
 #rootCard, #rootCard1 {
-  height: calc(100% - 1rem);
+  /*height: calc(100% - 1rem);*/
+  height: 15rem;
   width: 400px;
 }
