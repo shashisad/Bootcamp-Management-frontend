@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {NcgService} from "./ncg.service"
 
 @Component({
   selector: 'app-ncg',
@@ -6,10 +7,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./ncg.component.css']
 })
 export class NcgComponent implements OnInit {
+  ncgs :any;
 
-  constructor() { }
+  constructor( private ncgService: NcgService ) { }
 
-  ngOnInit(): void {
+
+  ngOnInit() {
+    this.getNcg();
   }
 
+  getNcg() {
+    this.ncgService.getNcg()
+      .subscribe(data => {
+          this.ncgs = data;
+          console.log(this.ncgs);
+        }
+      );
+  }
 }
