@@ -8,7 +8,7 @@ import {map} from "rxjs/operators";
 
 export class NcgService {
 
-  private GET_ALL_NCGS = "http://localhost:4000/api/v1/users";
+  private GET_ALL_NCGS = "http://localhost:4000/api/v1/getAllAssignments";
   constructor(private http: HttpClient) { }
 
   getNcg() {

@@ -1,19 +1,54 @@
-
 <div class="login-wrapper">
-  <form class="login">
+  <form class="login"
+        *ngIf="!isLoggedIn"
+        name="form"
+        (ngSubmit)="f.form.valid && onSubmit()"
+        #f="ngForm"
+        novalidate>
     <label class="title">
       <h3 class="welcome">Welcome to</h3>
       VMware
       <h5 class="hint">Use your Company ID to sign in or create one now</h5>
     </label>
     <div class="login-group">
-      <input class="clr-input" type="text" id="login_username" placeholder="Username" style="margin-bottom: 10px">
-      <input class="clr-input" type="password" id="login_password" placeholder="Password" style="margin-top: 10px; margin-bottom: 10px ">
+      <input class="clr-input"
+             type="email"
+             id="login_email"
+             placeholder="Email"
+             name="email"
+             [(ngModel)]="form.email"
+             required
+             email
+             #email="ngModel"
+             style="margin-bottom: 10px">
+
+      <input class="clr-input"
+             type="password"
+             id="login_password"
+             placeholder="Password"
+             name="password"
+             [(ngModel)]="form.password"
+             required
+             minlength="8"
+             #password="ngModel"
+             style="margin-top: 10px; margin-bottom: 10px ">
       <div class="error active">
-        Invalid user name or password
+        Invalid email or password
       </div>
       <button type="submit" class="btn btn-primary">Login</button>
-      <a href="javascript://" class="signup">Register</a>
+<!--      <a href="javascript://" class="signup">Register</a>-->
+      <div class="form-group">
+        <div
+          class="alert alert-danger"
+          role="alert"
+          *ngIf="f.submitted && isLoginFailed"
+        >
+          Login failed: {{ errorMessage }}
+        </div>
+      </div>
     </div>
   </form>
+<!--  <div *ngIf="isLoggedIn">-->
+<!--    <a href="/ncg" class="nav-link" routerLink="ncg"></a>-->
+<!--  </div>-->
 </div>
