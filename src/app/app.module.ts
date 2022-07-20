@@ -17,6 +17,8 @@ import { LoginComponent } from './login/login.component';
 import { LayoutComponent } from './layout/layout.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AdminAssignmentComponent } from './assignment/admin-assignment/admin-assignment.component';
+import {OrganizationChartModule} from "primeng/organizationchart";
+import {StepsModule} from "primeng/steps";
 
 
 @NgModule({
@@ -42,7 +44,9 @@ import { AdminAssignmentComponent } from './assignment/admin-assignment/admin-as
     FormsModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    OrganizationChartModule,
+    StepsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
