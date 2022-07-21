@@ -1,0 +1,15 @@
+:host /deep/ [data-n-id='1'] rect {
+  fill: #00567a;
+}
+
+.team-title{
+  align-items: center;
+  text-align: center;
+  font-size: 2rem;
+  background-color: white;
+  padding-top: 30px;
+  padding-bottom: 10px;
+}
+.team-chart{
+background-color: white;
+}
