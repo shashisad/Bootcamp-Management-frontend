@@ -28,7 +28,7 @@ export class TeamComponent implements OnInit {
         mouseScrool: action.centerNode,
         template: "diva",
         enableDragDrop: false,
-        nodeMouseDbClick: action.pan
+        nodeMouseDbClick: action.pan,
       });
 
       chart.load([
