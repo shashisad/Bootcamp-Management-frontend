@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
   isLoginFailed = false;
   errorMessage = '';
   roles: string[] = [];
-  loading = false;
+  loading = true;
   submitted = false;
 
   constructor(
@@ -59,6 +59,7 @@ export class LoginComponent implements OnInit {
   }
 
   onLoggedIn() {
+    this.loading=false
     this.router.navigate(['/landing']);
   }
 }
