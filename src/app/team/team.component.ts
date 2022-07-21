@@ -28,6 +28,7 @@ export class TeamComponent implements OnInit {
         mouseScrool: action.centerNode,
         template: "diva",
         enableDragDrop: false,
+        nodeMouseDbClick: action.pan
       });
 
       chart.load([
@@ -38,6 +39,8 @@ export class TeamComponent implements OnInit {
         { id: 5, pid: 1, name: "Lynn Hussain", title: "Sales", img: "https://cdn.balkan.app/shared/6.jpg" },
         { id: 6, pid: 1, name: "Tanner May", title: "Developer", img: "https://cdn.balkan.app/shared/7.jpg" },
       ]);
+
+
     }
   }
 }
