@@ -3,6 +3,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {NcgService} from "../../services/ncg.service";
 import {AdminAssignmentComponent} from "../../admin-pages/admin-assignment/admin-assignment.component";
 import {Assignment} from "../../model/assignment.model";
+import {AdminTeamsService} from "../../services/admin-teams.service";
 
 @Component({
   selector: 'app-ncg',
@@ -14,8 +15,9 @@ export class NcgComponent implements OnInit {
   lgOpen: boolean = false;
   allNcgs: any
   ncgs :Ncg[] = [];
+  teamMembers:any[] =[];
 
-  constructor( private ncgService: NcgService ) { }
+  constructor( private ncgService: NcgService , private adminTeamsService: AdminTeamsService) { }
 
 
   ngOnInit() {
@@ -35,10 +37,29 @@ export class NcgComponent implements OnInit {
         console.log("fin1",this.ncgs);
         }
       );
+  }
 
+  onChecked ($event:any, id:any) {
+    const isChecked = $event.target.checked;
+    if(isChecked === true) {
+      this.teamMembers.push(id)
+      console.log("id",this.teamMembers)
+    }
+    else {
+      var indx = this.teamMembers.indexOf(id);
+      if (indx >-1) {
+        this.teamMembers.splice(indx,1);
+      }
+    }
+    console.log("ckd id",this.teamMembers)
+  }
 
-
-
+  createTeam() {
+    this.adminTeamsService.createTeam(1,this.teamMembers).subscribe(
+      data => {
+        console.log("Team created", data)
+      }
+    )
   }
 
 }

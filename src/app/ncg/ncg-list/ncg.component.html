@@ -1,7 +1,7 @@
 <clr-datagrid style="margin-right: 40px">
   <clr-dg-action-bar>
     <div class="btn-group">
-      <button type="button" class="btn btn-sm btn-secondary" ><clr-icon shape="plus"></clr-icon> Add</button>
+      <button type="button" class="btn btn-sm btn-secondary" (click)="createTeam()" ><clr-icon shape="plus"></clr-icon> Create Team</button>
       <button type="button" class="btn btn-sm btn-secondary" ><clr-icon shape="close"></clr-icon> Delete</button>
       <button type="button" class="btn btn-sm btn-secondary" ><clr-icon shape="pencil"></clr-icon> Edit</button>
     </div>
@@ -15,7 +15,7 @@
   </clr-dg-placeholder>
   <clr-dg-row  *clrDgItems="let item of ncgs">
     <clr-dg-cell>
-      <input type="checkbox" name="ch1">
+      <input type="checkbox" name="ncgCheckbox" [ngModel]="item._id" (change)="onChecked($event,item._id)">
     </clr-dg-cell>
     <clr-dg-cell>{{ item._id}}</clr-dg-cell>
     <clr-dg-cell>{{item.name}}</clr-dg-cell>
