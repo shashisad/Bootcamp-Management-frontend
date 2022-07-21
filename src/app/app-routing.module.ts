@@ -6,7 +6,7 @@ import {LandingPageComponent} from "./components/landing-page/landing-page.compo
 import {AssignmentComponent} from "./assignment/ncg-assignment/assignment.component";
 import {LoginComponent} from "./login/login.component";
 import {RegisterComponent} from "./register/register.component";
-import {AdminAssignmentComponent} from "./assignment/admin-assignment/admin-assignment.component"
+import {AdminAssignmentComponent} from "./assignment/admin-assignment/admin-assignment.component";
 
 
 const routes: Routes = [
@@ -17,7 +17,7 @@ const routes: Routes = [
   { path: 'landing', component: LandingPageComponent},
   { path: 'register', component: RegisterComponent},
   { path: 'login', component: LoginComponent},
-  { path: 'admin-assignments', component: AdminAssignmentComponent},
+  { path: 'admin-assignments', component: AdminAssignmentComponent}
 
 ];
 

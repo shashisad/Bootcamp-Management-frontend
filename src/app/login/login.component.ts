@@ -59,6 +59,6 @@ export class LoginComponent implements OnInit {
   }
 
   onLoggedIn() {
-    this.router.navigate(['/admin-assignments']);
+    this.router.navigate(['/landing']);
   }
 }
