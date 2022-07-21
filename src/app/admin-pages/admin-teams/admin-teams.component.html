@@ -1,0 +1,22 @@
+<clr-datagrid style="margin-right: 40px">
+  <clr-dg-column>Team Id</clr-dg-column>
+  <clr-dg-column>Members</clr-dg-column>
+  <clr-dg-column>Mentor</clr-dg-column>
+  <clr-dg-placeholder >
+    Fetching Teams... <span class="spinner spinner-sm"></span>
+  </clr-dg-placeholder>
+
+  <clr-dg-row  *clrDgItems="let team of allteams">
+    <clr-dg-cell>{{team._id}}</clr-dg-cell>
+    <clr-dg-cell>{{team.members}}</clr-dg-cell>
+    <clr-dg-cell>Mentor</clr-dg-cell>
+  </clr-dg-row>
+
+  <clr-dg-footer>
+    <clr-dg-pagination #pagination [clrDgPageSize]="10">
+      {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}}
+      of {{pagination.totalItems}} teams
+    </clr-dg-pagination>
+  </clr-dg-footer>
+</clr-datagrid>
+

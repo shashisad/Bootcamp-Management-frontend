@@ -6,8 +6,6 @@
       <button type="button" class="btn btn-sm btn-secondary" ><clr-icon shape="pencil"></clr-icon> Edit</button>
     </div>
   </clr-dg-action-bar>
-
-<!--  hardcoded right now , to be taken from backend-->
   <clr-dg-column></clr-dg-column>
   <clr-dg-column>NCG Id</clr-dg-column>
   <clr-dg-column>Name</clr-dg-column>
@@ -15,33 +13,14 @@
   <clr-dg-placeholder >
     Fetching NCGs... <span class="spinner spinner-sm"></span>
   </clr-dg-placeholder>
-  <clr-dg-row>
+  <clr-dg-row  *clrDgItems="let item of ncgs">
     <clr-dg-cell>
       <input type="checkbox" name="ch1">
     </clr-dg-cell>
-    <clr-dg-cell> 11111</clr-dg-cell>
-    <clr-dg-cell> Ketki Fadnavis</clr-dg-cell>
-    <clr-dg-cell>kfadnavis@vmware.com</clr-dg-cell>
+    <clr-dg-cell>{{ item._id}}</clr-dg-cell>
+    <clr-dg-cell>{{item.name}}</clr-dg-cell>
+    <clr-dg-cell>{{item.email}}</clr-dg-cell>
   </clr-dg-row>
-
-  <clr-dg-row>
-    <clr-dg-cell>
-      <input type="checkbox" name="ch3">
-    </clr-dg-cell>
-    <clr-dg-cell> 11112</clr-dg-cell>
-    <clr-dg-cell> ABC</clr-dg-cell>
-    <clr-dg-cell>abc@vmware.com</clr-dg-cell>
-  </clr-dg-row>
-
-  <clr-dg-row>
-    <clr-dg-cell>
-      <input type="checkbox" name="ch2">
-    </clr-dg-cell>
-    <clr-dg-cell> 11113</clr-dg-cell>
-    <clr-dg-cell> XYZ</clr-dg-cell>
-    <clr-dg-cell>xyz@vmware.com</clr-dg-cell>
-  </clr-dg-row>
-
   <clr-dg-footer>
     <clr-dg-pagination #pagination [clrDgPageSize]="10">
       {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}}

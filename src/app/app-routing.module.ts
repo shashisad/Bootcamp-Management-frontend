@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {NcgComponent} from "./ncg/ncg.component"
-import {TeamComponent} from "./team/team.component";
+import {NcgComponent} from "./ncg/ncg-list/ncg.component"
+import {TeamComponent} from "./ncg/ncg-team/team.component";
 import {LandingPageComponent} from "./components/landing-page/landing-page.component";
-import {AssignmentComponent} from "./assignment/ncg-assignment/assignment.component";
+import {AssignmentComponent} from "./ncg/ncg-assignment/assignment.component";
 import {LoginComponent} from "./login/login.component";
 import {RegisterComponent} from "./register/register.component";
-import {AdminAssignmentComponent} from "./assignment/admin-assignment/admin-assignment.component";
+import {AdminAssignmentComponent} from "./admin-pages/admin-assignment/admin-assignment.component";
+import {AdminTeamsComponent} from "./admin-pages/admin-teams/admin-teams.component";
 
 
 const routes: Routes = [
@@ -17,7 +18,8 @@ const routes: Routes = [
   { path: 'landing', component: LandingPageComponent},
   { path: 'register', component: RegisterComponent},
   { path: 'login', component: LoginComponent},
-  { path: 'admin-assignments', component: AdminAssignmentComponent}
+  { path: 'admin-assignments', component: AdminAssignmentComponent},
+  { path: 'admin-team', component: AdminTeamsComponent}
 
 ];
 
