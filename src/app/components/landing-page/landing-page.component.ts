@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {IRanking} from "../../model/model";
+import {IRanking} from "../../model/ranking.model";
 @Component({
   selector: 'app-landing-page',
   templateUrl: './landing-page.component.html',
@@ -23,7 +23,43 @@ export class LandingPageComponent implements OnInit {
       ncgName: "Tushar",
       ncgEmail: "tushar@vmware.com",
       marks: 100,
-    }]
+    },
+    {
+      rankNo: 1,
+      ncgName: "Shashi",
+      ncgEmail: "ssad@vmware.com",
+      marks: 500,
+    },
+      {
+        rankNo: 2,
+        ncgName: "Ketki",
+        ncgEmail: "keki@vmware.com",
+        marks: 499,
+      },
+      {
+        rankNo: 3,
+        ncgName: "Tushar",
+        ncgEmail: "tushar@vmware.com",
+        marks: 100,
+      },
+      {
+        rankNo: 1,
+        ncgName: "Shashi",
+        ncgEmail: "ssad@vmware.com",
+        marks: 500,
+      },
+        {
+          rankNo: 2,
+          ncgName: "Ketki",
+          ncgEmail: "keki@vmware.com",
+          marks: 499,
+        },
+        {
+          rankNo: 3,
+          ncgName: "Tushar",
+          ncgEmail: "tushar@vmware.com",
+          marks: 100,
+        }]
   constructor() { }
 
   ngOnInit(): void {
