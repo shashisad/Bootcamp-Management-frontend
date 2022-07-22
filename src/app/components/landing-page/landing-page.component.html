@@ -19,16 +19,16 @@
   <hr>
   <div class="ladder-nav--results-players" *ngFor="let rank of ranking;">
     <div class="results-col">
-      <span class="results-rank"><span class="positions">{{rank.rankNo}}</span></span>
+      <span class="results-rank"><span class="positions">{{rank.rank}}</span></span>
     </div>
     <div class="results-col">
-      <span class="results-team">{{rank.ncgName}}</span>
+      <span class="results-team">{{rank.userName}}</span>
     </div>
     <div class="results-col">
-      <span class="results-p1">{{rank.ncgEmail}}</span>
+      <span class="results-p1">{{rank.userEmail}}</span>
     </div>
     <div class="results-col">
-      <span class="results-p2">{{rank.marks}}</span>
+      <span class="results-p2">{{rank.userMarks}}</span>
     </div>
   </div>
 </section>

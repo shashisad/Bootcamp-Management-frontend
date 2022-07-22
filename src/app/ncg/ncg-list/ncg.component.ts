@@ -13,7 +13,7 @@ import {AdminTeamsService} from "../../services/admin-teams.service";
 export class NcgComponent implements OnInit {
   @ViewChild("wizardmd") wizardMedium: any;
   lgOpen: boolean = false;
-  allNcgs: any
+  allNcgs: any;
   ncgs :Ncg[] = [];
   teamMembers:any[] =[];
 
@@ -27,7 +27,6 @@ export class NcgComponent implements OnInit {
   getNcg() {
     this.ncgService.getNcg()
       .subscribe(data => {
-
           this.allNcgs = data;
         console.log(this.allNcgs);
         var obj = parseObject(this.allNcgs)
@@ -75,11 +74,11 @@ function parseObject(obj : any): any
   return fin
 }
 
-class Ncg {
-  _id: string |any
-  name: string |any
-  email: string |any
-  role: string |any
-  assignments: Assignment[] |any
-  __v: number|any
+interface Ncg {
+  _id: string
+  name: string
+  email: string
+  role: string
+  assignments: Assignment[]
+  __v: number
 }

@@ -29,12 +29,13 @@ export class AdminAssignmentComponent implements OnInit {
     this.adminAssignmentService.getAllAssignments()
       .subscribe(data => {
 
-       this.allAssignments = data;
-        var obj = parseObject(this.allAssignments)
-        for (var i of obj){
-          this.assignment.push(i)
-        }
-        console.log("fin1",  this.assignment)
+       this.allAssignments = data.allAssignments;
+        console.log("dd",this.allAssignments);
+        // var obj = parseObject(this.allAssignments)
+        // for (var i of obj){
+        //   this.assignment.push(i)
+        // }
+        // console.log("fin1",  this.assignment)
       });
   }
 
