@@ -30,17 +30,8 @@ export class RegisterComponent implements OnInit {
     //                                      password: ['', [Validators.required, Validators.minLength(6)]]
     //                                    });
   }
-  // get f() { return this.form.controls; }
 
   onSubmit() {
-    // this.submitted = true;
-    // // stop here if form is invalid
-    // if (this.form.invalid) {
-    //   return;
-    // }
-    //
-    // this.loading = true;
-
     const { username, email, password } = this.form;
     this.authService.register(username, email, password).subscribe(
       data => {
