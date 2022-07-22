@@ -16,7 +16,7 @@
     Fetching Assignments... <span class="spinner spinner-sm"></span>
   </clr-dg-placeholder>
 
-  <clr-dg-row  *clrDgItems="let items of assignment">
+  <clr-dg-row  *clrDgItems="let items of allAssignments">
     <clr-dg-cell>{{items.title}}</clr-dg-cell>
     <clr-dg-cell>{{items.content}}</clr-dg-cell>
     <clr-dg-cell>{{items.credit}}</clr-dg-cell>

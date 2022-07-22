@@ -3,6 +3,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {NcgService} from "../../services/ncg.service";
 import {AdminAssignmentComponent} from "../../admin-pages/admin-assignment/admin-assignment.component";
 import {Assignment} from "../../model/assignment.model";
+import {AdminTeamsService} from "../../services/admin-teams.service";
 
 @Component({
   selector: 'app-ncg',
@@ -12,10 +13,11 @@ import {Assignment} from "../../model/assignment.model";
 export class NcgComponent implements OnInit {
   @ViewChild("wizardmd") wizardMedium: any;
   lgOpen: boolean = false;
-  allNcgs: any
+  allNcgs: any;
   ncgs :Ncg[] = [];
+  teamMembers:any[] =[];
 
-  constructor( private ncgService: NcgService ) { }
+  constructor( private ncgService: NcgService , private adminTeamsService: AdminTeamsService) { }
 
 
   ngOnInit() {
@@ -25,7 +27,6 @@ export class NcgComponent implements OnInit {
   getNcg() {
     this.ncgService.getNcg()
       .subscribe(data => {
-
           this.allNcgs = data;
         console.log(this.allNcgs);
         var obj = parseObject(this.allNcgs)
@@ -35,10 +36,29 @@ export class NcgComponent implements OnInit {
         console.log("fin1",this.ncgs);
         }
       );
+  }
 
+  onChecked ($event:any, id:any) {
+    const isChecked = $event.target.checked;
+    if(isChecked === true) {
+      this.teamMembers.push(id)
+      console.log("id",this.teamMembers)
+    }
+    else {
+      var indx = this.teamMembers.indexOf(id);
+      if (indx >-1) {
+        this.teamMembers.splice(indx,1);
+      }
+    }
+    console.log("ckd id",this.teamMembers)
+  }
 
-
-
+  createTeam() {
+    this.adminTeamsService.createTeam(1,this.teamMembers).subscribe(
+      data => {
+        console.log("Team created", data)
+      }
+    )
   }
 
 }
@@ -54,11 +74,11 @@ function parseObject(obj : any): any
   return fin
 }
 
-class Ncg {
-  _id: string |any
-  name: string |any
-  email: string |any
-  role: string |any
-  assignments: Assignment[] |any
-  __v: number|any
+interface Ncg {
+  _id: string
+  name: string
+  email: string
+  role: string
+  assignments: Assignment[]
+  __v: number
 }
