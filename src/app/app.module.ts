@@ -11,7 +11,7 @@ import { ConfirmationModalComponent } from './shared-components/confirmation-mod
 import { RegisterComponent } from './register/register.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AdminPagesModule } from './admin-pages/admin-pages.module';
-import { LoginModule } from './login/login.module';
+import { LoginModule } from './shared-components/login/login.module';
 import { NcgModule } from './ncg-pages/ncg.module';
 import { ErrorPagesComponent } from './error-pages/error-pages.component';
 

@@ -7,6 +7,22 @@
 .outer-board{
  padding: 3%;
 }
+.column1 {
+  float: left;
+  width: 40%;
+  padding: 10px;
+}
+.column2 {
+  float: left;
+  width: 60%;
+  padding: 10px;
+
+}
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
 .leaderboard-title{
   font-weight: bolder;
   font-size: 30px;
@@ -67,4 +83,33 @@
 }
 .ladder-nav--results-players:hover {
   background:#cccccc;
+}
+
+.card-text{
+
+  height: 1000px;
+  padding: 10%;
+}
+
+.image-landing{
+  height: 350px;
+  length: 350px;
+  padding: 5%;
+}
+
+.container-card-landing{
+  margin-top: 40%;
+  font-weight: 700;
+  align-items: center;
+  text-align: center;
+  line-height: 1.7;
+}
+.heading-landing{
+ font-size: 2rem;
+  margin-left: 10%;
+}
+
+.sub-heading-landing{
+  font-size: 1.2rem;
+ margin-left: 10%;
 }

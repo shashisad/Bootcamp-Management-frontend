@@ -28,11 +28,11 @@ export class AssignmentComponent implements OnInit {
 
   onSubmit(id: string) {
     console.log(id)
-    this.assignmentService.submitAssignment(id).subscribe(
-      data => {
-        console.log("submitted", data)
-      }
-    )
+    // this.assignmentService.submitAssignment(id).subscribe(
+    //   data => {
+    //     console.log("submitted", data)
+    //   }
+    // )
 
   }
   getAllIndividualAssignments() {
