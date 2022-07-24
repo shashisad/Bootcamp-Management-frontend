@@ -1,6 +1,6 @@
 import { Component, OnInit , ViewChild} from '@angular/core';
-import {AssignmentService} from "./assignment.service";
-import {AdminAssignmentService} from "../../services/admin-assignment.service";
+import {AssignmentService} from "../../services/assignment.service";
+import {AdminAssignmentService} from "../../../admin-pages/services/admin-assignment.service";
 
 @Component({
   selector: 'app-assignment',
@@ -26,9 +26,14 @@ export class AssignmentComponent implements OnInit {
     this.getAllIndividualAssignments();
   }
 
-  onSubmit() {
-    // this.assignmentService.submitAssignment()
-    //
+  onSubmit(id: string) {
+    console.log(id)
+    this.assignmentService.submitAssignment(id).subscribe(
+      data => {
+        console.log("submitted", data)
+      }
+    )
+
   }
   getAllIndividualAssignments() {
     this.adminAssignmentService.getAllAssignments()

@@ -1,26 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {NcgComponent} from "./ncg/ncg-list/ncg.component"
-import {TeamComponent} from "./ncg/ncg-team/team.component";
-import {LandingPageComponent} from "./components/landing-page/landing-page.component";
-import {AssignmentComponent} from "./ncg/ncg-assignment/assignment.component";
-import {LoginComponent} from "./login/login.component";
-import {RegisterComponent} from "./register/register.component";
-import {AdminAssignmentComponent} from "./admin-pages/admin-assignment/admin-assignment.component";
-import {AdminTeamsComponent} from "./admin-pages/admin-teams/admin-teams.component";
-
+import { RegisterComponent} from "./register/register.component";
+import {ErrorPagesComponent} from "./error-pages/error-pages.component";
 
 const routes: Routes = [
-  { path: 'assignments', component: AssignmentComponent},
-  { path: 'ncg', component: NcgComponent},
-  { path: 'mentor', component: NcgComponent},
-  { path: 'team', component: TeamComponent},
-  { path: 'landing', component: LandingPageComponent},
   { path: 'register', component: RegisterComponent},
-  { path: 'login', component: LoginComponent},
-  { path: 'admin-assignments', component: AdminAssignmentComponent},
-  { path: 'admin-team', component: AdminTeamsComponent}
-
+  {
+    path: 'error',
+    children: [
+      {path: 'not-found', component: ErrorPagesComponent}
+    ]
+  },
+  { path: '**', redirectTo: 'error/not-found' }
 ];
 
 @NgModule({

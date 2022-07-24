@@ -33,4 +33,14 @@ export class AdminTeamsService {
     return this.http.delete(this.DELETE_TEAM, options);
   }
 
+  parsingObject(obj: any) : any {
+    for(var key in obj) {
+      if(obj[key] instanceof Object) {
+        this.parsingObject(obj[key]);
+      }
+      var result = obj[key];
+    }
+    return result
+  }
+
 }
