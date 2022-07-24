@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
-import {TokenStorageService} from "../../login/token-storage.service";
 import {AuthService} from "../../login/auth.service";
 @Component({
   selector: 'app-header',
