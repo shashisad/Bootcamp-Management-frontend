@@ -9,24 +9,28 @@ const httpOptions = {
 })
 export class AssignmentService {
 
-  ncgSubmittedLink: any;
   private SUBMIT_ASSIGNMENT = "http://localhost:4000/api/v1/user/submitAssignment/";
+  private SUBMIT_TEAM_ASSIGNMENT = "http://localhost:4000/api/v1/teams/submitTeamAssignment/";
+
   constructor(private http: HttpClient) { }
 
-  getAssignments() {
-
+  submitAssignment(assignmentId: string, submission: string) : Observable<any>  {
+    const body= {
+      ncgSubmittedLink:{
+        link:submission
+      }
+    }
+    return this.http.post(this.SUBMIT_ASSIGNMENT+assignmentId, {
+      body}, httpOptions);
   }
 
-  submitAssignment(assignmentId: string) : Observable<any>  {
-    // const body= {
-    //   ncgSubmittedLink:{
-    //     link:"somethin.drive.com"
-    //   }
-    // }
-
-    let link = 'somethin.drive.com';
-
-    return this.http.post(this.SUBMIT_ASSIGNMENT+assignmentId, {
-      link}, httpOptions);
+  submitTeamAssignment(teamId: string, submission: string) : Observable<any>  {
+    const body= {
+      teamSubmittedLink:{
+        link:submission
+      }
+    }
+    return this.http.post(this.SUBMIT_ASSIGNMENT+teamId, {
+      body}, httpOptions);
   }
 }
