@@ -43,7 +43,7 @@ export class AdminTeamsComponent implements OnInit {
     )
   }
 
-  deleteTeam( teamId: number) {
+  deleteTeam( teamId: string) {
     this.adminTeamsService.deleteTeam(teamId).subscribe(
       data => {
         console.log("Deleted")
