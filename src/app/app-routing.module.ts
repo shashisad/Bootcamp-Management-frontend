@@ -4,6 +4,7 @@ import { RegisterComponent} from "./register/register.component";
 import {ErrorPagesComponent} from "./error-pages/error-pages.component";
 
 const routes: Routes = [
+  { path: '', redirectTo: 'register', pathMatch: 'full'},
   { path: 'register', component: RegisterComponent},
   {
     path: 'error',

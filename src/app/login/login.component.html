@@ -11,6 +11,12 @@
       <h5 class="hint">Use your Company ID to sign in or create one now</h5>
     </label>
     <div class="login-group">
+      <div class="auth-source select">
+        <select id="login-auth-source-1" [(ngModel)] ="roles.selectedRole" [ngModelOptions]="{standalone: true} " clrSelect class="select-component">
+          <option value="ncg" >NCG</option>
+          <option value="admin">Administrator</option>
+        </select>
+      </div>
       <input class="clr-input"
              type="email"
              id="login_email"

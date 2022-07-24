@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
   isLoggedIn = false;
   isLoginFailed = false;
   errorMessage = '';
-  roles: string[] = [];
+  roles: any = {};
   loading = true;
   submitted = false;
 
@@ -30,6 +30,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.roles.selectedRole ='';
     if (this.tokenStorage.getToken()) {
       this.isLoggedIn = true;
       this.roles = this.tokenStorage.getUser().roles;
@@ -62,6 +63,11 @@ export class LoginComponent implements OnInit {
 
   onLoggedIn() {
     this.loading=false
-    this.router.navigate(['/landing']);
+    console.log("role", this.roles.selectedRole)
+    if(this.roles.selectedRole=="ncg")
+      this.router.navigate(['/landing']);
+    else{
+      this.router.navigate(['/admin-landing']);
+    }
   }
 }
