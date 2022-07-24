@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AdminTeamsService} from "../../services/admin-teams.service";
+import {TeamModel} from "../../../model/team.model";
 
 @Component({
   selector: 'app-admin-teams',
@@ -8,7 +9,7 @@ import {AdminTeamsService} from "../../services/admin-teams.service";
 })
 export class AdminTeamsComponent implements OnInit {
 
-  allteams: Team[] =[];
+  allteams: TeamModel[] =[];
   constructor(private adminTeamsService: AdminTeamsService) { }
 
   ngOnInit(): void {
@@ -23,6 +24,9 @@ export class AdminTeamsComponent implements OnInit {
           this.allteams.push(i)
         }
         console.log("fin1",  this.allteams)
+
+        var res = this.adminTeamsService.parsingObject(data);
+        console.log("res", res);
       })
   }
 
@@ -46,14 +50,6 @@ export class AdminTeamsComponent implements OnInit {
       }
     )
   }
-}
-
-class Team {
-  _id: string |any
-  teamId: string[]  |any
-  members: string[]  |any
-  teamAssignments: string[]  |any
-  __v: number  |any
 }
 
 function parseObject(obj : any): any

@@ -1,6 +1,7 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {AdminAssignmentService} from '../../services/admin-assignment.service'
-import {Assignment,NcgSubmission} from '../../model/assignment.model'
+import {Assignment,NcgSubmission} from '../../../model/assignment.model'
+import {AdminTeamsService} from "../../services/admin-teams.service";
 
 @Component({
   selector: 'app-admin-assignment',
@@ -31,11 +32,6 @@ export class AdminAssignmentComponent implements OnInit {
 
        this.allAssignments = data.allAssignments;
         console.log("dd",this.allAssignments);
-        // var obj = parseObject(this.allAssignments)
-        // for (var i of obj){
-        //   this.assignment.push(i)
-        // }
-        // console.log("fin1",  this.assignment)
       });
   }
 
@@ -47,17 +43,5 @@ export class AdminAssignmentComponent implements OnInit {
     )
     console.log(this.form.title, this.form.content,this.form.credit,this.form.dueDate);
   }
-
-
 }
 
-function parseObject(obj : any): any
-{
-  for(var key in obj) {
-    if(obj[key] instanceof Object) {
-      parseObject(obj[key]);
-    }
-    var fin = obj[key];
-  }
-  return fin
-}

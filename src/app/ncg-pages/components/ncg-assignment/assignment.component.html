@@ -36,7 +36,7 @@
             <clr-wizard-button [type]="'cancel'">Cancel</clr-wizard-button>
             <clr-wizard-button [type]="'previous'">Back</clr-wizard-button>
             <clr-wizard-button [type]="'next'">Next</clr-wizard-button>
-            <clr-wizard-button [type]="'finish'" (click)="onSubmit()">Finish</clr-wizard-button>
+            <clr-wizard-button [type]="'finish'" (click)="onSubmit(assignment._id)">Finish</clr-wizard-button>
 
             <clr-wizard-page>
               <ng-template clrPageTitle>{{assignment.title}}</ng-template>

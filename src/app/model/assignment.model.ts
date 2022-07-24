@@ -1,4 +1,4 @@
-export  interface  Assignment {
+export interface  Assignment {
   AllAssignmentStatus: number;
   assignId: number;
   content: string;
@@ -9,9 +9,10 @@ export  interface  Assignment {
   __v: number;
   _id:  string;
 }
+
 export interface NcgSubmission {
   ncg_id:string
-    link:string
+  link:string
   status:number
-    date:Date
+  date:Date
 }

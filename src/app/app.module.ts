@@ -2,23 +2,18 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {ClarityModule} from "@clr/angular";
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import { HeaderComponent } from './components/header/header.component';
-import { SideNavComponent } from './components/side-nav/side-nav.component';
-import { AssignmentComponent } from './ncg/ncg-assignment/assignment.component';
-import { NcgComponent } from './ncg/ncg-list/ncg.component';
-import { TeamComponent } from './ncg/ncg-team/team.component';
-import { ConfirmationModalComponent } from './components/confirmation-modal/confirmation-modal.component';
-import { LandingPageComponent } from './components/landing-page/landing-page.component';
+import { ClarityModule} from "@clr/angular";
+import { FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import { HeaderComponent } from './shared-components/header/header.component';
+import { SideNavComponent } from './shared-components/side-nav/side-nav.component';
+import { ConfirmationModalComponent } from './shared-components/confirmation-modal/confirmation-modal.component';
 import { RegisterComponent } from './register/register.component';
-import { LoginComponent } from './login/login.component';
 import { HttpClientModule } from '@angular/common/http';
-import { AdminAssignmentComponent } from './admin-pages/admin-assignment/admin-assignment.component';
-import {OrganizationChartModule} from "primeng/organizationchart";
-import {StepsModule} from "primeng/steps";
-import { AdminTeamsComponent } from './admin-pages/admin-teams/admin-teams.component';
+import { AdminPagesModule } from './admin-pages/admin-pages.module';
+import { LoginModule } from './login/login.module';
+import { NcgModule } from './ncg-pages/ncg.module';
+import { ErrorPagesComponent } from './error-pages/error-pages.component';
 
 
 @NgModule({
@@ -26,27 +21,21 @@ import { AdminTeamsComponent } from './admin-pages/admin-teams/admin-teams.compo
     AppComponent,
     HeaderComponent,
     SideNavComponent,
-    AssignmentComponent,
-    NcgComponent,
-    TeamComponent,
     ConfirmationModalComponent,
-    LandingPageComponent,
     RegisterComponent,
-    LoginComponent,
-    AdminAssignmentComponent,
-    AdminTeamsComponent
-
+    ErrorPagesComponent,
   ],
   imports: [
     BrowserModule,
+    LoginModule,
+    NcgModule,
+    AdminPagesModule,
     AppRoutingModule,
     ClarityModule,
     FormsModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    OrganizationChartModule,
-    StepsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
