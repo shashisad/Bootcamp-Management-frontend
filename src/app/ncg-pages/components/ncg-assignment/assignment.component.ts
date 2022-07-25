@@ -12,6 +12,7 @@ export class AssignmentComponent implements OnInit {
   lgOpen: boolean = false;
    readMore = false;
     allAssignments: any;
+    teamAssignments: any;
    model: any;
   longText = `This is long paragraph text containing several words continued. An example of implementing dynamically limit long text This is long paragraph text containing several words continued. An example of implementing dynamically limit long text This is long paragraph text containing several words continued. An example of implementing dynamically limit long text`;
 
@@ -42,6 +43,13 @@ export class AssignmentComponent implements OnInit {
         this.allAssignments = data.allAssignments;
         console.log("dd",this.allAssignments);
       });
+  }
+
+  getAllTeamAssignments() {
+    this.adminAssignmentService.getAllTeamsAssignments()
+      .subscribe(data =>{
+        this.teamAssignments = data.allAssignments;
+      })
   }
 
 }

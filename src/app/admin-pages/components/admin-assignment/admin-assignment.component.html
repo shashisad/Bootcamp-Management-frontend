@@ -1,12 +1,10 @@
 <div class="content-container height-100" >
   <div style="height:100%; width: 100% ; padding-left: 50px !important;">
 
-<clr-datagrid style="margin-right: 40px">
+<clr-datagrid style="width: 80%">
   <clr-dg-action-bar>
-    <div class="btn-group">
-      <button type="button" class="btn btn-sm btn-secondary" (click)="mdOpen = true"><clr-icon shape="plus"></clr-icon> Create Assignment</button>
-      <button type="button" class="btn btn-sm btn-secondary" ><clr-icon shape="pencil"></clr-icon> Review Assignment</button>
-    </div>
+      <button type="button" class="btn btn-sm btn-secondary" (click)="mdOpen = true" style="margin: 3px"><clr-icon shape="plus"></clr-icon> Create Assignment</button>
+      <button type="button" class="btn btn-sm btn-secondary" ><clr-icon shape="pencil"  style="margin: 3px"></clr-icon> Review Assignment</button>
   </clr-dg-action-bar>
   <clr-dg-column>Assignment Id</clr-dg-column>
   <clr-dg-column>Assignment Name</clr-dg-column>

@@ -1,14 +1,11 @@
-<app-side-nav></app-side-nav>
-<clr-datagrid style="margin-right: 40px">
+<clr-datagrid style="width: 60%; margin-left: 50px">
   <clr-dg-action-bar>
-    <div class="btn-group">
-      <button type="button" class="btn btn-sm btn-secondary" (click)="createTeam()" ><clr-icon shape="plus"></clr-icon> Create Team</button>
-      <button type="button" class="btn btn-sm btn-secondary" ><clr-icon shape="close"></clr-icon> Delete</button>
-      <button type="button" class="btn btn-sm btn-secondary" ><clr-icon shape="pencil"></clr-icon> Edit</button>
-    </div>
+      <button type="button" class="btn btn-sm btn-secondary" (click)="createTeam()"  style="margin: 3px"><clr-icon shape="plus"></clr-icon> Create Team</button>
+      <button type="button" class="btn btn-sm btn-secondary"  style="margin: 3px"><clr-icon shape="close"></clr-icon> Delete</button>
+      <button type="button" class="btn btn-sm btn-secondary"  style="margin: 3px"><clr-icon shape="pencil"></clr-icon> Edit</button>
   </clr-dg-action-bar>
-  <clr-dg-column></clr-dg-column>
-  <clr-dg-column>NCG Id</clr-dg-column>
+  <clr-dg-column style="width: 50px">Select</clr-dg-column>
+  <clr-dg-column >NCG Id</clr-dg-column>
   <clr-dg-column>Name</clr-dg-column>
   <clr-dg-column>Email</clr-dg-column>
   <clr-dg-placeholder >
