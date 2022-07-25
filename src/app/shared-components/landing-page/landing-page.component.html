@@ -1,56 +1,97 @@
-<div class="row">
-  <div class="column1">
-    <div class="clr-row">
-      <div class="clr-col-lg-12">
-          <div class="card-block">
-            <div class="card-text">
-              <div class="container-card-landing">
-              <div class="heading-landing">Welcome to VMware</div>
-              <div  class="sub-heading-landing"> New College Graduate Bootcamp </div>
-              <img class="image-landing" src="../../../assets/landing2.jpeg" alt="NCG">
+<div class="main-container">
+  <header class="header-6">
+    <div class="branding">
+      <a href="..." class="nav-link">
+        <clr-icon shape="vm-bug"></clr-icon>
+        <span class="title">Bootcamp Management System</span>
+      </a>
+    </div>
+    <div class="header-actions">
+      <clr-dropdown>
+        <button class="nav-text" clrDropdownTrigger aria-label="open user profile">
+          john.doe@vmware.com
+          <clr-icon shape="caret down"></clr-icon>
+        </button>
+        <clr-dropdown-menu *clrIfOpen clrPosition="bottom-right">
+          <button type="submit" class="btn btn-primary" (click)="Logout()" >Logout</button>
+        </clr-dropdown-menu>
+      </clr-dropdown>
+    </div>
+  </header>
+
+  <div class="content-container">
+    <div class="content-area">
+      <div class="row">
+        <div class="column1">
+          <div class="clr-row">
+            <div class="clr-col-lg-12">
+              <div class="card-block">
+                <div class="card-text">
+                  <div class="container-card-landing">
+                    <div class="heading-landing">Welcome to VMware</div>
+                    <div  class="sub-heading-landing"> New College Graduate Bootcamp </div>
+                    <img class="image-landing" src="../../../assets/landing2.png" alt="NCG">
+                  </div>
+                </div>
               </div>
+
             </div>
           </div>
 
+        </div>
+        <div class="column2">
+          <div class="outer-board">
+            <!--      <button type="submit" class="btn btn-primary" (click)="Logout()">Logout</button>-->
+            <div class="leaderboard-title">Leaderboard <clr-icon shape="crown" size="36"  class="is-info"></clr-icon></div>
+            <section id="scrims-ladder--container" class="scrims-ladder">
+              <div class="ladder-nav--results">
+                <div class="ladder-nav--results-col">
+                  <label>Rank</label>
+                </div>
+                <div class="ladder-nav--results-col">
+                  <label>Name</label>
+                </div>
+                <div class="ladder-nav--results-col">
+                  <label>Vmware Id</label>
+                </div>
+                <div class="ladder-nav--results-col">
+                  <label>Marks</label>
+                </div>
+              </div>
+              <hr>
+              <div class="ladder-nav--results-players" *ngFor="let rank of ranking;">
+                <div class="results-col">
+                  <span class="results-rank"><span class="positions">{{rank.rank}}</span></span>
+                </div>
+                <div class="results-col">
+                  <span class="results-team">{{rank.userName}}</span>
+                </div>
+                <div class="results-col">
+                  <span class="results-p1">{{rank.userEmail}}</span>
+                </div>
+                <div class="results-col">
+                  <span class="results-p2">{{rank.userMarks}}</span>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
       </div>
     </div>
+    <clr-vertical-nav [clrVerticalNavCollapsible]="true" >
+      <a clrVerticalNavLink routerLink="../landing" routerLinkActive="active">
+        <clr-icon clrVerticalNavIcon shape="home"></clr-icon>
+        Home
+      </a>
+      <a clrVerticalNavLink routerLink="../team" routerLinkActive="active">
+        <clr-icon clrVerticalNavIcon shape="employee-group"></clr-icon>
+        Team
+      </a>
+      <a clrVerticalNavLink routerLink="../assignments" routerLinkActive="active">
+        <clr-icon clrVerticalNavIcon shape="pinboard"></clr-icon>
+        Assignment
+      </a>
+    </clr-vertical-nav>
 
-  </div>
-  <div class="column2">
-    <div class="outer-board">
-<!--      <button type="submit" class="btn btn-primary" (click)="Logout()">Logout</button>-->
-      <div class="leaderboard-title">Leaderboard <clr-icon shape="crown" size="36"  class="is-info"></clr-icon></div>
-      <section id="scrims-ladder--container" class="scrims-ladder">
-        <div class="ladder-nav--results">
-          <div class="ladder-nav--results-col">
-            <label>Rank</label>
-          </div>
-          <div class="ladder-nav--results-col">
-            <label>Name</label>
-          </div>
-          <div class="ladder-nav--results-col">
-            <label>Vmware Id</label>
-          </div>
-          <div class="ladder-nav--results-col">
-            <label>Marks</label>
-          </div>
-        </div>
-        <hr>
-        <div class="ladder-nav--results-players" *ngFor="let rank of ranking;">
-          <div class="results-col">
-            <span class="results-rank"><span class="positions">{{rank.rank}}</span></span>
-          </div>
-          <div class="results-col">
-            <span >{{rank.userName}}</span>
-          </div>
-          <div class="results-col">
-            <span>{{rank.userEmail}}</span>
-          </div>
-          <div class="results-col">
-            <span >{{rank.userMarks}}</span>
-          </div>
-        </div>
-      </section>
-    </div>
   </div>
 </div>

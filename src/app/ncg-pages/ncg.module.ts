@@ -11,26 +11,32 @@ import { HttpClientModule} from "@angular/common/http";
 import { NcgRoutingModule} from "./ncg-routing.module";
 import {OrganizationChartModule} from "primeng/organizationchart";
 import {StepsModule} from "primeng/steps";
+import {HeaderComponent} from "../shared-components/header/header.component";
+import {SideNavComponent} from "../shared-components/side-nav/side-nav.component";
 
 @NgModule({
   declarations: [
     AssignmentComponent,
     TeamComponent,
-    LandingPageComponent
+    LandingPageComponent,
+    HeaderComponent,
+    SideNavComponent
   ],
-  imports: [
-    CommonModule,
-    BrowserModule,
-    ClarityModule,
-    FormsModule,
-    BrowserAnimationsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    OrganizationChartModule,
-    StepsModule,
-    NcgRoutingModule
-  ],
+    imports: [
+        CommonModule,
+        BrowserModule,
+        ClarityModule,
+        FormsModule,
+        BrowserAnimationsModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        OrganizationChartModule,
+        StepsModule,
+        NcgRoutingModule
+    ],
   exports: [
+    HeaderComponent,
+    SideNavComponent,
     AssignmentComponent,
     TeamComponent,
     LandingPageComponent

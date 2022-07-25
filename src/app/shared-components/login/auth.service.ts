@@ -4,8 +4,10 @@ import { Observable } from 'rxjs';
 import {map} from "rxjs/operators";
 const AUTH_API = 'http://localhost:4000/api/v1/user/';
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+  credentials: "include"
 };
+
 @Injectable({
   providedIn: 'root'
 })
@@ -29,9 +31,9 @@ export class AuthService {
   }
 
   logout () {
-    window.sessionStorage.clear();
-      return this.http.get(AUTH_API+'logout').pipe(
+      return this.http.get(AUTH_API+'logout', { withCredentials: true }).pipe(
         map(res => res)
       );
+    window.sessionStorage.clear();
   }
 }

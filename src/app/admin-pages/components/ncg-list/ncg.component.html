@@ -1,22 +1,17 @@
-<clr-datagrid style="margin-right: 40px">
+<clr-datagrid style="width: 60%; margin-left: 50px" [(clrDgSingleSelected)]="selectedUser">
   <clr-dg-action-bar>
-    <div class="btn-group">
-      <button type="button" class="btn btn-sm btn-secondary" (click)="createTeam()" ><clr-icon shape="plus"></clr-icon> Create Team</button>
-      <button type="button" class="btn btn-sm btn-secondary" ><clr-icon shape="close"></clr-icon> Delete</button>
-      <button type="button" class="btn btn-sm btn-secondary" ><clr-icon shape="pencil"></clr-icon> Edit</button>
-    </div>
+      <button type="button" class="btn btn-sm btn-secondary" (click)="lgOpen = true"  style="margin: 3px"><clr-icon shape="plus"></clr-icon> Add User</button>
+      <button type="button" class="btn btn-sm btn-secondary" (click)="deleteUser()" style="margin: 3px"><clr-icon shape="close"></clr-icon> Delete User</button>
+      <button type="button" class="btn btn-sm btn-secondary"  style="margin: 3px"><clr-icon shape="pencil"></clr-icon> Edit User</button>
+    <button type="button" class="btn btn-sm btn-secondary"  (click)="createAllTeams()" style="margin: 3px"><clr-icon shape="users"></clr-icon> Create Teams</button>
   </clr-dg-action-bar>
-  <clr-dg-column></clr-dg-column>
-  <clr-dg-column>NCG Id</clr-dg-column>
+  <clr-dg-column >NCG Id</clr-dg-column>
   <clr-dg-column>Name</clr-dg-column>
   <clr-dg-column>Email</clr-dg-column>
   <clr-dg-placeholder >
     Fetching NCGs... <span class="spinner spinner-sm"></span>
   </clr-dg-placeholder>
   <clr-dg-row  *clrDgItems="let item of ncgs">
-    <clr-dg-cell>
-      <input type="checkbox" name="ncgCheckbox" [ngModel]="item._id" (change)="onChecked($event,item._id)">
-    </clr-dg-cell>
     <clr-dg-cell>{{ item._id}}</clr-dg-cell>
     <clr-dg-cell>{{item.name}}</clr-dg-cell>
     <clr-dg-cell>{{item.email}}</clr-dg-cell>
@@ -28,3 +23,57 @@
     </clr-dg-pagination>
   </clr-dg-footer>
 </clr-datagrid>
+
+<clr-modal [(clrModalOpen)]="lgOpen">
+  <h3 class="modal-title">Enter User Details</h3>
+  <div class="modal-body">
+    <form class="add-user"
+          name="form"
+          (ngSubmit)="f.form.valid"
+          #f="ngForm"
+          novalidate>
+      <div class="form-group">
+        <label for="add_name" style="text-align: left"> Name: </label>
+        <input class="clr-input"
+               type="text"
+               id="add_name"
+               placeholder="Enter user name"
+               name="name"
+               [(ngModel)]="model.name"
+               required
+               email
+               #name="ngModel"
+               style="margin: 10px;width: 80%">
+      </div>
+        <div class="form-group">
+        <label for="add_email" style="text-align: left"> Email: </label>
+        <input class="clr-input"
+               type="email"
+               id="add_email"
+               placeholder="Enter user email"
+               name="email"
+               [(ngModel)]="model.email"
+               required
+               email
+               #email="ngModel"
+               style="margin: 10px; width: 80%">
+        </div>
+          <div class="form-group">
+            <label for="roles" style="text-align: left"> Role: </label>
+        <div class="auth-source select">
+
+          <select id="roles" [(ngModel)] ="model.role" [ngModelOptions]="{standalone: true} " clrSelect class="select-component" >
+            <option value="" >Select Role</option>
+            <option value="ncg" >NCG</option>
+            <option value="mentor">Mentor</option>
+            <option value="admin">Administrator</option>
+          </select>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline" (click)="lgOpen = false">Cancel</button>
+    <button type="button" class="btn btn-primary" (click)="addUser()">Ok</button>
+  </div>
+</clr-modal>

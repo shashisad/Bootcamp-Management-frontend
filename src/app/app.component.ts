@@ -16,15 +16,13 @@ export class AppComponent {
   constructor(private tokenStorageService: TokenStorageService) { }
   ngOnInit(): void {
     this.isLoggedIn = !!this.tokenStorageService.getToken();
+    console.log("whatver",!!this.tokenStorageService.getToken())
     if (this.isLoggedIn) {
       const user = this.tokenStorageService.getUser();
+      console.log("whatver user",this.tokenStorageService.getUser())
       this.roles = user.roles;
       // this.showAdminBoard = this.roles.includes('admin');
       this.email = user.email;
     }
-  }
-  logout(): void {
-    this.tokenStorageService.logOut();
-    window.location.reload();
   }
 }

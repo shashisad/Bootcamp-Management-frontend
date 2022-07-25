@@ -49,4 +49,8 @@ export class RegisterComponent implements OnInit {
   onSuccess() {
     this.router.navigate(['/login']);
   }
+
+  directLogin() {
+    this.router.navigate(['/login']);
+  }
 }

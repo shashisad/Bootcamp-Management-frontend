@@ -13,8 +13,10 @@ export class AdminAssignmentComponent implements OnInit {
   @ViewChild("wizardlg") wizardLarge :any;
   mdOpen: boolean = false;
   allAssignments: any;
+  allTeamAssignments: any;
   form: any = {};
   assignment: Assignment[] = [];
+  selectedAssignment: Assignment|any;
 
   constructor(private adminAssignmentService: AdminAssignmentService) { }
 
@@ -31,7 +33,7 @@ export class AdminAssignmentComponent implements OnInit {
       .subscribe(data => {
 
        this.allAssignments = data.allAssignments;
-        console.log("dd",this.allAssignments);
+        console.log("indiv assg",this.allAssignments);
       });
   }
 
@@ -43,5 +45,34 @@ export class AdminAssignmentComponent implements OnInit {
     )
     console.log(this.form.title, this.form.content,this.form.credit,this.form.dueDate);
   }
+
+  createTeamAssignment() {
+    this.adminAssignmentService. createAllTeamsAssignment(this.form.title,this.form.content,4,this.form.dueDate).subscribe(
+      data => {
+        console.log("created team assgn",data);
+      }
+    )
+    console.log(this.form.title, this.form.content,this.form.credit,this.form.dueDate);
+  }
+
+
+  getAllTeamAssignment() {
+    this.adminAssignmentService.getAllTeamsAssignments()
+      .subscribe(
+        data => {
+          this.allTeamAssignments = data.allAssignments;
+          console.log("team assgn",this.allTeamAssignments);
+        }
+      )
+  }
+
+  uploadNcgMarks() {
+
+  }
+
+  uploadTeamMarks () {
+
+  }
+
 }
 
