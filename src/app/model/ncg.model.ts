@@ -6,5 +6,6 @@ export interface Ncg {
   email: string
   role: string
   assignments: Assignment[]
+  totalMarks: number
   __v: number
 }

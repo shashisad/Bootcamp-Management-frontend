@@ -1,7 +1,8 @@
 export interface TeamModel {
   _id: string
-  teamId: string[]
-  members: string[]
+  teamName: string
+  teamMembers: string[]
+  teamMentor: string
   teamAssignments: string[]
   __v: number
 }

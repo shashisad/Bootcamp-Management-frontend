@@ -3,10 +3,10 @@
     <br>
     <clr-tabs>
       <clr-tab>
-        <button clrTabLink>Individual Assignments </button>
+        <button clrTabLink (click)="getAllIndividualAssignments()">Individual Assignments </button>
         <clr-tab-content *clrIfActive>
           <div *ngFor="let assignment of allAssignments">
-          <div id="rootCard" class="card">
+          <div id="rootCard" class="card" style="float: left; margin: 10px; margin-top: 40px">
             <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
                 <div class="card-header" style="text-align: center">
                  {{assignment.title}}
@@ -40,8 +40,7 @@
 
             <clr-wizard-page>
               <ng-template clrPageTitle>{{assignment.title}}</ng-template>
-              {{assignment.content}}
-              <div>{{ longText}} </div>
+              <div>{{assignment.content}} {{ longText}} </div>
             </clr-wizard-page>
             <clr-wizard-page>
               <ng-template clrPageTitle>Upload Answer</ng-template>
@@ -59,31 +58,57 @@
       </clr-tab>
 
       <clr-tab>
-        <button clrTabLink> Team Assignments</button>
+        <button clrTabLink (click)="getAllTeamAssignments()"> Team Assignments</button>
         <clr-tab-content *clrIfActive>
-          <div id="rootCard1" class="card">
-            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-              <div class="card-header" style="text-align: center">
-                Title
-                <clr-icon shape="event" class="has-badge"></clr-icon>
-              </div>
-              <div class="card-block">
-                <div class="card-title">
-                  Content
+          <div *ngFor="let assignment of teamAssignments">
+            <div id="rootCard1" class="card" style="float: left; margin: 10px; margin-top: 40px">
+              <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                <div class="card-header" style="text-align: center">
+                  {{assignment.title}}
+                  <clr-icon shape="event" class="has-badge"></clr-icon>
                 </div>
-                <div class="card-text" [ngClass]="{'limitTextHeight': readMore}">
-                  <div>
-                    {{(readMore) ? longText : longText | slice:0:150}} <span *ngIf="!readMore">...</span>
-                    <a href="javascript:;" *ngIf="!readMore"> Read More</a>
+                <div class="card-block">
+                  <div class="card-title">
+                    {{assignment.content}}
+                  </div>
+                  <div class="card-text" [ngClass]="{'limitTextHeight': readMore}">
+                    <div>
+                      {{(readMore) ? longText : longText | slice:0:150}} <span *ngIf="!readMore">...</span>
+                      <a href="javascript:;" *ngIf="!readMore" (click)="lgOpen = true"> Read More</a>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="card-footer">
-                <button class="btn btn-sm btn-primary ">
-                  Submit
-                </button>
+                <div class="card-footer">
+                  <button class="btn btn-sm btn-primary" (click)="lgOpen = true">
+                    Submit
+                  </button>
+                </div>
               </div>
             </div>
+
+            <clr-wizard #wizardmd [(clrWizardOpen)]="lgOpen" clrWizardSize="md">
+              <clr-wizard-title>Submission</clr-wizard-title>
+              <clr-wizard-button [type]="'cancel'">Cancel</clr-wizard-button>
+              <clr-wizard-button [type]="'previous'">Back</clr-wizard-button>
+              <clr-wizard-button [type]="'next'">Next</clr-wizard-button>
+              <clr-wizard-button [type]="'finish'" (click)="onSubmit(assignment._id)">Finish</clr-wizard-button>
+
+              <clr-wizard-page>
+                <ng-template clrPageTitle>{{assignment.title}}</ng-template>
+                {{assignment.content}}
+                <div>{{ longText}} </div>
+              </clr-wizard-page>
+              <clr-wizard-page>
+                <ng-template clrPageTitle>Upload Answer</ng-template>
+                <form clrForm>
+                  <clr-input-container>
+                    <label>Link</label>
+                    <input clrInput placeholder="Fill me in the link"  />
+                  </clr-input-container>
+                </form>
+                <h4>Last date to submission - {{assignment.dueDate}}</h4>
+              </clr-wizard-page>
+            </clr-wizard>
           </div>
 
         </clr-tab-content>

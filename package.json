@@ -25,6 +25,7 @@
     "@clr/icons": "^13.0.2",
     "@clr/ui": "^13.5.0",
     "@webcomponents/webcomponentsjs": "^2.6.0",
+    "angular2-cookie": "^1.2.6",
     "primeng": "^13.4.1",
     "rxjs": "~7.4.0",
     "tslib": "^2.3.0",

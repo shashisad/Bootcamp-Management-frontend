@@ -33,7 +33,9 @@ export class LoginComponent implements OnInit {
     this.roles.selectedRole ='';
     if (this.tokenStorage.getToken()) {
       this.isLoggedIn = true;
-      this.roles = this.tokenStorage.getUser().roles;
+      console.log("json usr",this.tokenStorage.getUser() )
+      // this.roles = this.tokenStorage.getUser().roles;
+      // console.log("act roles", this.tokenStorage.getUser().roles)
     }
   }
 
@@ -42,13 +44,17 @@ export class LoginComponent implements OnInit {
     const { email, password } = this.form;
     this.authService.login(email, password).subscribe(
       data => {
-        // this.tokenStorage.saveToken(data.accessToken);
-        // this.tokenStorage.saveUser(data);
+        this.tokenStorage.saveToken(data.token);
+        this.tokenStorage.saveUser(data.user);
         this.isLoginFailed = false;
         this.isLoggedIn = true;
         // this.roles = this.tokenStorage.getUser().roles;
+        // console.log("rolesss", this.tokenStorage.getUser().roles)
         // this.reloadPage();
+
         console.log("login",data)
+        console.log("login user",data.user)
+        console.log("login token",data.token)
       },
       err => {
         this.errorMessage = err.error.message;
@@ -71,3 +77,4 @@ export class LoginComponent implements OnInit {
     }
   }
 }
+

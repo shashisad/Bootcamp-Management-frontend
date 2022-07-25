@@ -3,14 +3,16 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {map} from "rxjs/operators";
 import {Observable} from "rxjs";
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+  credentials: "include"
 };
 @Injectable({
   providedIn: 'root'
 })
 export class AdminAssignmentService {
 
-  private GET_ALL_ASSIGNMENTS = "http://localhost:4000/api/v1/getAllAssignments"
+  private GET_ALL_ASSIGNMENTS = "http://localhost:4000/api/v1/getAllAssignments";
+  private GET_ALL_TEAMS_ASSIGNMENTS = "http://localhost:4000/api/v1/getAllTeamAssignments";
   private CREATE_ASSIGNMENTS_FOR_ALL = "http://localhost:4000/api/v1/admin/assignments/createAssignmentForAll"
   private CREATE_TEAM_ASSIGNMENT = "http://localhost:4000/api/v1/admin/teams/createAssignment/";
   private CREATE_ASSIGNMENTS_FOR_ALL_TEAMS = "http://localhost:4000/api/v1/admin/assignments/createAssignmentForAllTeams";
@@ -21,10 +23,14 @@ export class AdminAssignmentService {
   constructor(private http: HttpClient) { }
 
   getAllAssignments() : Observable<any> {
-    return this.http.get(this.GET_ALL_ASSIGNMENTS).pipe
+    return this.http.get(this.GET_ALL_ASSIGNMENTS,httpOptions).pipe
     (map(res => res));
   }
 
+  getAllTeamsAssignments() : Observable<any> {
+    return this.http.get(this.GET_ALL_TEAMS_ASSIGNMENTS,httpOptions).pipe
+    (map(res => res));
+  }
   createAssignment (title: string, content: string, credit: number, dueDate: string) : Observable<any> {
   return this.http.post(this.CREATE_ASSIGNMENTS_FOR_ALL, {
     title,
@@ -43,12 +49,11 @@ export class AdminAssignmentService {
     }, httpOptions);
   }
 
-  createAllTeamsAssignment (title: string, content: string, credit: number,maxMarks:number, dueDate: string) : Observable<any> {
+  createAllTeamsAssignment (title: string, content: string, credit: number,dueDate: string) : Observable<any> {
     return this.http.post(this.CREATE_ASSIGNMENTS_FOR_ALL_TEAMS, {
       title,
       content,
       credit,
-      maxMarks,
       dueDate
     }, httpOptions);
   }
