@@ -18,6 +18,7 @@ export class NcgService {
   private ADD_ALL_USERS = "http://localhost:4000/api/v1/user/addAll";
   private UPDATE_USER = "http://localhost:4000/api/v1/user/update";
   private DELETE_USER = "http://localhost:4000/api/v1/user/delete";
+  private CREATE_ALL_TEAMS = "http://localhost:4000/api/v1/admin/teams/createAllTeams"
 
   constructor(private http: HttpClient) { }
 
@@ -27,8 +28,7 @@ export class NcgService {
   }
 
   addUser (user: UserModel) {
-    return this.http.post(this.ADD_USER, {
-      user}, httpOptions);
+    return this.http.post(this.ADD_USER, user, httpOptions);
   }
 
   addAllUsers(users: UserModel[]) {
@@ -36,15 +36,16 @@ export class NcgService {
       users}, httpOptions);
   }
 
-  updateUser() {
-
+ createAllTeams() {
+   return this.http.post(this.CREATE_ALL_TEAMS,httpOptions);
   }
 
   deleteUser(id: string) {
     let httpParams = new HttpParams().set('id', id);
-    let options = { params: httpParams };
+    let options = { body: httpParams };
     return this.http.delete(this.DELETE_USER, options);
   }
+
 
 
 }

@@ -2,6 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {NcgService} from "../../services/ncg.service";
 import {AdminTeamsService} from "../../services/admin-teams.service";
 import {Ncg} from "../../../model/ncg.model"
+import {UserModel} from "../../../model/user.model";
 
 @Component({
   selector: 'app-ncg',
@@ -16,11 +17,16 @@ export class NcgComponent implements OnInit {
   allNcgs: any;
   ncgs :Ncg[] = [];
   teamMembers:any[] =[];
+  model: any = {}
+  selectedUser : Ncg | any;
   constructor( private ncgService: NcgService , private adminTeamsService: AdminTeamsService) { }
 
 
   ngOnInit() {
     this.getNcg();
+    this.model.name = "";
+    this.model.email ="";
+    this.model.role = "";
   }
 
   getNcg() {
@@ -59,6 +65,32 @@ export class NcgComponent implements OnInit {
     )
   }
 
+  addUser() {
+    this.lgOpen = false
+    console.log("model", this.model)
+    this.ncgService.addUser(this.model).subscribe(
+      data => {
+        console.log("User created", data)
+      }
+    )
+  }
+
+  deleteUser() {
+    this.ncgService.deleteUser(this.selectedUser._id).subscribe(
+      data =>{
+        console.log("User deleted", data)
+      }
+    )
+  }
+
+  createAllTeams() {
+    this.ncgService.createAllTeams().subscribe(
+      data => {
+        console.log("created teams", data)
+      }
+    )
+  }
+
 }
 function parseObject(obj : any): any
 {
@@ -67,7 +99,6 @@ function parseObject(obj : any): any
       parseObject(obj[key]);
     }
     var fin = obj[key];
-    console.log("fin",fin);
   }
   return fin
 }

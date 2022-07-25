@@ -12,6 +12,7 @@ export class AdminTeamsService {
 
 
   private GET_ALL_TEAMS = "http://localhost:4000/api/v1/getAllTeams";
+  private GET_ALL_MENTORS = "http://localhost:4000/api/v1/getAllMentors";
   private CREATE_TEAM = "http://localhost:4000/api/v1/admin/teams/addTeam";
   private DELETE_TEAM = "http://localhost:4000/api/v1/admin/teams/removeTeam/{teamId}";
   private CREATE_ALL_TEAMS = "http://localhost:4000/api/v1/admin/teams/addTeam";
@@ -22,6 +23,11 @@ export class AdminTeamsService {
 
   getAllTeams() : Observable<any> {
     return this.http.get(this.GET_ALL_TEAMS).pipe
+    (map(res => res));
+  }
+
+  getAllMentors() : Observable<any> {
+    return this.http.get(this.GET_ALL_MENTORS).pipe
     (map(res => res));
   }
 

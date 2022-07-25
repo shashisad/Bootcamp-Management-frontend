@@ -49,12 +49,11 @@ export class AdminAssignmentService {
     }, httpOptions);
   }
 
-  createAllTeamsAssignment (title: string, content: string, credit: number,maxMarks:number, dueDate: string) : Observable<any> {
+  createAllTeamsAssignment (title: string, content: string, credit: number,dueDate: string) : Observable<any> {
     return this.http.post(this.CREATE_ASSIGNMENTS_FOR_ALL_TEAMS, {
       title,
       content,
       credit,
-      maxMarks,
       dueDate
     }, httpOptions);
   }
