@@ -9,6 +9,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {BrowserModule} from "@angular/platform-browser";
 import {HttpClientModule} from "@angular/common/http";
 import {AdminPagesRoutingModule} from "./admin-pages-routing.module";
+import {NcgModule} from "../ncg-pages/ncg.module";
 
 
 @NgModule({
@@ -17,15 +18,16 @@ import {AdminPagesRoutingModule} from "./admin-pages-routing.module";
     AdminAssignmentComponent,
     NcgComponent
   ],
-  imports: [
-    CommonModule,
-    BrowserModule,
-    ClarityModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    AdminPagesRoutingModule
-  ],
+    imports: [
+        CommonModule,
+        BrowserModule,
+        ClarityModule,
+        FormsModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        AdminPagesRoutingModule,
+        NcgModule
+    ],
   exports: [
     AdminTeamsComponent,
     AdminAssignmentComponent,

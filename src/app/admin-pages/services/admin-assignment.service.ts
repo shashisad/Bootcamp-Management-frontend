@@ -3,7 +3,8 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {map} from "rxjs/operators";
 import {Observable} from "rxjs";
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+  credentials: "include"
 };
 @Injectable({
   providedIn: 'root'
@@ -21,7 +22,7 @@ export class AdminAssignmentService {
   constructor(private http: HttpClient) { }
 
   getAllAssignments() : Observable<any> {
-    return this.http.get(this.GET_ALL_ASSIGNMENTS).pipe
+    return this.http.get(this.GET_ALL_ASSIGNMENTS,httpOptions).pipe
     (map(res => res));
   }
 

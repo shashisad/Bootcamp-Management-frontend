@@ -30,7 +30,6 @@ export class LandingPageComponent implements OnInit {
   }
 
   Logout () {
-
     this.authService.logout().subscribe(
       data => {
         console.log("loggedout", data);

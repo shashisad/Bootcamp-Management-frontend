@@ -27,12 +27,12 @@ export class AssignmentComponent implements OnInit {
   }
 
   onSubmit(id: string) {
-    console.log(id)
-    // this.assignmentService.submitAssignment(id).subscribe(
-    //   data => {
-    //     console.log("submitted", data)
-    //   }
-    // )
+    console.log("id",id)
+    this.assignmentService.submitAssignment("62dd0bb2eec6c6bd9c235601","testlink").subscribe(
+      data => {
+        console.log("submitted", data)
+      }
+    )
 
   }
   getAllIndividualAssignments() {
@@ -41,11 +41,6 @@ export class AssignmentComponent implements OnInit {
 
         this.allAssignments = data.allAssignments;
         console.log("dd",this.allAssignments);
-        // var obj = parseObject(this.allAssignments)
-        // for (var i of obj){
-        //   this.assignment.push(i)
-        // }
-        // console.log("fin1",  this.assignment)
       });
   }
 

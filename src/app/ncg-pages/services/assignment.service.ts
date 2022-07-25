@@ -17,11 +17,10 @@ export class AssignmentService {
   submitAssignment(assignmentId: string, submission: string) : Observable<any>  {
     const body= {
       ncgSubmittedLink:{
-        link:submission
+        link:'subm-link'
       }
     }
-    return this.http.post(this.SUBMIT_ASSIGNMENT+assignmentId, {
-      body}, httpOptions);
+    return this.http.post(this.SUBMIT_ASSIGNMENT+assignmentId, body, httpOptions);
   }
 
   submitTeamAssignment(teamId: string, submission: string) : Observable<any>  {

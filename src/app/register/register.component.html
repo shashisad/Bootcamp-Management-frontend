@@ -1,3 +1,4 @@
+<div class="login-wrapper">
 <div class="card">
   <h4 class="card-header " style="color: white; text-align: center">Register</h4>
   <div class="card-body">
@@ -60,6 +61,7 @@
       <br>
       <div class="form-group">
         <button class="btn btn-primary">Register</button>
+        <button class="btn btn-primary" (click)="directLogin()">Login</button>
       </div>
       <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
        Registration failed!<br />{{ errorMessage }}
@@ -69,4 +71,5 @@
       {{onSuccess()}}
     </div>
   </div>
+</div>
 </div>

@@ -13,6 +13,7 @@
     <div class="login-group">
       <div class="auth-source select">
         <select id="login-auth-source-1" [(ngModel)] ="roles.selectedRole" [ngModelOptions]="{standalone: true} " clrSelect class="select-component">
+          <option value="" >Select Role</option>
           <option value="ncg" >NCG</option>
           <option value="admin">Administrator</option>
         </select>
