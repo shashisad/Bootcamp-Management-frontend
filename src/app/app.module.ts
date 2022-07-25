@@ -9,11 +9,11 @@ import { ConfirmationModalComponent } from './shared-components/confirmation-mod
 import { RegisterComponent } from './register/register.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { AdminPagesModule } from './admin-pages/admin-pages.module';
-import { LoginModule } from './login/login.module';
+import { LoginModule } from './shared-components/login/login.module';
 import { NcgModule } from './ncg-pages/ncg.module';
 import { ErrorPagesComponent } from './error-pages/error-pages.component';
-import {AuthInterceptor} from "./login/auth.interceptor";
 import { AdminLandingComponent } from './shared-components/admin-landing/admin-landing.component';
+import {AuthInterceptor} from "./shared-components/login/auth.interceptor";
 
 
 @NgModule({
