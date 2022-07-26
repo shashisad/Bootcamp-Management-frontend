@@ -15,7 +15,6 @@ export class HeaderComponent implements OnInit {
   Logout () {
     this.authService.logout().subscribe(
       data => {
-        console.log("loggedout", data);
       }
     )
     window.sessionStorage.clear();
