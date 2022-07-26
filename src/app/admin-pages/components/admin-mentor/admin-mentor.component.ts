@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {AdminMentorService} from "../../services/admin-mentor.service";
 
 @Component({
   selector: 'app-admin-mentor',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminMentorComponent implements OnInit {
 
-  constructor() { }
+  constructor(private adminMentorService : AdminMentorService) { }
 
   ngOnInit(): void {
+    this.getAllMentors();
+  }
+
+  getAllMentors() {
+    this.adminMentorService.getAllMentors().subscribe(
+      data => {
+        console.log ("mentors", data)
+      }
+    )
   }
 
 }

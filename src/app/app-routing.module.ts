@@ -6,9 +6,7 @@ import {AdminLandingComponent} from "./shared-components/admin-landing/admin-lan
 
 const routes: Routes = [
   { path: '', redirectTo: 'register', pathMatch: 'full'},
-
   { path: 'register', component: RegisterComponent},
-  { path: 'admin-landing', component:AdminLandingComponent},
   {
     path: 'error',
     children: [

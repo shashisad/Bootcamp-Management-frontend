@@ -1,23 +1,4 @@
 <div class="main-container">
-  <header class="header-6">
-    <div class="branding">
-      <a href="..." class="nav-link">
-        <clr-icon shape="vm-bug"></clr-icon>
-        <span class="title">Bootcamp Management System</span>
-      </a>
-    </div>
-    <div class="header-actions">
-      <clr-dropdown>
-        <button class="nav-text" clrDropdownTrigger aria-label="open user profile">
-          john.doe@vmware.com
-          <clr-icon shape="caret down"></clr-icon>
-        </button>
-        <clr-dropdown-menu *clrIfOpen clrPosition="bottom-right">
-          <button type="submit" class="btn btn-primary" (click)="Logout()" >Logout</button>
-        </clr-dropdown-menu>
-      </clr-dropdown>
-    </div>
-  </header>
 
   <div class="content-container">
     <div class="content-area">
@@ -78,20 +59,20 @@
         </div>
       </div>
     </div>
-    <clr-vertical-nav [clrVerticalNavCollapsible]="true" >
-      <a clrVerticalNavLink routerLink="../landing" routerLinkActive="active">
-        <clr-icon clrVerticalNavIcon shape="home"></clr-icon>
-        Home
-      </a>
-      <a clrVerticalNavLink routerLink="../team" routerLinkActive="active">
-        <clr-icon clrVerticalNavIcon shape="employee-group"></clr-icon>
-        Team
-      </a>
-      <a clrVerticalNavLink routerLink="../assignments" routerLinkActive="active">
-        <clr-icon clrVerticalNavIcon shape="pinboard"></clr-icon>
-        Assignment
-      </a>
-    </clr-vertical-nav>
+<!--    <clr-vertical-nav [clrVerticalNavCollapsible]="true" >-->
+<!--      <a clrVerticalNavLink routerLink="../landing" routerLinkActive="active">-->
+<!--        <clr-icon clrVerticalNavIcon shape="home"></clr-icon>-->
+<!--        Home-->
+<!--      </a>-->
+<!--      <a clrVerticalNavLink routerLink="../team" routerLinkActive="active">-->
+<!--        <clr-icon clrVerticalNavIcon shape="employee-group"></clr-icon>-->
+<!--        Team-->
+<!--      </a>-->
+<!--      <a clrVerticalNavLink routerLink="../assignments" routerLinkActive="active">-->
+<!--        <clr-icon clrVerticalNavIcon shape="pinboard"></clr-icon>-->
+<!--        Assignment-->
+<!--      </a>-->
+<!--    </clr-vertical-nav>-->
 
   </div>
 </div>

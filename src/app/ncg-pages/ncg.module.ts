@@ -13,6 +13,7 @@ import {OrganizationChartModule} from "primeng/organizationchart";
 import {StepsModule} from "primeng/steps";
 import {HeaderComponent} from "../shared-components/header/header.component";
 import {SideNavComponent} from "../shared-components/side-nav/side-nav.component";
+import {HomeComponent} from "./components/home/home.component";
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import {SideNavComponent} from "../shared-components/side-nav/side-nav.component
     TeamComponent,
     LandingPageComponent,
     HeaderComponent,
-    SideNavComponent
+    SideNavComponent,
+    HomeComponent
   ],
     imports: [
         CommonModule,

@@ -16,6 +16,7 @@ import { AdminLandingComponent } from './shared-components/admin-landing/admin-l
 import {AuthInterceptor} from "./shared-components/login/auth.interceptor";
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,7 +43,9 @@ import {AuthInterceptor} from "./shared-components/login/auth.interceptor";
       useClass: AuthInterceptor,
       multi: true,
     }],
-  exports: [],
+  exports: [
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

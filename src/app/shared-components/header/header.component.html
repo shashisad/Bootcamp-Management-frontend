@@ -1,19 +1,19 @@
-<header class="header-6">
-  <div class="branding">
-    <a href="..." class="nav-link">
-      <clr-icon shape="vm-bug"></clr-icon>
-      <span class="title">Bootcamp Management System</span>
-    </a>
-  </div>
-  <div class="header-actions">
-    <clr-dropdown>
-      <button class="nav-text" clrDropdownTrigger aria-label="open user profile">
-        john.doe@vmware.com
-        <clr-icon shape="caret down"></clr-icon>
-      </button>
-      <clr-dropdown-menu *clrIfOpen clrPosition="bottom-right">
-      </clr-dropdown-menu>
-    </clr-dropdown>
-  </div>
-</header>
-
+  <header class="header-6">
+    <div class="branding">
+      <a href="..." class="nav-link">
+        <clr-icon shape="vm-bug"></clr-icon>
+        <span class="title">Bootcamp Management System</span>
+      </a>
+    </div>
+    <div class="header-actions">
+      <clr-dropdown>
+        <button class="nav-text" clrDropdownTrigger aria-label="open user profile">
+          john.doe@vmware.com
+          <clr-icon shape="caret down"></clr-icon>
+        </button>
+        <clr-dropdown-menu *clrIfOpen clrPosition="bottom-right">
+          <button type="submit" class="btn btn-primary" (click)="Logout()" >Logout</button>
+        </clr-dropdown-menu>
+      </clr-dropdown>
+    </div>
+  </header>
