@@ -38,10 +38,12 @@ import { AdminMentorComponent } from './components/admin-mentor/admin-mentor.com
 
   ],
   exports: [
+    AdminHomeComponent,
+    AdminSideNavComponent,
     AdminTeamsComponent,
     AdminAssignmentComponent,
     NcgComponent,
-
+    AdminMentorComponent
   ]
 })
 export class AdminPagesModule { }

@@ -15,7 +15,7 @@ const routes: Routes = [
       { path: 'ncg', component: NcgComponent},
       { path: 'admin-assignments', component: AdminAssignmentComponent},
       { path: 'admin-team', component: AdminTeamsComponent},
-      { path: 'mentor', component: AdminMentorComponent},
+      { path: 'admin-mentor', component: AdminMentorComponent},
       { path: 'admin-landing', component: AdminLandingComponent},
     ]
   },

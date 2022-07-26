@@ -8,18 +8,20 @@ import {AdminMentorService} from "../../services/admin-mentor.service";
 })
 export class AdminMentorComponent implements OnInit {
 
+  mentors: any;
   constructor(private adminMentorService : AdminMentorService) { }
 
   ngOnInit(): void {
-    this.getAllMentors();
+    this.getAllMentors()
   }
 
   getAllMentors() {
     this.adminMentorService.getAllMentors().subscribe(
       data => {
-        console.log ("mentors", data)
+        this.mentors = data.allUsers;
       }
     )
+
   }
 
 }
