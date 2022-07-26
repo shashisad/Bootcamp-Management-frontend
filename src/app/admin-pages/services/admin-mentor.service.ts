@@ -16,7 +16,7 @@ export class AdminMentorService {
   private GET_ALL_MENTORS = "http://localhost:4000/api/v1/getAllMentors";
   constructor( private httpClient: HttpClient) { }
 
-  getAllMentors( ){
+  getAllMentors( ) : Observable<any>{
     return this.httpClient.get(this. GET_ALL_MENTORS,httpOptions).pipe
     (map(res => res));
   }

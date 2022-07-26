@@ -10,13 +10,20 @@ import {BrowserModule} from "@angular/platform-browser";
 import {HttpClientModule} from "@angular/common/http";
 import {AdminPagesRoutingModule} from "./admin-pages-routing.module";
 import {NcgModule} from "../ncg-pages/ncg.module";
+import {AdminMentorComponent} from "./components/admin-mentor/admin-mentor.component";
+import {AdminHomeComponent} from "./components/admin-home/admin-home.component";
+import {AdminSideNavComponent} from "../shared-components/admin-side-nav/admin-side-nav.component";
 
 
 @NgModule({
   declarations: [
+    AdminHomeComponent,
+    AdminSideNavComponent,
     AdminTeamsComponent,
     AdminAssignmentComponent,
-    NcgComponent
+    NcgComponent,
+    AdminMentorComponent
+
   ],
     imports: [
         CommonModule,
@@ -29,9 +36,12 @@ import {NcgModule} from "../ncg-pages/ncg.module";
         NcgModule
     ],
   exports: [
+    AdminHomeComponent,
+    AdminSideNavComponent,
     AdminTeamsComponent,
     AdminAssignmentComponent,
-    NcgComponent
+    NcgComponent,
+    AdminMentorComponent
   ]
 })
 export class AdminPagesModule { }
