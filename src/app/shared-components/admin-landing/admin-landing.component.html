@@ -17,6 +17,22 @@
           </div>
         </div>
       </div>
+
+<!--      <button type="button" (click)="fileInput.click()">-->
+<!--        <span>Upload</span>-->
+<!--        <input #fileInput type="file" (change)="onFileInput($event)" style="display:none;" />-->
+<!--      </button>-->
+
+      <input type="file" class="file-input"
+             (change)="onFileSelected($event)" #fileUpload> <clr-icon shape="plus"></clr-icon>
+
+      <div class="file-upload">
+        {{fileName || "No file uploaded yet."}}
+        <button mat-mini-fab color="primary" class="upload-btn"
+                (click)="fileUpload.click()">
+          <clr-icon shape="plus"></clr-icon>
+        </button>
+      </div>
       <div>
         <div >
           <h4>All NCGs</h4>
@@ -72,3 +88,4 @@
 
   </div>
 </div>
+
