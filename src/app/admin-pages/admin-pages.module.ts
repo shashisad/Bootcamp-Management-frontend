@@ -10,31 +10,33 @@ import {BrowserModule} from "@angular/platform-browser";
 import {HttpClientModule} from "@angular/common/http";
 import {AdminPagesRoutingModule} from "./admin-pages-routing.module";
 import {NcgModule} from "../ncg-pages/ncg.module";
-import {AdminMentorComponent} from "./components/admin-mentor/admin-mentor.component";
-import {AdminHomeComponent} from "./components/admin-home/admin-home.component";
+import { AdminHomeComponent } from './components/admin-home/admin-home.component';
 import {AdminSideNavComponent} from "../shared-components/admin-side-nav/admin-side-nav.component";
+import { AdminMentorComponent } from './components/admin-mentor/admin-mentor.component';
+
 
 
 @NgModule({
   declarations: [
-    AdminHomeComponent,
-    AdminSideNavComponent,
     AdminTeamsComponent,
     AdminAssignmentComponent,
     NcgComponent,
-    AdminMentorComponent
+    AdminHomeComponent,
+    AdminSideNavComponent,
+    AdminMentorComponent,
 
   ],
-    imports: [
-        CommonModule,
-        BrowserModule,
-        ClarityModule,
-        FormsModule,
-        ReactiveFormsModule,
-        HttpClientModule,
-        AdminPagesRoutingModule,
-        NcgModule
-    ],
+  imports: [
+    CommonModule,
+    BrowserModule,
+    ClarityModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    AdminPagesRoutingModule,
+    NcgModule,
+
+  ],
   exports: [
     AdminHomeComponent,
     AdminSideNavComponent,

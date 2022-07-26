@@ -12,6 +12,14 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  Logout () {
+    this.authService.logout().subscribe(
+      data => {
+        console.log("loggedout", data);
+      }
+    )
+    window.sessionStorage.clear();
+    this.router.navigate(['/register']);
+  }
 
 }

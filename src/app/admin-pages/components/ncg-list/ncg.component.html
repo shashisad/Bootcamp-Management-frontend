@@ -1,10 +1,11 @@
 <div class="content-container height-100">
-<clr-datagrid style="width: 60%; margin-left: 50px" [(clrDgSingleSelected)]="selectedUser">
+<clr-datagrid style="width: 60%; margin-left: 50px" [(clrDgSingleSelected)]="selectedUser"  (clrDgSingleSelectedChange)="selectionChanged($event)" [clrDgRowSelection]="true">
+  {{actionBarConfig}}
   <clr-dg-action-bar>
-      <button type="button" class="btn btn-sm btn-secondary" (click)="lgOpen = true"  style="margin: 3px"><clr-icon shape="plus"></clr-icon> Add User</button>
-      <button type="button" class="btn btn-sm btn-secondary" (click)="deleteUser()" style="margin: 3px"><clr-icon shape="close"></clr-icon> Delete User</button>
-      <button type="button" class="btn btn-sm btn-secondary"  style="margin: 3px"><clr-icon shape="pencil"></clr-icon> Edit User</button>
-    <button type="button" class="btn btn-sm btn-secondary"  (click)="createAllTeams()" style="margin: 3px"><clr-icon shape="users"></clr-icon> Create Teams</button>
+      <button *ngFor="let item of actionBarConfig" class="btn btn-sm btn-secondary" (click)="onActionButtonClick(item.id)" [disabled]="item.isDisabled">
+        <clr-icon shape="item.iconShape"></clr-icon>
+        {{item.label}}
+      </button>
   </clr-dg-action-bar>
   <clr-dg-column >NCG Id</clr-dg-column>
   <clr-dg-column>Name</clr-dg-column>
@@ -12,7 +13,7 @@
   <clr-dg-placeholder >
     Fetching NCGs... <span class="spinner spinner-sm"></span>
   </clr-dg-placeholder>
-  <clr-dg-row  *clrDgItems="let item of ncgs">
+  <clr-dg-row  *clrDgItems="let item of ncgs" [clrDgItem]="item">
     <clr-dg-cell>{{ item._id}}</clr-dg-cell>
     <clr-dg-cell>{{item.name}}</clr-dg-cell>
     <clr-dg-cell>{{item.email}}</clr-dg-cell>

@@ -1,24 +1,4 @@
 <div class="main-container">
-  <header class="header-6">
-    <div class="branding">
-      <a href="..." class="nav-link">
-        <clr-icon shape="vm-bug"></clr-icon>
-        <span class="title">Bootcamp Management System</span>
-      </a>
-    </div>
-    <div class="header-actions">
-      <clr-dropdown>
-        <button class="nav-text" clrDropdownTrigger aria-label="open user profile">
-          ADMIN <clr-icon shape="administrator"></clr-icon>
-          <clr-icon shape="caret down"></clr-icon>
-        </button>
-        <clr-dropdown-menu *clrIfOpen clrPosition="bottom-right">
-          <button type="submit" class="btn btn-primary" >Logout</button>
-        </clr-dropdown-menu>
-      </clr-dropdown>
-    </div>
-  </header>
-
   <div class="content-container">
     <div class="content-area">
       <div class="row">
@@ -37,79 +17,58 @@
           </div>
         </div>
       </div>
-<div>
-  <div >
-      <h4>All NCGs</h4>
-      <clr-datagrid style="width: 50%">
-        <clr-dg-column>NCG Id</clr-dg-column>
-        <clr-dg-column>Name</clr-dg-column>
-        <clr-dg-column>Email</clr-dg-column>
-        <clr-dg-column>Total Marks</clr-dg-column>
-        <clr-dg-placeholder >
-          Fetching NCGs... <span class="spinner spinner-sm"></span>
-        </clr-dg-placeholder>
-        <clr-dg-row  *clrDgItems="let item of ncgs">
-          <clr-dg-cell>{{ item._id}}</clr-dg-cell>
-          <clr-dg-cell>{{item.name}}</clr-dg-cell>
-          <clr-dg-cell>{{item.email}}</clr-dg-cell>
-          <clr-dg-cell>{{item.totalMarks}}</clr-dg-cell>
-        </clr-dg-row>
-        <clr-dg-footer>
-          <clr-dg-pagination #pagination [clrDgPageSize]="10">
-            {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}}
-            of {{pagination.totalItems}} ncgs
-          </clr-dg-pagination>
-        </clr-dg-footer>
-      </clr-datagrid>
-  </div>
-  <div>
-      <h4>All Teams</h4>
-      <clr-datagrid style="width: 50%">
-        <clr-dg-column>Team Id</clr-dg-column>
-        <clr-dg-column>Team Name</clr-dg-column>
-        <clr-dg-column>Team Members</clr-dg-column>
-        <clr-dg-column>Team Mentor</clr-dg-column>
-        <clr-dg-placeholder >
-          Fetching NCGs... <span class="spinner spinner-sm"></span>
-        </clr-dg-placeholder>
-        <clr-dg-row  *clrDgItems="let item of ncgs">
-          <clr-dg-cell>{{ item._id}}</clr-dg-cell>
-          <clr-dg-cell>{{item.name}}</clr-dg-cell>
-          <clr-dg-cell>{{item.email}}</clr-dg-cell>
-          <clr-dg-cell>{{item.totalMarks}}</clr-dg-cell>
-        </clr-dg-row>
-        <clr-dg-footer>
-          <clr-dg-pagination #pagination [clrDgPageSize]="10">
-            {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}}
-            of {{pagination.totalItems}} ncgs
-          </clr-dg-pagination>
-        </clr-dg-footer>
-      </clr-datagrid>
-  </div>
-</div>
+      <div>
+        <div >
+          <h4>All NCGs</h4>
+          <clr-datagrid style="width: 50%">
+            <clr-dg-column>NCG Id</clr-dg-column>
+            <clr-dg-column>Name</clr-dg-column>
+            <clr-dg-column>Email</clr-dg-column>
+            <clr-dg-column>Total Marks</clr-dg-column>
+            <clr-dg-placeholder >
+              Fetching NCGs... <span class="spinner spinner-sm"></span>
+            </clr-dg-placeholder>
+            <clr-dg-row  *clrDgItems="let item of ncgs">
+              <clr-dg-cell>{{ item._id}}</clr-dg-cell>
+              <clr-dg-cell>{{item.name}}</clr-dg-cell>
+              <clr-dg-cell>{{item.email}}</clr-dg-cell>
+              <clr-dg-cell>{{item.totalMarks}}</clr-dg-cell>
+            </clr-dg-row>
+            <clr-dg-footer>
+              <clr-dg-pagination #pagination [clrDgPageSize]="10">
+                {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}}
+                of {{pagination.totalItems}} ncgs
+              </clr-dg-pagination>
+            </clr-dg-footer>
+          </clr-datagrid>
+        </div>
+        <div>
+          <h4>All Teams</h4>
+          <clr-datagrid style="width: 50%">
+            <clr-dg-column>Team Id</clr-dg-column>
+            <clr-dg-column>Team Name</clr-dg-column>
+            <clr-dg-column>Team Members</clr-dg-column>
+            <clr-dg-column>Team Mentor</clr-dg-column>
+            <clr-dg-placeholder >
+              Fetching NCGs... <span class="spinner spinner-sm"></span>
+            </clr-dg-placeholder>
+            <clr-dg-row  *clrDgItems="let item of ncgs">
+              <clr-dg-cell>{{ item._id}}</clr-dg-cell>
+              <clr-dg-cell>{{item.name}}</clr-dg-cell>
+              <clr-dg-cell>{{item.email}}</clr-dg-cell>
+              <clr-dg-cell>{{item.totalMarks}}</clr-dg-cell>
+            </clr-dg-row>
+            <clr-dg-footer>
+              <clr-dg-pagination #pagination [clrDgPageSize]="10">
+                {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}}
+                of {{pagination.totalItems}} ncgs
+              </clr-dg-pagination>
+            </clr-dg-footer>
+          </clr-datagrid>
+        </div>
+      </div>
 
     </div>
-    <clr-vertical-nav [clrVerticalNavCollapsible]="true" >
-      <a clrVerticalNavLink routerLink="../admin-landing" routerLinkActive="active">
-        <clr-icon clrVerticalNavIcon shape="home"></clr-icon>
-        Home
-      </a>
-      <a clrVerticalNavLink routerLink="../ncg" routerLinkActive="active">
-        <clr-icon clrVerticalNavIcon shape="users"></clr-icon>
-        NCG
-      </a>
-      <a clrVerticalNavLink routerLink="../admin-mentor" routerLinkActive="active">
-        <clr-icon clrVerticalNavIcon shape="employee"></clr-icon>
-        Mentor
-      </a>
-      <a clrVerticalNavLink routerLink="../admin-team" routerLinkActive="active">
-        <clr-icon clrVerticalNavIcon shape="employee-group"></clr-icon>
-        Team
-      </a>
-      <a clrVerticalNavLink routerLink="../admin-assignments" routerLinkActive="active">
-        <clr-icon clrVerticalNavIcon shape="pinboard"></clr-icon>
-        Assignments
-      </a>
-    </clr-vertical-nav>
+
   </div>
 </div>

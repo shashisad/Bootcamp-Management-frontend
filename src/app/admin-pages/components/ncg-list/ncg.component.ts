@@ -17,16 +17,81 @@ export class NcgComponent implements OnInit {
   allNcgs: any;
   ncgs :Ncg[] = [];
   teamMembers:any[] =[];
-  model: any = {}
-  selectedUser : Ncg | any;
+  model: any = {
+    name: '',
+    email: '',
+    role: ''
+  };
+  selectedUser : Ncg ;
+  actionBarConfig: Array<{
+    id: string,
+    label: string,
+    isDisabled: boolean,
+    iconShape: string
+  }>
   constructor( private ncgService: NcgService , private adminTeamsService: AdminTeamsService) { }
 
 
   ngOnInit() {
     this.getNcg();
-    this.model.name = "";
-    this.model.email ="";
-    this.model.role = "";
+    this.initializeActionBarConfig();
+  }
+
+  selectionChanged(e:Ncg){
+    this.selectedUser = e;
+    if (this.selectedUser) {
+      this.setButtonDisableState('EDIT_USER', false);
+      this.setButtonDisableState('DELETE_USER', false);
+    }
+  }
+
+  setButtonDisableState(key:string, isDisabled:boolean){
+    // @ts-ignore
+    this.actionBarConfig.find(item => item.id === key).isDisabled = isDisabled;
+  }
+
+  initializeActionBarConfig() {
+    this.actionBarConfig = [
+      {
+        id: "ADD_USER",
+        label: "Add User",
+        isDisabled: false,
+        iconShape: "plus",
+      },
+      {
+        id: "EDIT_USER",
+        label: "Edit User",
+        isDisabled: true,
+        iconShape: "pencil",
+      },{
+        id: "DELETE_USER",
+        label: "Delete User",
+        isDisabled: true,
+        iconShape: "close",
+
+      },
+      {
+        id: "CREATE_TEAMS",
+        label: "Create Teams",
+        isDisabled: false,
+        iconShape: "users",
+      }
+
+    ]
+
+  }
+
+  onActionButtonClick(key: string) {
+    switch (key) {
+      case 'ADD_USER':
+        break;
+      case 'EDIT_USER':
+        break;
+      case 'DELETE_USER':
+        break;
+      case 'CREATE_TEAMS':
+        break;
+    }
   }
 
   getNcg() {

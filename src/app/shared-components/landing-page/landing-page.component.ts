@@ -13,9 +13,7 @@ import {Router} from "@angular/router";
 export class LandingPageComponent implements OnInit {
 
   ranking: IRanking[]=[];
-  constructor(private landingPageService: LandingPageService,
-              private router: Router,
-              private authService: AuthService) { }
+  constructor(private landingPageService: LandingPageService) { }
   ngOnInit(): void {
 
     this.getLeaderBoard();
@@ -30,12 +28,4 @@ export class LandingPageComponent implements OnInit {
     )
   }
 
-  Logout () {
-    this.authService.logout().subscribe(
-      data => {
-        console.log("loggedout", data);
-      }
-    )
-    this.router.navigate(['/login']);
-  }
 }
