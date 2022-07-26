@@ -5,6 +5,7 @@ export interface  Assignment {
   credit: number;
   dueDate: Date;
   ncgSubmittedLink: NcgSubmission[]
+  teamSubmittedLink: NcgSubmission[]
   title: string;
   __v: number;
   _id:  string;
@@ -15,4 +16,5 @@ export interface NcgSubmission {
   link:string
   status:number
   date:Date
+  marks: number
 }
