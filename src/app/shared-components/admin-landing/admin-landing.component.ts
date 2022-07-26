@@ -26,7 +26,6 @@ export class AdminLandingComponent implements OnInit {
         for (var i of obj) {
           this.ncgs.push(i)
         }
-        console.log("fin1",this.ncgs);
       });
   }
 }

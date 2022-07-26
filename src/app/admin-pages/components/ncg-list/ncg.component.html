@@ -1,5 +1,7 @@
 <div class="content-container height-100">
-<clr-datagrid style="width: 60%; margin-left: 50px" [(clrDgSingleSelected)]="selectedUser">
+  {{selectedUser}}
+<clr-datagrid style="width: 60%; margin-left: 50px" [clrDgSingleSelected]="selectedUser"
+              (clrDgSingleSelectedChange)="selectionChanged($event)" [clrDgRowSelection]="true" >
   <clr-dg-action-bar>
       <button type="button" class="btn btn-sm btn-secondary" (click)="lgOpen = true"  style="margin: 3px"><clr-icon shape="plus"></clr-icon> Add User</button>
       <button type="button" class="btn btn-sm btn-secondary" (click)="deleteUser()" style="margin: 3px"><clr-icon shape="close"></clr-icon> Delete User</button>
@@ -12,7 +14,7 @@
   <clr-dg-placeholder >
     Fetching NCGs... <span class="spinner spinner-sm"></span>
   </clr-dg-placeholder>
-  <clr-dg-row  *clrDgItems="let item of ncgs">
+  <clr-dg-row  *clrDgItems="let item of ncgs" [clrDgItem]="item">
     <clr-dg-cell>{{ item._id}}</clr-dg-cell>
     <clr-dg-cell>{{item.name}}</clr-dg-cell>
     <clr-dg-cell>{{item.email}}</clr-dg-cell>

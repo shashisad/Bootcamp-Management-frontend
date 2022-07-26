@@ -15,10 +15,10 @@ export class HeaderComponent implements OnInit {
   Logout () {
     this.authService.logout().subscribe(
       data => {
-        console.log("loggedout", data);
+        // console.log("loggedout", data);
+        this.router.navigate(['/login']);
       }
     )
-    this.router.navigate(['/login']);
   }
 
 }

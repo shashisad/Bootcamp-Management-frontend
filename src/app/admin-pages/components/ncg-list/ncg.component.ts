@@ -2,7 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {NcgService} from "../../services/ncg.service";
 import {AdminTeamsService} from "../../services/admin-teams.service";
 import {Ncg} from "../../../model/ncg.model"
-import {UserModel} from "../../../model/user.model";
+
 
 @Component({
   selector: 'app-ncg',
@@ -17,7 +17,7 @@ export class NcgComponent implements OnInit {
   allNcgs: any;
   ncgs :Ncg[] = [];
   teamMembers:any[] =[];
-  model: any = {}
+  model: any = {};
   selectedUser : Ncg | any;
   constructor( private ncgService: NcgService , private adminTeamsService: AdminTeamsService) { }
 
@@ -91,6 +91,14 @@ export class NcgComponent implements OnInit {
     )
   }
 
+  selectionChanged(e:Ncg){
+    console.log(e);
+    this.selectedUser = e;
+  }
+
+  setButtonDisableState(key:string, isDisabled:boolean){
+
+  }
 }
 function parseObject(obj : any): any
 {

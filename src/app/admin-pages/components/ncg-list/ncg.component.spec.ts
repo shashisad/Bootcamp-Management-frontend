@@ -1,16 +1,21 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NcgComponent } from './ncg.component';
+import {HttpClient, HttpHandler} from "@angular/common/http";
+import {FormsModule} from "@angular/forms";
 
-describe('NcgComponent', () => {
+describe('NcgListComponent', () => {
   let component: NcgComponent;
   let fixture: ComponentFixture<NcgComponent>;
-
+  let http: HttpClient;
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NcgComponent ]
+      declarations: [ NcgComponent ],
+      providers:[HttpClient,HttpHandler],
+      imports:[FormsModule]
     })
     .compileComponents();
+    http = TestBed.inject(HttpClient);
   });
 
   beforeEach(() => {
