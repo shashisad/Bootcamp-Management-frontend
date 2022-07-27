@@ -1,3 +1,63 @@
 .file-input {
   display: none;
 }
+.heading-landing{
+  font-size: 2rem;
+  margin-left: 10%;
+  line-height: 4rem;
+  text-align: center;
+  align-items: center;
+}
+
+.sub-heading-landing{
+  font-size: 1.2rem;
+  margin-left: 10%;
+  line-height: 2rem;
+  text-align: center;
+  align-items: center;
+}
+.sub-heading-landing-col2{
+  font-size: 1.2rem;
+  text-align: center;
+  align-items: center;
+}
+.column1 {
+  float: left;
+  width: 40%;
+  padding: 10px;
+
+}
+.column2 {
+  float: left;
+  width: 60%;
+  padding: 10px;
+
+}
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.outer-card-column1{
+  margin-top: 20%;
+}
+
+.upload-wrapper{
+  text-align: center;
+  align-items: center;
+  margin-top: 6%;
+  text-align: center;
+  align-items: center;
+}
+.upload-wrapper-remaining{
+  text-align: center;
+  align-items: center;
+  text-align: center;
+  align-items: center;
+}
+.upload-btn{
+  margin-left: 47%;
+  margin-top: 20%;
+}

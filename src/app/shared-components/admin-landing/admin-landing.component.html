@@ -3,41 +3,26 @@
     <div class="content-area">
       <div class="row">
         <div class="column1">
-          <div class="clr-row">
-            <div class="clr-col-lg-12">
-              <div class="card-block">
-                <div class="card-text">
-                  <div class="container-card-landing">
-                    <div class="heading-landing" style="text-align: center;">Welcome to VMware !</div>
-                    <div  class="sub-heading-landing" style="text-align: center"> New College Graduate Bootcamp Admin Section </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-<!--      <button type="button" (click)="fileInput.click()">-->
-<!--        <span>Upload</span>-->
-<!--        <input #fileInput type="file" (change)="onFileInput($event)" style="display:none;" />-->
-<!--      </button>-->
-
-
-
+          <div class="outer-card-column1">
+        <div class="heading-landing" >Welcome to VMware !</div>
+         <div  class="sub-heading-landing"> New College Graduate Bootcamp  </div>
+            <div  class="sub-heading-landing">Admin Section</div>
       <input type="file" class="file-input"
              (change)="onFileSelected($event)" #fileUpload>
       <div class="file-upload">
-        <h5>Enter User Details using Excel Sheet</h5>
         <button mat-mini-fab color="grey" class="upload-btn"
                 (click)="fileUpload.click()">
           <mat-icon>attach_file</mat-icon>
         </button>
+        <div class="upload-wrapper">Enter user details with their roles by</div>
+        <div class="upload-wrapper-remaining">uploading excel sheet</div>
       </div>
-      <div>
-        <div >
-          <h4>All NCGs</h4>
-          <clr-datagrid style="width: 50%">
+        </div>
+        </div>
+
+        <div class="column2">
+          <h4 class="sub-heading-landing-col2">All NCGs</h4>
+          <clr-datagrid style="width: 100%">
             <clr-dg-column>NCG Id</clr-dg-column>
             <clr-dg-column>Name</clr-dg-column>
             <clr-dg-column>Email</clr-dg-column>
@@ -63,6 +48,6 @@
 
     </div>
 
-  </div>
+
 </div>
 
