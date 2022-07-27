@@ -27,16 +27,7 @@ describe('NcgListComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-  it(' onActionButtonClick', () => {
-    component.onActionButtonClick("EDIT_USER");
-    expect(component.lgOpen).toEqual(false);
-    component.onActionButtonClick("DELETE_USER");
-    expect(component.lgOpen).toEqual(false);
-    component.onActionButtonClick("CREATE_TEAMS");
-    expect(component.lgOpen).toEqual(false);
-    component.onActionButtonClick("ADD_USER");
-    expect(component.lgOpen).toEqual(true);
-  });
+
   it(' addUser', () => {
     component.addUser()
     expect(component.lgOpen).toEqual(false);
