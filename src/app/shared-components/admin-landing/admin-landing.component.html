@@ -1,46 +1,32 @@
 <div class="main-container">
   <clr-alert [clrAlertClosable]="true">
     <clr-alert-item>
-      <span class="alert-text">Enter User Details by uploading Excel Sheet.</span>
-
-      <input type="file" class="file-input"
-             (change)="onFileSelected($event)" #fileUpload>
-      <div class="file-upload">
-        <button mat-mini-fab color="grey" class="upload-btn"
-                (click)="fileUpload.click()" style="margin-right: 20%" >
-          <mat-icon>attach_file</mat-icon>
-        </button>{{fileName}}
-      </div>
+      <span class="alert-text">You can enter user details with their roles by uploading excel sheet.</span>
     </clr-alert-item>
   </clr-alert>
   <div class="content-container">
     <div class="content-area">
       <div class="row">
         <div class="column1">
-          <div class="clr-row">
-            <div class="clr-col-lg-12">
-              <div class="card-block">
-                <div class="card-text">
-                  <div class="container-card-landing">
-                    <div class="heading-landing" style="text-align: center;">Welcome to VMware !</div>
-                    <div  class="sub-heading-landing" style="text-align: center"> New College Graduate Bootcamp Admin Section </div>
-                  </div>
-                </div>
-              </div>
+          <div class="outer-card-column1">
+            <div class="heading-landing" >Welcome to VMware !</div>
+            <div  class="sub-heading-landing"> New College Graduate Bootcamp  </div>
+            <div  class="sub-heading-landing">Admin Section</div>
+            <input type="file" class="file-input"
+                   (change)="onFileSelected($event)" #fileUpload>
+            <div class="file-upload">
+              <button mat-mini-fab color="grey" class="upload-btn"
+                      (click)="fileUpload.click()">
+                <mat-icon>attach_file</mat-icon>
+              </button>
+              <div class="upload-wrapper-remaining ">Uploade Excel Sheet</div>
             </div>
           </div>
         </div>
-      </div>
 
-<!--      <button type="button" (click)="fileInput.click()">-->
-<!--        <span>Upload</span>-->
-<!--        <input #fileInput type="file" (change)="onFileInput($event)" style="display:none;" />-->
-<!--      </button>-->
-
-      <div>
-        <div style="margin-left: 25%">
-          <h4 style="margin-left: 23%">Our New Campus Graduates</h4>
-          <clr-datagrid style="width: 70%">
+        <div class="column2">
+          <h5 class="sub-heading-landing-col2">Our New Campus Graduates</h5>
+          <clr-datagrid style="width: 100%">
             <clr-dg-column>NCG Id</clr-dg-column>
             <clr-dg-column>Name</clr-dg-column>
             <clr-dg-column>Email</clr-dg-column>
@@ -66,6 +52,6 @@
 
     </div>
 
+
   </div>
 </div>
-

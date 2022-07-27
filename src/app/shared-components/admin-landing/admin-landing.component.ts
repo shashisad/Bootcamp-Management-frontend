@@ -36,7 +36,7 @@ export class AdminLandingComponent implements OnInit {
   }
 
   onFileInput(event: Event) {
-    console.log(event)
+    // console.log(event)
   }
 
   onFileSelected(event: Event) {

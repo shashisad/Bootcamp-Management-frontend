@@ -18,8 +18,7 @@ export class AdminTeamsComponent implements OnInit {
   getAllTeams() {
     this.adminTeamsService.getAllTeams()
       .subscribe(data => {
-        console.log(data)
-        var obj = parseObject(data)
+        var obj = this.adminTeamsService.parsingObject(data)
         for (var i of obj){
           this.allteams.push(i)
         }
@@ -28,13 +27,3 @@ export class AdminTeamsComponent implements OnInit {
   }
 }
 
-function parseObject(obj : any): any
-{
-  for(var key in obj) {
-    if(obj[key] instanceof Object) {
-      parseObject(obj[key]);
-    }
-    var fin = obj[key];
-  }
-  return fin
-}
