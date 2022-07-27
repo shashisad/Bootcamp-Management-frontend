@@ -76,7 +76,7 @@ export class TeamComponent implements OnInit {
             pid: 1,
             name: i.name,
             title: "Ncg",
-            img: "../../../assets/landing2.png"
+            img: "../../../assets/img2.png"
           }
           count++;
           teamData.push(item)
