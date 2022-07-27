@@ -105,8 +105,6 @@ export class AdminAssignmentComponent implements OnInit {
       }
       this.marksBody.push(uploadedMarks)
     }
-    console.log(this.marksBody)
-    console.log(this.assignmentId, this.marksBody)
     this.adminAssignmentService.uploadNcgMarks(this.assignmentId, this.marksBody)
 
   }
@@ -114,16 +112,7 @@ export class AdminAssignmentComponent implements OnInit {
   getAllAssignments() {
     this.adminAssignmentService.getAllAssignments()
       .subscribe(data => {
-
        this.allAssignments = data.allAssignments;
-        console.log("indiv assg",this.allAssignments);
-
-        // var obj = this.adminTeamsService.parsingObject(data.allAssignments.ncgSubmittedLink);
-        // for (var i of obj) {
-        //   this.ncgSubmissions.push(i)
-        // }
-        // console.log("ncg submis", this.allAssignments[0].ncgSubmittedLink)
-
 
       });
 
@@ -136,7 +125,6 @@ export class AdminAssignmentComponent implements OnInit {
         console.log("created assgn",data);
       }
     )
-    console.log(this.form.title, this.form.content,this.form.credit,this.form.dueDate);
   }
 
   createTeamAssignment() {
@@ -145,7 +133,6 @@ export class AdminAssignmentComponent implements OnInit {
         console.log("created team assgn",data);
       }
     )
-    console.log(this.form.title, this.form.content,this.form.credit,this.form.dueDate);
   }
 
 
@@ -154,7 +141,6 @@ export class AdminAssignmentComponent implements OnInit {
       .subscribe(
         data => {
           this.allTeamAssignments = data.allAssignments;
-          console.log("team assgn",this.allTeamAssignments);
         }
       )
   }

@@ -47,14 +47,14 @@
       <section class="form-block">
         <clr-input-container>
           <label class="required">Title </label>
-          <input clrInput type="text" id="aForm_1"
+          <input clrInput type="text" id="aForm_1" required
                  placeholder="Enter assignment title" name="title" [(ngModel)]="form.title"
                  #title="ngModel">
         </clr-input-container>
 
         <clr-textarea-container>
           <label class="required">Content</label>
-          <textarea clrTextarea  type="text" id="aForm_2"
+          <textarea clrTextarea  type="text" id="aForm_2" required
                  placeholder="Enter assignment details" name="content" [(ngModel)]="form.content"
                     #content="ngModel">
           </textarea>
@@ -63,13 +63,13 @@
         <clr-input-container>
           <label class="required">Due Date</label>
           <input clrInput type="date" id="aForm_3" name="content" [(ngModel)]="form.dueDate"
-                    #dueDate="ngModel">
+                required    #dueDate="ngModel">
         </clr-input-container>
 
         <div class="clr-form-control">
           <div class="clr-select-wrapper" >
           <label class="required credit-style">Credits</label>
-          <select name="credits" [ngModel]="form.credit" class="clr-select" #credit = "ngModel">
+          <select name="credits" required [ngModel]="form.credit" class="clr-select" #credit = "ngModel">
             <option value="1" >1</option>
             <option value="2" >2</option>
             <option value="3" >3</option>
