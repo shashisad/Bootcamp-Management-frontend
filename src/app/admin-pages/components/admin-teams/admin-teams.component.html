@@ -1,23 +1,22 @@
-<clr-datagrid style="margin-right: 40px">
+<clr-datagrid style="width: 70%">
   <clr-dg-action-bar>
-    <button type="button" class="btn btn-sm btn-secondary" style="margin: 3px"><clr-icon shape="plus"></clr-icon> Edit Team Members</button>
-    <button type="button" class="btn btn-sm btn-secondary" ><clr-icon shape="pencil"  style="margin: 3px"></clr-icon> Review team Assignment</button>
-  </clr-dg-action-bar>
-  <clr-dg-column>Team Id</clr-dg-column>
+    <button type="button" class="btn btn-sm btn-secondary" style="margin: 3px"><clr-icon shape="pencil"></clr-icon> Edit Team Members</button>
+     </clr-dg-action-bar>
   <clr-dg-column>Team Name</clr-dg-column>
   <clr-dg-column>Members</clr-dg-column>
   <clr-dg-column>Mentor</clr-dg-column>
-  <clr-dg-column>Assignments</clr-dg-column>
   <clr-dg-placeholder >
     Fetching Teams... <span class="spinner spinner-sm"></span>
   </clr-dg-placeholder>
 
-  <clr-dg-row  *clrDgItems="let team of allteams">
-    <clr-dg-cell>{{team._id}}</clr-dg-cell>
-    <clr-dg-cell>{{team.teamName}}</clr-dg-cell>
-    <clr-dg-cell>{{team.teamMembers}}</clr-dg-cell>
-    <clr-dg-cell>{{team.teamMentor}}</clr-dg-cell>
-    <clr-dg-cell>{{team.teamAssignments}}</clr-dg-cell>
+  <clr-dg-row  *clrDgItems="let team of allteams; let i = index">
+    <clr-dg-cell>{{team.name}}</clr-dg-cell>
+    <clr-dg-cell>
+    <div *ngFor="let names of team.ncgs" style="padding: 3px">
+      . {{names.name}}
+    </div>
+    </clr-dg-cell>
+    <clr-dg-cell>{{team.mentor}}</clr-dg-cell>
   </clr-dg-row>
 
   <clr-dg-footer>

@@ -17,7 +17,7 @@ export class AdminAssignmentService {
   private CREATE_TEAM_ASSIGNMENT = "http://localhost:4000/api/v1/admin/teams/createAssignment/";
   private CREATE_ASSIGNMENTS_FOR_ALL_TEAMS = "http://localhost:4000/api/v1/admin/assignments/createAssignmentForAllTeams";
   private GET_USER_SUBMISSION = "http://localhost:4000/api/v1/admin/assignments/getSingleUserSubmission/";
-  private UPLOAD_NCG_MARKS = "http://localhost:4000/api/v1/admin/assignments/uploadOrUpdateMarks/";
+  private UPLOAD_NCG_MARKS = "http://localhost:4000/api/v1/admin/assignments/uploadOrUpdateAllMarks/";
   private UPLOAD_TEAM_MARKS = "http://localhost:4000/api/v1/admin/assignments/uploadOrUpdateTeamMarks/"
 
   constructor(private http: HttpClient) { }
@@ -63,9 +63,9 @@ export class AdminAssignmentService {
     (map(res => res));
   }
 
-  uploadNcgMarks(userId: string, assignmentId: string, marks: number) {
-    return this.http.post(this.UPLOAD_NCG_MARKS+assignmentId+"/"+userId, {
-      marks
+  uploadNcgMarks(assignmentId: string, marksBody: any[]) {
+    return this.http.post(this.UPLOAD_NCG_MARKS+assignmentId, {
+      marksBody
     }, httpOptions);
   }
 

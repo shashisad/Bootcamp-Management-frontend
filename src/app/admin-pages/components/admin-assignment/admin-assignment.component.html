@@ -168,7 +168,7 @@
     </clr-tabs>
 
     <div>
-      <clr-modal [(clrModalOpen)]="review">
+      <clr-modal [(clrModalOpen)]="review" class="modal-dialog modal-lg">
         <h3 class="modal-title">Upload Marks</h3>
         <div class="modal-body">
 
@@ -184,11 +184,11 @@
               <clr-dg-cell>{{item.link}}</clr-dg-cell>
               <clr-dg-cell>
                 <input class="clr-input"
-                       type="text"
+                       type="number"
                        id="add_name"
                        placeholder="Enter user marks"
                        name="name"
-                       [(ngModel)]="item.ncg_id"
+                       [(ngModel)]="item.marks"
                        required
                        email
                        #name="ngModel"
@@ -202,11 +202,10 @@
               </clr-dg-pagination>
             </clr-dg-footer>
           </clr-datagrid>
-
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-outline" (click)="review = false">Cancel</button>
-          <button type="button" class="btn btn-primary" >Ok</button>
+          <button type="button" class="btn btn-primary" (click)="uploadMarks()">Ok</button>
         </div>
       </clr-modal>
     </div>

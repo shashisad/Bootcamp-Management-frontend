@@ -6,3 +6,10 @@ export interface TeamModel {
   teamAssignments: string[]
   __v: number
 }
+
+
+export interface MyTeamModel {
+  name: string
+  ncgs: string[]
+  mentor: string
+}

@@ -84,6 +84,7 @@ export class NcgComponent implements OnInit {
   onActionButtonClick(key: string) {
     switch (key) {
       case 'ADD_USER':
+        this.lgOpen = true
         break;
       case 'EDIT_USER':
         break;

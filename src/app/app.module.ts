@@ -14,6 +14,8 @@ import { NcgModule } from './ncg-pages/ncg.module';
 import { ErrorPagesComponent } from './error-pages/error-pages.component';
 import { AdminLandingComponent } from './shared-components/admin-landing/admin-landing.component';
 import {AuthInterceptor} from "./shared-components/login/auth.interceptor";
+import {MatButtonModule} from "@angular/material/button";
+import {MatIconModule} from "@angular/material/icon";
 
 
 
@@ -35,7 +37,9 @@ import {AuthInterceptor} from "./shared-components/login/auth.interceptor";
     FormsModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatButtonModule,
+    MatIconModule
   ],
   providers: [
     {

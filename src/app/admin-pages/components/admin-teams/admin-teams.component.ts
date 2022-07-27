@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AdminTeamsService} from "../../services/admin-teams.service";
-import {TeamModel} from "../../../model/team.model";
+import {MyTeamModel, TeamModel} from "../../../model/team.model";
 
 @Component({
   selector: 'app-admin-teams',
@@ -9,7 +9,7 @@ import {TeamModel} from "../../../model/team.model";
 })
 export class AdminTeamsComponent implements OnInit {
 
-  allteams: TeamModel[] =[];
+  allteams: MyTeamModel[] =[];
   constructor(private adminTeamsService: AdminTeamsService) { }
 
   ngOnInit(): void {

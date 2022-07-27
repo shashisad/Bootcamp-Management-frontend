@@ -23,14 +23,15 @@
 <!--        <input #fileInput type="file" (change)="onFileInput($event)" style="display:none;" />-->
 <!--      </button>-->
 
-      <input type="file" class="file-input"
-             (change)="onFileSelected($event)" #fileUpload> <clr-icon shape="plus"></clr-icon>
 
+
+      <input type="file" class="file-input"
+             (change)="onFileSelected($event)" #fileUpload>
       <div class="file-upload">
-        {{fileName || "No file uploaded yet."}}
-        <button mat-mini-fab color="primary" class="upload-btn"
+        <h5>Enter User Details using Excel Sheet</h5>
+        <button mat-mini-fab color="grey" class="upload-btn"
                 (click)="fileUpload.click()">
-          <clr-icon shape="plus"></clr-icon>
+          <mat-icon>attach_file</mat-icon>
         </button>
       </div>
       <div>

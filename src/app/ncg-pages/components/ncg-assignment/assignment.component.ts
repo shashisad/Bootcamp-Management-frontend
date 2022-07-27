@@ -1,6 +1,7 @@
 import { Component, OnInit , ViewChild} from '@angular/core';
 import {AssignmentService} from "../../services/assignment.service";
 import {AdminAssignmentService} from "../../../admin-pages/services/admin-assignment.service";
+import {TokenStorageService} from "../../../shared-components/login/token-storage.service";
 
 @Component({
   selector: 'app-assignment',
@@ -13,23 +14,29 @@ export class AssignmentComponent implements OnInit {
    readMore = false;
     allAssignments: any;
     teamAssignments: any;
-   model: any;
+   link :string= "";
+   userId: string = "";
   longText = `This is long paragraph text containing several words continued. An example of implementing dynamically limit long text This is long paragraph text containing several words continued. An example of implementing dynamically limit long text This is long paragraph text containing several words continued. An example of implementing dynamically limit long text`;
 
   showText() {
     this.readMore = !this.readMore
   }
 
-  constructor(private assignmentService: AssignmentService, private adminAssignmentService: AdminAssignmentService) { }
+  constructor(private assignmentService: AssignmentService, private adminAssignmentService: AdminAssignmentService, private tokenStorageService:TokenStorageService) { }
 
   ngOnInit(): void {
     // this.model.link = '';
     this.getAllIndividualAssignments();
   }
 
+  getUserName(){
+    this.userId = this.tokenStorageService.getUser()._id;
+    return this.userId;
+
+  }
   onSubmit(id: string) {
     console.log("id",id)
-    this.assignmentService.submitAssignment("62dd0bb2eec6c6bd9c235601","testlink").subscribe(
+    this.assignmentService.submitAssignment(id,this.link).subscribe(
       data => {
         console.log("submitted", data)
       }

@@ -34,6 +34,8 @@ export class AdminAssignmentComponent implements OnInit {
   assignment: Assignment[] = [];
   lgOpen: boolean= false;
   review: boolean = false;
+  assignmentId: string=''
+  marksBody:any[] =[]
 
   constructor(private adminAssignmentService: AdminAssignmentService, private ncgService: NcgService, private adminTeamsService: AdminTeamsService) { }
 
@@ -76,11 +78,37 @@ export class AdminAssignmentComponent implements OnInit {
   onActionButtonClick(key: string) {
     switch (key) {
       case 'CREATE_ASSIGNMENT':
+       this.mdOpen = true;
         break;
       case 'REVIEW_ASSIGNMENT':
         this.review = true
+        this.reviewAssignment(this.selectedAssignment)
         break;
     }
+  }
+
+  reviewAssignment(selected:  Assignment) {
+    for(let item of this.allAssignments){
+      if(item._id == selected._id) {
+          this.ncgSubmissions = selected.ncgSubmittedLink
+        this.assignmentId =  selected._id
+      }
+    }
+  }
+
+  uploadMarks() {
+    this.review = false
+    for(let ncgs of this.ncgSubmissions) {
+      let uploadedMarks =  {
+        ncgId: ncgs.ncg_id,
+        marks: ncgs.marks
+      }
+      this.marksBody.push(uploadedMarks)
+    }
+    console.log(this.marksBody)
+    console.log(this.assignmentId, this.marksBody)
+    this.adminAssignmentService.uploadNcgMarks(this.assignmentId, this.marksBody)
+
   }
 
   getAllAssignments() {
@@ -96,10 +124,6 @@ export class AdminAssignmentComponent implements OnInit {
         // }
         // console.log("ncg submis", this.allAssignments[0].ncgSubmittedLink)
 
-        for( let submissions of this.allAssignments){
-          this.ncgSubmissions.push(submissions.ncgSubmittedLink)
-        }
-        console.log("ncg submis", this.ncgSubmissions)
 
       });
 
