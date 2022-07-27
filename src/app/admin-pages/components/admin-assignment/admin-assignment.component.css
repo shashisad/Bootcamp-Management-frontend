@@ -1,0 +1,11 @@
+.credit-style{
+  margin-left: -12%;
+  font-weight:500;
+}
+
+::ng-deep .clr-textarea-wrapper {
+  height: 100%!important
+}
+.clr-select{
+  margin-left: 12%;
+}
