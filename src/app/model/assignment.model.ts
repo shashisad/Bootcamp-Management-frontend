@@ -18,3 +18,9 @@ export interface NcgSubmission {
   date:Date
   marks: number
 }
+
+export enum Status {
+  GREEN = 'GREEN',
+  YELLOW = 'YELLOW',
+  RED = 'RED'
+}
