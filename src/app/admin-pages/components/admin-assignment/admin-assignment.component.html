@@ -56,7 +56,7 @@
           <label class="required">Content</label>
           <textarea clrTextarea  type="text" id="aForm_2" required
                  placeholder="Enter assignment details" name="content" [(ngModel)]="form.content"
-                    #content="ngModel">
+                    #content="ngModel" rows="5">
           </textarea>
         </clr-textarea-container>
 
@@ -168,7 +168,7 @@
     </clr-tabs>
 
     <div>
-      <clr-modal [(clrModalOpen)]="review" class="modal-dialog modal-lg">
+      <clr-modal [(clrModalOpen)]="review" class="modal-dialog modal-lg" clrModalSize="lg">
         <h3 class="modal-title">Upload Marks</h3>
         <div class="modal-body">
 

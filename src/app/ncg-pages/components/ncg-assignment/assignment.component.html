@@ -1,5 +1,10 @@
 <div class="content-container height-100" >
   <div style="height:100%; width: 100% ; padding-left: 50px !important;">
+    <clr-alert [clrAlertClosable]="true" *ngIf="error">
+      <clr-alert-item>
+        <span class="alert-text">{{error}}</span>
+      </clr-alert-item>
+    </clr-alert>
     <br>
     <clr-tabs>
       <clr-tab>

@@ -21,6 +21,7 @@ export class AssignmentComponent implements OnInit {
    selectedAssignment : Assignment;
    Status0: Status = Status.RED;
    Status1: Status = Status.GREEN
+  error:any
   showText() {
     this.readMore = !this.readMore
   }
@@ -45,6 +46,9 @@ export class AssignmentComponent implements OnInit {
     this.assignmentService.submitAssignment(id,this.link).subscribe(
       data => {
         console.log("submitted", data)
+      }, error => {
+        console.log(error.error.message)
+        this.error = error.error.message
       }
     )
 
