@@ -17,7 +17,7 @@ export class AdminAssignmentComponent implements OnInit {
   ncgs :Ncg[] = [];
   allAssignments: any;
   ncgSubmissions: NcgSubmission[] =[];
-  allTeamAssignments: Assignment[];
+  allTeamAssignments: Assignment[]=[];
   form: any = {
     title : '',
     content :'',
@@ -162,8 +162,8 @@ export class AdminAssignmentComponent implements OnInit {
   getAllNcgs() {
     this.ncgService.getNcg().subscribe(
       data => {
-        var obj = this.adminTeamsService.parsingObject(data);
-        for (var i of obj) {
+        let obj = this.adminTeamsService.parsingObject(data);
+        for (let i of obj) {
           this.ncgs.push(i)
         }
       });

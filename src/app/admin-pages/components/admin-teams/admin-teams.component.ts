@@ -23,32 +23,8 @@ export class AdminTeamsComponent implements OnInit {
         for (var i of obj){
           this.allteams.push(i)
         }
-        console.log("fin1",  this.allteams)
 
-        var res = this.adminTeamsService.parsingObject(data);
-        console.log("res", res);
       })
-  }
-
-  createTeam () {
-    //dummy data
-    const members =[
-      "62d3d3e8f4e97b038697af0e",
-      "62d3d51cf4e97b038697af10"
-    ]
-    this.adminTeamsService.createTeam(1,members).subscribe(
-      data => {
-        console.log("Team created", data)
-      }
-    )
-  }
-
-  deleteTeam( teamId: string) {
-    this.adminTeamsService.deleteTeam(teamId).subscribe(
-      data => {
-        console.log("Deleted")
-      }
-    )
   }
 }
 

@@ -1,3 +1,5 @@
+<div class="outer-container-table">
+<h2 class="heading-ncg"> New College Graduates </h2>
 <div class="content-container height-100">
 <clr-datagrid style="width: 60%; margin-left: 50px" [(clrDgSingleSelected)]="selectedUser"  (clrDgSingleSelectedChange)="selectionChanged($event)" [clrDgRowSelection]="true">
   {{actionBarConfig}}
@@ -65,7 +67,6 @@
           <div class="form-group">
             <label for="roles" style="text-align: left"> Role: </label>
         <div class="auth-source select">
-
           <select id="roles" [(ngModel)] ="model.role" [ngModelOptions]="{standalone: true} " clrSelect class="select-component" >
             <option value="" >Select Role</option>
             <option value="ncg" >NCG</option>
@@ -81,4 +82,5 @@
     <button type="button" class="btn btn-primary" (click)="addUser()">Ok</button>
   </div>
 </clr-modal>
+</div>
 </div>
