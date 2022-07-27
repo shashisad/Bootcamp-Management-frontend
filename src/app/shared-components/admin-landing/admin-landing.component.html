@@ -17,6 +17,23 @@
           </div>
         </div>
       </div>
+
+<!--      <button type="button" (click)="fileInput.click()">-->
+<!--        <span>Upload</span>-->
+<!--        <input #fileInput type="file" (change)="onFileInput($event)" style="display:none;" />-->
+<!--      </button>-->
+
+
+
+      <input type="file" class="file-input"
+             (change)="onFileSelected($event)" #fileUpload>
+      <div class="file-upload">
+        <h5>Enter User Details using Excel Sheet</h5>
+        <button mat-mini-fab color="grey" class="upload-btn"
+                (click)="fileUpload.click()">
+          <mat-icon>attach_file</mat-icon>
+        </button>
+      </div>
       <div>
         <div >
           <h4>All NCGs</h4>
@@ -72,3 +89,4 @@
 
   </div>
 </div>
+

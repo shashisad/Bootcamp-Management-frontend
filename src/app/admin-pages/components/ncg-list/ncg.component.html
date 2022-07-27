@@ -7,16 +7,18 @@
         {{item.label}}
       </button>
   </clr-dg-action-bar>
-  <clr-dg-column >NCG Id</clr-dg-column>
+  <clr-dg-column>NCG Id</clr-dg-column>
   <clr-dg-column>Name</clr-dg-column>
   <clr-dg-column>Email</clr-dg-column>
+  <clr-dg-column>Total Marks</clr-dg-column>
   <clr-dg-placeholder >
     Fetching NCGs... <span class="spinner spinner-sm"></span>
   </clr-dg-placeholder>
   <clr-dg-row  *clrDgItems="let item of ncgs" [clrDgItem]="item">
-    <clr-dg-cell>{{ item._id}}</clr-dg-cell>
+    <clr-dg-cell>{{item._id}}</clr-dg-cell>
     <clr-dg-cell>{{item.name}}</clr-dg-cell>
     <clr-dg-cell>{{item.email}}</clr-dg-cell>
+    <clr-dg-cell>{{item.totalMarks}}</clr-dg-cell>
   </clr-dg-row>
   <clr-dg-footer>
     <clr-dg-pagination #pagination [clrDgPageSize]="10">

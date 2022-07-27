@@ -1,7 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {NcgService} from "../../admin-pages/services/ncg.service";
 import {Ncg} from "../../model/ncg.model";
 import {AdminTeamsService} from "../../admin-pages/services/admin-teams.service";
+import {HttpClient} from "@angular/common/http";
+
+
+
 
 @Component({
   selector: 'app-admin-landing',
@@ -12,10 +16,12 @@ export class AdminLandingComponent implements OnInit {
 
   allNcgs: any;
   ncgs :Ncg[] = [];
-  constructor(private ncgService: NcgService, private adminTeamsService: AdminTeamsService ) { }
+  fileName = '';
+
+  constructor(private ncgService: NcgService, private adminTeamsService: AdminTeamsService, private http: HttpClient) { }
 
   ngOnInit(): void {
-    this.getAllNcgs()
+    this.getAllNcgs();
   }
 
   getAllNcgs() {
@@ -28,4 +34,28 @@ export class AdminLandingComponent implements OnInit {
         }
       });
   }
+
+  onFileInput(event: Event) {
+    console.log(event)
+  }
+
+  onFileSelected(event: Event) {
+
+    // @ts-ignore
+    const file:File = event.target.files[0];
+
+    if (file) {
+
+      this.fileName = file.name;
+
+      const formData = new FormData();
+
+      formData.append("thumbnail", file);
+
+      const upload$ = this.http.post("/api/v1/user/addAll", formData);
+
+      upload$.subscribe();
+    }
+  }
+
 }

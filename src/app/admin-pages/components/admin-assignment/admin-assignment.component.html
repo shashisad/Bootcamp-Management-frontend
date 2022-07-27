@@ -4,10 +4,13 @@
       <clr-tab>
         <button clrTabLink (click)="getAllAssignments()">Individual Assignments </button>
         <clr-tab-content *clrIfActive>
-<clr-datagrid style="width: 80%" [(clrDgSingleSelected)]="selectedAssignment">
+<clr-datagrid style="width: 80%" [(clrDgSingleSelected)]="selectedAssignment" (clrDgSingleSelectedChange)="selectionChanged($event)" [clrDgRowSelection]="true">
+  {{actionBarConfig}}
   <clr-dg-action-bar>
-      <button type="button" class="btn btn-sm btn-secondary" (click)="mdOpen = true" style="margin: 3px"><clr-icon shape="plus"></clr-icon> Create Assignment</button>
-      <button type="button" class="btn btn-sm btn-secondary" ><clr-icon shape="pencil"  style="margin: 3px"></clr-icon> Review Assignment</button>
+    <button *ngFor="let item of actionBarConfig" class="btn btn-sm btn-secondary" (click)="onActionButtonClick(item.id)" [disabled]="item.isDisabled">
+      <clr-icon shape= 'item.iconShape'></clr-icon>
+      {{item.label}}
+    </button>
   </clr-dg-action-bar>
   <clr-dg-column>Assignment Id</clr-dg-column>
   <clr-dg-column>Assignment Name</clr-dg-column>
@@ -17,11 +20,11 @@
     Fetching Assignments... <span class="spinner spinner-sm"></span>
   </clr-dg-placeholder>
 
-  <clr-dg-row  *clrDgItems="let items of allAssignments">
-    <clr-dg-cell>{{items.title}}</clr-dg-cell>
-    <clr-dg-cell>{{items.content}}</clr-dg-cell>
-    <clr-dg-cell>{{items.credit}}</clr-dg-cell>
-    <clr-dg-cell>{{items.dueDate | date:'fullDate'}}</clr-dg-cell>
+  <clr-dg-row  *clrDgItems="let item of allAssignments" [clrDgItem]="item">
+    <clr-dg-cell>{{item.title}}</clr-dg-cell>
+    <clr-dg-cell>{{item.content}}</clr-dg-cell>
+    <clr-dg-cell>{{item.credit}}</clr-dg-cell>
+    <clr-dg-cell>{{item.dueDate | date:'fullDate'}}</clr-dg-cell>
   </clr-dg-row>
 
   <clr-dg-footer>
@@ -84,10 +87,13 @@
     <clr-tab>
       <button clrTabLink (click)="getAllTeamAssignment()">Team Assignments </button>
       <clr-tab-content *clrIfActive>
-        <clr-datagrid style="width: 80%">
+        <clr-datagrid style="width: 80%" [(clrDgSingleSelected)]="selectedAssignment" (clrDgSingleSelectedChange)="selectionChanged($event)" [clrDgRowSelection]="true">
+          {{actionBarConfig}}
           <clr-dg-action-bar>
-            <button type="button" class="btn btn-sm btn-secondary" (click)="mdOpen = true" style="margin: 3px"><clr-icon shape="plus"></clr-icon> Create Assignment</button>
-            <button type="button" class="btn btn-sm btn-secondary" ><clr-icon shape="pencil"  style="margin: 3px"></clr-icon> Review Assignment</button>
+            <button *ngFor="let item of actionBarConfig" class="btn btn-sm btn-secondary" (click)="onActionButtonClick(item.id)" [disabled]="item.isDisabled">
+              <clr-icon shape= 'item.iconShape'></clr-icon>
+              {{item.label}}
+            </button>
           </clr-dg-action-bar>
           <clr-dg-column>Assignment Id</clr-dg-column>
           <clr-dg-column>Assignment Name</clr-dg-column>
@@ -97,7 +103,7 @@
             Fetching Assignments... <span class="spinner spinner-sm"></span>
           </clr-dg-placeholder>
 
-          <clr-dg-row  *clrDgItems="let items of allTeamAssignments">
+          <clr-dg-row  *clrDgItems="let items of allTeamAssignments" [clrDgItem]="items">
             <clr-dg-cell>{{items.title}}</clr-dg-cell>
             <clr-dg-cell>{{items.content}}</clr-dg-cell>
             <clr-dg-cell>{{items.credit}}</clr-dg-cell>
@@ -160,5 +166,51 @@
       </clr-tab-content>
     </clr-tab>
     </clr-tabs>
+
+    <div>
+      <clr-modal [(clrModalOpen)]="review" class="modal-dialog modal-lg">
+        <h3 class="modal-title">Upload Marks</h3>
+        <div class="modal-body">
+
+          <clr-datagrid >
+            <clr-dg-column>NCG Id</clr-dg-column>=
+            <clr-dg-column>Submission</clr-dg-column>
+            <clr-dg-column>Enter Marks</clr-dg-column>
+            <clr-dg-placeholder >
+              Fetching NCGs... <span class="spinner spinner-sm"></span>
+            </clr-dg-placeholder>
+            <clr-dg-row  *clrDgItems="let item of ncgSubmissions">
+              <clr-dg-cell>{{item.ncg_id}}</clr-dg-cell>
+              <clr-dg-cell>{{item.link}}</clr-dg-cell>
+              <clr-dg-cell>
+                <input class="clr-input"
+                       type="number"
+                       id="add_name"
+                       placeholder="Enter user marks"
+                       name="name"
+                       [(ngModel)]="item.marks"
+                       required
+                       email
+                       #name="ngModel"
+                       style="margin: 10px;width: 80%">
+              </clr-dg-cell>
+            </clr-dg-row>
+            <clr-dg-footer>
+              <clr-dg-pagination #pagination [clrDgPageSize]="10">
+                {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}}
+                of {{pagination.totalItems}} submissions
+              </clr-dg-pagination>
+            </clr-dg-footer>
+          </clr-datagrid>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline" (click)="review = false">Cancel</button>
+          <button type="button" class="btn btn-primary" (click)="uploadMarks()">Ok</button>
+        </div>
+      </clr-modal>
+    </div>
+
+
+
   </div>
 </div>
