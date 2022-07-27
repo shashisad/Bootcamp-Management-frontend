@@ -1,7 +1,8 @@
-import { Component, OnInit , ViewChild} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {AssignmentService} from "../../services/assignment.service";
 import {AdminAssignmentService} from "../../../admin-pages/services/admin-assignment.service";
 import {TokenStorageService} from "../../../shared-components/login/token-storage.service";
+import {Assignment, Status} from "../../../model/assignment.model";
 
 @Component({
   selector: 'app-assignment',
@@ -16,8 +17,10 @@ export class AssignmentComponent implements OnInit {
     teamAssignments: any;
    link :string= "";
    userId: string = "";
-  longText = `This is long paragraph text containing several words continued. An example of implementing dynamically limit long text This is long paragraph text containing several words continued. An example of implementing dynamically limit long text This is long paragraph text containing several words continued. An example of implementing dynamically limit long text`;
-
+   longText = `This is long paragraph text containing several words continued. An example of implementing dynamically limit long text This is long paragraph text containing several words continued. An example of implementing dynamically limit long text This is long paragraph text containing several words continued. An example of implementing dynamically limit long text`;
+   selectedAssignment : Assignment;
+   Status0: Status = Status.RED;
+   Status1: Status = Status.GREEN
   showText() {
     this.readMore = !this.readMore
   }
@@ -27,10 +30,13 @@ export class AssignmentComponent implements OnInit {
   ngOnInit(): void {
     // this.model.link = '';
     this.getAllIndividualAssignments();
+    this.getAllTeamAssignments();
+    this.getUserName();
   }
 
   getUserName(){
     this.userId = this.tokenStorageService.getUser()._id;
+    console.log("user",this.userId)
     return this.userId;
 
   }
@@ -46,9 +52,8 @@ export class AssignmentComponent implements OnInit {
   getAllIndividualAssignments() {
     this.adminAssignmentService.getAllAssignments()
       .subscribe(data => {
-
         this.allAssignments = data.allAssignments;
-        console.log("dd",this.allAssignments);
+        // console.log("dd",this.allAssignments);
       });
   }
 
@@ -57,6 +62,14 @@ export class AssignmentComponent implements OnInit {
       .subscribe(data =>{
         this.teamAssignments = data.allAssignments;
       })
+    console.log(this.teamAssignments)
+    }
+
+  handleWizard(selected: Assignment) {
+    this.lgOpen = true
+    // console.log("selected",selected)
+    this.selectedAssignment = selected
+    console.log("selected", this.selectedAssignment)
   }
 
 }

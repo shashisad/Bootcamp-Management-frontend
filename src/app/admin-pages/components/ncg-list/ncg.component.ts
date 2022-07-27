@@ -29,6 +29,9 @@ export class NcgComponent implements OnInit {
     isDisabled: boolean,
     iconShape: string
   }>
+  edOpen: boolean = false;
+  confirmed: boolean = false;
+  successMessage: string ='';
   constructor( private ncgService: NcgService , private adminTeamsService: AdminTeamsService) { }
 
 
@@ -87,10 +90,18 @@ export class NcgComponent implements OnInit {
         this.lgOpen = true
         break;
       case 'EDIT_USER':
+        this.edOpen = true
+        //this.successMessage = "Details updated for user - "+ this.selectedUser.name
         break;
       case 'DELETE_USER':
+        this.confirmed = true
+        //this.deleteUser()
+        this.successMessage = "User "+this.selectedUser.name+" is deleted."
         break;
       case 'CREATE_TEAMS':
+        this.confirmed = true
+        this.successMessage = "Teams of 3 members created "
+        //this.createAllTeams();
         break;
     }
   }
@@ -152,6 +163,13 @@ export class NcgComponent implements OnInit {
     )
   }
 
+  updateUser() {
+    // this.ncgService(this.selectedUser._id).subscribe(
+    //   data =>{
+    //     console.log("User updated", data)
+    //   }
+    // )
+  }
 }
 
 

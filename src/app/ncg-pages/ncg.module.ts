@@ -14,6 +14,7 @@ import {StepsModule} from "primeng/steps";
 import {HeaderComponent} from "../shared-components/header/header.component";
 import {SideNavComponent} from "../shared-components/side-nav/side-nav.component";
 import {HomeComponent} from "./components/home/home.component";
+import {StatusIconComponent } from './status-icon/status-icon.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import {HomeComponent} from "./components/home/home.component";
     LandingPageComponent,
     HeaderComponent,
     SideNavComponent,
-    HomeComponent
+    HomeComponent,
+    StatusIconComponent
   ],
     imports: [
         CommonModule,
@@ -41,7 +43,8 @@ import {HomeComponent} from "./components/home/home.component";
     SideNavComponent,
     AssignmentComponent,
     TeamComponent,
-    LandingPageComponent
+    LandingPageComponent,
+    StatusIconComponent
   ]
 })
 export class NcgModule { }
