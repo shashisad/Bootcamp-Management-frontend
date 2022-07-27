@@ -1,4 +1,17 @@
 <div class="outer-container-table">
+  <span *ngIf="confirmed">
+      <div class="alert alert-success">
+          <div class="alert-items">
+              <div class="alert-item static">
+                  <div class="alert-icon-wrapper">
+                      <clr-icon class="alert-icon" shape="check-circle"></clr-icon>
+                  </div>
+                  <span class="alert-text">{{successMessage}}</span>
+              </div>
+          </div>
+      </div>
+  </span>
+
 <h2 class="heading-ncg"> New College Graduates </h2>
 <div class="content-container height-100">
 <clr-datagrid style="width: 60%; margin-left: 50px" [(clrDgSingleSelected)]="selectedUser"  (clrDgSingleSelectedChange)="selectionChanged($event)" [clrDgRowSelection]="true">
@@ -82,5 +95,60 @@
     <button type="button" class="btn btn-primary" (click)="addUser()">Ok</button>
   </div>
 </clr-modal>
+
+
+  <clr-modal [(clrModalOpen)]="edOpen">
+    <h3 class="modal-title">Update User Details</h3>
+    <div class="modal-body">
+      <form class="add-user"
+            name="form"
+            (ngSubmit)="f.form.valid"
+            #f="ngForm"
+            novalidate>
+        <div class="form-group">
+          <label for="add_name" style="text-align: left"> Name: </label>
+          <input class="clr-input"
+                 type="text"
+                 id="add_name"
+                 placeholder="Enter new user name"
+                 name="name"
+                 [(ngModel)]="model.name"
+                 required
+                 email
+                 #name="ngModel"
+                 style="margin: 10px;width: 80%">
+        </div>
+        <div class="form-group">
+          <label for="add_email" style="text-align: left"> Email: </label>
+          <input class="clr-input"
+                 type="email"
+                 id="add_email"
+                 placeholder="Enter new user email"
+                 name="email"
+                 [(ngModel)]="model.email"
+                 required
+                 email
+                 #email="ngModel"
+                 style="margin: 10px; width: 80%">
+        </div>
+        <div class="form-group">
+          <label for="roles" style="text-align: left">Role: </label>
+          <div class="auth-source select">
+            <select id="roles" [(ngModel)] ="model.role" [ngModelOptions]="{standalone: true} " clrSelect class="select-component" >
+              <option value="" >Select New Role</option>
+              <option value="ncg" >NCG</option>
+              <option value="mentor">Mentor</option>
+              <option value="admin">Administrator</option>
+            </select>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline" (click)="edOpen = false">Cancel</button>
+      <button type="button" class="btn btn-primary" (click)="updateUser()">Ok</button>
+    </div>
+  </clr-modal>
+
 </div>
 </div>

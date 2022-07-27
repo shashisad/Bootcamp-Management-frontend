@@ -30,6 +30,7 @@ export class AssignmentComponent implements OnInit {
   ngOnInit(): void {
     // this.model.link = '';
     this.getAllIndividualAssignments();
+    this.getAllTeamAssignments();
     this.getUserName();
   }
 
@@ -51,9 +52,8 @@ export class AssignmentComponent implements OnInit {
   getAllIndividualAssignments() {
     this.adminAssignmentService.getAllAssignments()
       .subscribe(data => {
-
         this.allAssignments = data.allAssignments;
-        console.log("dd",this.allAssignments);
+        // console.log("dd",this.allAssignments);
       });
   }
 
@@ -62,6 +62,7 @@ export class AssignmentComponent implements OnInit {
       .subscribe(data =>{
         this.teamAssignments = data.allAssignments;
       })
+    console.log(this.teamAssignments)
     }
 
   handleWizard(selected: Assignment) {
