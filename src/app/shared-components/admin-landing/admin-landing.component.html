@@ -1,4 +1,18 @@
 <div class="main-container">
+  <clr-alert [clrAlertClosable]="true">
+    <clr-alert-item>
+      <span class="alert-text">Enter User Details by uploading Excel Sheet.</span>
+
+      <input type="file" class="file-input"
+             (change)="onFileSelected($event)" #fileUpload>
+      <div class="file-upload">
+        <button mat-mini-fab color="grey" class="upload-btn"
+                (click)="fileUpload.click()" style="margin-right: 20%" >
+          <mat-icon>attach_file</mat-icon>
+        </button>{{fileName}}
+      </div>
+    </clr-alert-item>
+  </clr-alert>
   <div class="content-container">
     <div class="content-area">
       <div class="row">
@@ -23,21 +37,10 @@
 <!--        <input #fileInput type="file" (change)="onFileInput($event)" style="display:none;" />-->
 <!--      </button>-->
 
-
-
-      <input type="file" class="file-input"
-             (change)="onFileSelected($event)" #fileUpload>
-      <div class="file-upload">
-        <h5>Enter User Details using Excel Sheet</h5>
-        <button mat-mini-fab color="grey" class="upload-btn"
-                (click)="fileUpload.click()">
-          <mat-icon>attach_file</mat-icon>
-        </button>
-      </div>
       <div>
-        <div >
-          <h4>All NCGs</h4>
-          <clr-datagrid style="width: 50%">
+        <div style="margin-left: 25%">
+          <h4 style="margin-left: 23%">Our New Campus Graduates</h4>
+          <clr-datagrid style="width: 70%">
             <clr-dg-column>NCG Id</clr-dg-column>
             <clr-dg-column>Name</clr-dg-column>
             <clr-dg-column>Email</clr-dg-column>

@@ -51,7 +51,6 @@ export class AdminLandingComponent implements OnInit {
       const formData = new FormData();
 
       formData.append("thumbnail", file);
-
       const upload$ = this.http.post("/api/v1/user/addAll", formData);
 
       upload$.subscribe();
