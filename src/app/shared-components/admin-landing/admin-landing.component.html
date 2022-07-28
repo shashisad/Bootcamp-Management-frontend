@@ -27,9 +27,9 @@
         <div class="column2">
           <h5 class="sub-heading-landing-col2">Our New Campus Graduates</h5>
           <clr-datagrid style="width: 100%">
-            <clr-dg-column>NCG Id</clr-dg-column>
+            <clr-dg-column>NCG Id <clr-dg-string-filter [clrDgStringFilter]="nameFilter"></clr-dg-string-filter></clr-dg-column>
             <clr-dg-column>Name  <clr-dg-string-filter [clrDgStringFilter]="nameFilter"></clr-dg-string-filter></clr-dg-column>
-            <clr-dg-column>Email</clr-dg-column>
+            <clr-dg-column>Email <clr-dg-string-filter [clrDgStringFilter]="nameFilter"></clr-dg-string-filter></clr-dg-column>
             <clr-dg-column>Total Marks</clr-dg-column>
             <clr-dg-placeholder >
               Fetching NCGs... <span class="spinner spinner-sm"></span>

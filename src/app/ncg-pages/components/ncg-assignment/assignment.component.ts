@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit, ViewChild} from '@angular/core';
 import {AssignmentService} from "../../services/assignment.service";
 import {AdminAssignmentService} from "../../../admin-pages/services/admin-assignment.service";
 import {TokenStorageService} from "../../../shared-components/login/token-storage.service";
@@ -26,7 +26,8 @@ export class AssignmentComponent implements OnInit {
     this.readMore = !this.readMore
   }
 
-  constructor(private assignmentService: AssignmentService, private adminAssignmentService: AdminAssignmentService, private tokenStorageService:TokenStorageService) { }
+  constructor(private assignmentService: AssignmentService, private adminAssignmentService: AdminAssignmentService, private tokenStorageService:TokenStorageService,
+              private cdRef: ChangeDetectorRef) { }
 
   ngOnInit(): void {
     // this.model.link = '';
@@ -57,7 +58,7 @@ export class AssignmentComponent implements OnInit {
     this.adminAssignmentService.getAllAssignments()
       .subscribe(data => {
         this.allAssignments = data.allAssignments;
-        // console.log("dd",this.allAssignments);
+        // this.cdRef.detectChanges();
       });
   }
 
@@ -65,6 +66,7 @@ export class AssignmentComponent implements OnInit {
     this.adminAssignmentService.getAllTeamsAssignments()
       .subscribe(data =>{
         this.teamAssignments = data.allAssignments;
+        // this.cdRef.detectChanges();
       })
     console.log(this.teamAssignments)
     }

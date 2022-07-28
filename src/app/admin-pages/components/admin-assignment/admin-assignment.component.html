@@ -4,7 +4,7 @@
       <clr-tab>
         <button clrTabLink (click)="getAllAssignments()">Individual Assignments </button>
         <clr-tab-content *clrIfActive>
-<clr-datagrid style="width: 80%" [(clrDgSingleSelected)]="selectedAssignment" (clrDgSingleSelectedChange)="selectionChanged($event)" [clrDgRowSelection]="true">
+<clr-datagrid style="width: 100%" [(clrDgSingleSelected)]="selectedAssignment" (clrDgSingleSelectedChange)="selectionChanged($event)" [clrDgRowSelection]="true">
   {{actionBarConfig}}
   <clr-dg-action-bar>
     <button *ngFor="let item of actionBarConfig" class="btn btn-sm btn-secondary" (click)="onActionButtonClick(item.id)" [disabled]="item.isDisabled">
@@ -12,8 +12,8 @@
       {{item.label}}
     </button>
   </clr-dg-action-bar>
-  <clr-dg-column>Assignment Id</clr-dg-column>
-  <clr-dg-column>Assignment Name</clr-dg-column>
+  <clr-dg-column>Name</clr-dg-column>
+  <clr-dg-column>Assignment Content</clr-dg-column>
   <clr-dg-column>Credit</clr-dg-column>
   <clr-dg-column>Due Date</clr-dg-column>
   <clr-dg-placeholder >
@@ -87,7 +87,7 @@
     <clr-tab>
       <button clrTabLink (click)="getAllTeamAssignment()">Team Assignments </button>
       <clr-tab-content *clrIfActive>
-        <clr-datagrid style="width: 80%" [(clrDgSingleSelected)]="selectedAssignment" (clrDgSingleSelectedChange)="selectionChanged($event)" [clrDgRowSelection]="true">
+        <clr-datagrid style="width: 100%" [(clrDgSingleSelected)]="selectedAssignment" (clrDgSingleSelectedChange)="selectionChanged($event)" [clrDgRowSelection]="true">
           {{actionBarConfig}}
           <clr-dg-action-bar>
             <button *ngFor="let item of actionBarConfig" class="btn btn-sm btn-secondary" (click)="onActionButtonClick(item.id)" [disabled]="item.isDisabled">
@@ -181,7 +181,9 @@
             </clr-dg-placeholder>
             <clr-dg-row  *clrDgItems="let item of ncgSubmissions">
               <clr-dg-cell>{{item.ncg_id}}</clr-dg-cell>
-              <clr-dg-cell>{{item.link}}</clr-dg-cell>
+              <clr-dg-cell>
+                <a href="https://www.w3schools.com">{{item.link}}</a>
+                </clr-dg-cell>
               <clr-dg-cell>
                 <input class="clr-input"
                        type="number"

@@ -23,6 +23,13 @@ export class NcgComponent implements OnInit {
     email: '',
     role: ''
   };
+
+  modelUpdate: any = {
+    name: 'Ketki Fadnavis',
+    email: 'ketki@vmware.com',
+    role: 'NCG',
+    id:'62e1753704411fa38767f0b9'
+  };
   selectedUser : Ncg ;
   actionBarConfig: Array<{
     id: string,
@@ -34,6 +41,7 @@ export class NcgComponent implements OnInit {
   confirmed: boolean = false;
   successMessage: string ='';
   nameFilter = new NameFilter();
+  delete: boolean = false;
   constructor( private ncgService: NcgService , private adminTeamsService: AdminTeamsService) { }
 
 
@@ -96,8 +104,8 @@ export class NcgComponent implements OnInit {
         //this.successMessage = "Details updated for user - "+ this.selectedUser.name
         break;
       case 'DELETE_USER':
-        this.confirmed = true
-        this.deleteUser()
+        //this.confirmed = true
+        this.delete = true
         this.successMessage = "User "+this.selectedUser.name+" is deleted."
         break;
       case 'CREATE_TEAMS':
@@ -151,11 +159,13 @@ export class NcgComponent implements OnInit {
   }
 
   deleteUser() {
+    this.delete = false
     this.ncgService.deleteUser(this.selectedUser._id).subscribe(
       data =>{
         // console.log("User deleted", data)
       }
     )
+    this.confirmed= true;
   }
 
   createAllTeams() {
@@ -167,11 +177,17 @@ export class NcgComponent implements OnInit {
   }
 
   updateUser() {
-    // this.ncgService(this.selectedUser._id).subscribe(
-    //   data =>{
-    //     console.log("User updated", data)
-    //   }
-    // )
+    const body = {
+      name: 'Ketki Fadnavis',
+      email: 'kfadnavis@vmware.com',
+      role: 'NCG',
+      id: '62e1753704411fa38767f0b9'
+    }
+    this.ncgService.updateUser(body).subscribe(
+      data =>{
+        console.log("User updated", data)
+      }
+    )
   }
 }
 

@@ -46,6 +46,9 @@ export class NcgService {
     return this.http.delete(this.DELETE_USER, options);
   }
 
+  updateUser(newBody: any) {
+    return this.http.post(this.UPDATE_USER,newBody);
+  }
 
 
 }
