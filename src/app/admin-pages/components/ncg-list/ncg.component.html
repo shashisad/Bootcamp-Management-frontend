@@ -12,9 +12,9 @@
       </div>
   </span>
 
-<h2 class="heading-ncg"> New College Graduates </h2>
+<h2 class="heading-ncg" style="text-align: center"> New College Graduates </h2>
 <div class="content-container height-100">
-<clr-datagrid style="width: 60%; margin-left: 50px" [(clrDgSingleSelected)]="selectedUser"  (clrDgSingleSelectedChange)="selectionChanged($event)" [clrDgRowSelection]="true">
+<clr-datagrid style="width: 100%" [(clrDgSingleSelected)]="selectedUser"  (clrDgSingleSelectedChange)="selectionChanged($event)" [clrDgRowSelection]="true">
   {{actionBarConfig}}
   <clr-dg-action-bar>
       <button *ngFor="let item of actionBarConfig" class="btn btn-sm btn-secondary" (click)="onActionButtonClick(item.id)" [disabled]="item.isDisabled">
@@ -23,7 +23,9 @@
       </button>
   </clr-dg-action-bar>
   <clr-dg-column>NCG Id</clr-dg-column>
-  <clr-dg-column>Name</clr-dg-column>
+  <clr-dg-column>Name
+    <clr-dg-string-filter [clrDgStringFilter]="nameFilter"></clr-dg-string-filter>
+  </clr-dg-column>
   <clr-dg-column>Email</clr-dg-column>
   <clr-dg-column>Total Marks</clr-dg-column>
   <clr-dg-placeholder >
@@ -109,10 +111,10 @@
           <label for="add_name" style="text-align: left"> Name: </label>
           <input class="clr-input"
                  type="text"
-                 id="add_name"
+                 id="add_name1"
                  placeholder="Enter new user name"
                  name="name"
-                 [(ngModel)]="model.name"
+                 [(ngModel)]="modelUpdate.name"
                  required
                  email
                  #name="ngModel"
@@ -122,10 +124,10 @@
           <label for="add_email" style="text-align: left"> Email: </label>
           <input class="clr-input"
                  type="email"
-                 id="add_email"
+                 id="add_email1"
                  placeholder="Enter new user email"
                  name="email"
-                 [(ngModel)]="model.email"
+                 [(ngModel)]="modelUpdate.email"
                  required
                  email
                  #email="ngModel"
@@ -134,7 +136,7 @@
         <div class="form-group">
           <label for="roles" style="text-align: left">Role: </label>
           <div class="auth-source select">
-            <select id="roles" [(ngModel)] ="model.role" [ngModelOptions]="{standalone: true} " clrSelect class="select-component" >
+            <select id="roles1" [(ngModel)] ="modelUpdate.role" [ngModelOptions]="{standalone: true} " clrSelect class="select-component" >
               <option value="" >Select New Role</option>
               <option value="ncg" >NCG</option>
               <option value="mentor">Mentor</option>
@@ -149,6 +151,27 @@
       <button type="button" class="btn btn-primary" (click)="updateUser()">Ok</button>
     </div>
   </clr-modal>
+
+
+  <div class="modal" *ngIf="delete">
+    <div class="modal-dialog" role="dialog" aria-hidden="true">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button aria-label="Close" class="close" type="button">
+            <clr-icon aria-hidden="true" shape="close"></clr-icon>
+          </button>
+          <h3 class="modal-title">Confirm Delete</h3>
+        </div>
+        <div class="modal-body">
+          <p>Are you sure you want to delete this user ?</p>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-outline" type="button" (click)="delete = false">Cancel</button>
+          <button class="btn btn-danger"  type="button" (click)="deleteUser()">Ok</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
 </div>
 </div>

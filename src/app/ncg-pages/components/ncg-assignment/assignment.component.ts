@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit, ViewChild} from '@angular/core';
 import {AssignmentService} from "../../services/assignment.service";
 import {AdminAssignmentService} from "../../../admin-pages/services/admin-assignment.service";
 import {TokenStorageService} from "../../../shared-components/login/token-storage.service";
@@ -21,11 +21,13 @@ export class AssignmentComponent implements OnInit {
    selectedAssignment : Assignment;
    Status0: Status = Status.RED;
    Status1: Status = Status.GREEN
+  error:any
   showText() {
     this.readMore = !this.readMore
   }
 
-  constructor(private assignmentService: AssignmentService, private adminAssignmentService: AdminAssignmentService, private tokenStorageService:TokenStorageService) { }
+  constructor(private assignmentService: AssignmentService, private adminAssignmentService: AdminAssignmentService, private tokenStorageService:TokenStorageService,
+              private cdRef: ChangeDetectorRef) { }
 
   ngOnInit(): void {
     // this.model.link = '';
@@ -45,6 +47,9 @@ export class AssignmentComponent implements OnInit {
     this.assignmentService.submitAssignment(id,this.link).subscribe(
       data => {
         console.log("submitted", data)
+      }, error => {
+        console.log(error.error.message)
+        this.error = error.error.message
       }
     )
 
@@ -53,7 +58,7 @@ export class AssignmentComponent implements OnInit {
     this.adminAssignmentService.getAllAssignments()
       .subscribe(data => {
         this.allAssignments = data.allAssignments;
-        // console.log("dd",this.allAssignments);
+        // this.cdRef.detectChanges();
       });
   }
 
@@ -61,6 +66,7 @@ export class AssignmentComponent implements OnInit {
     this.adminAssignmentService.getAllTeamsAssignments()
       .subscribe(data =>{
         this.teamAssignments = data.allAssignments;
+        // this.cdRef.detectChanges();
       })
     console.log(this.teamAssignments)
     }

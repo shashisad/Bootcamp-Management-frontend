@@ -3,9 +3,14 @@ import {NcgService} from "../../admin-pages/services/ncg.service";
 import {Ncg} from "../../model/ncg.model";
 import {AdminTeamsService} from "../../admin-pages/services/admin-teams.service";
 import {HttpClient} from "@angular/common/http";
+import {ClrDatagridStringFilterInterface} from "@clr/angular";
 
-
-
+export class NameFilter implements ClrDatagridStringFilterInterface<Ncg> {
+  accepts(user:Ncg, search: string):boolean {
+    return "" + user.name == search
+      || user.name.toLowerCase().indexOf(search) >= 0;
+  }
+}
 
 @Component({
   selector: 'app-admin-landing',
@@ -14,6 +19,7 @@ import {HttpClient} from "@angular/common/http";
 })
 export class AdminLandingComponent implements OnInit {
 
+   nameFilter = new NameFilter();
   allNcgs: any;
   ncgs :Ncg[] = [];
   fileName = '';
@@ -51,7 +57,6 @@ export class AdminLandingComponent implements OnInit {
       const formData = new FormData();
 
       formData.append("thumbnail", file);
-
       const upload$ = this.http.post("/api/v1/user/addAll", formData);
 
       upload$.subscribe();

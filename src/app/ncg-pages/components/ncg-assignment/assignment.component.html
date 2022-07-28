@@ -1,5 +1,10 @@
 <div class="content-container height-100" >
   <div style="height:100%; width: 100% ; padding-left: 50px !important;">
+    <clr-alert [clrAlertClosable]="true" *ngIf="error" >
+      <clr-alert-item>
+        <span class="alert-text">{{error}}</span>
+      </clr-alert-item>
+    </clr-alert>
     <br>
     <clr-tabs>
       <clr-tab>
@@ -14,7 +19,7 @@
                     <div *ngIf="ncg.ncg_id== userId">
                       <app-status-icon *ngIf="ncg.status == 0" [status]="Status0"></app-status-icon>
                       <app-status-icon *ngIf="ncg.status == 1" [status]="Status1"></app-status-icon>
-                      <h6 *ngIf="ncg.status == 2"> {{ncg.marks}}/100</h6>
+                      <h6 *ngIf="ncg.status == 2" style="margin-top: -3px"> {{ncg.marks}}/100</h6>
                     </div>
                   </div>
                 </div>
@@ -35,7 +40,7 @@
                   </button>
                 </div>
               </div>
-
+<ng-container *ngIf="selectedAssignment">
             <clr-wizard #wizardmd [(clrWizardOpen)]="lgOpen" clrWizardSize="md">
               <clr-wizard-title>Submission</clr-wizard-title>
               <clr-wizard-button [type]="'cancel'">Cancel</clr-wizard-button>
@@ -45,7 +50,7 @@
 
               <clr-wizard-page>
                 <ng-template clrPageTitle>{{selectedAssignment.title}}</ng-template>
-                <div>{{selectedAssignment.content}} {{ selectedAssignment.content}} </div>
+                <div>{{selectedAssignment.content}}</div>
               </clr-wizard-page>
               <clr-wizard-page>
                 <ng-template clrPageTitle>Upload Answer</ng-template>
@@ -59,6 +64,7 @@
 
               </clr-wizard-page>
             </clr-wizard>
+</ng-container>
             </div>
           </div>
         </clr-tab-content>
@@ -75,10 +81,10 @@
 <!--                  <clr-icon shape="event" class="has-badge"></clr-icon>-->
 
                   <div *ngFor="let team of assignment.teamSubmittedLink" style="float: left">
-                    <div *ngIf="team.team_id== '62e0e8b82c59784a36e8a5c0'">
+                    <div *ngIf="team.team_id== '62e175a404411fa38767f0d9'">
                       <app-status-icon *ngIf="team.status == 0" [status]="Status0"></app-status-icon>
                       <app-status-icon *ngIf="team.status == 1" [status]="Status1"></app-status-icon>
-                      <h6 *ngIf="team.status == 2"> {{team.marks}}/100</h6>
+                      <h6 *ngIf="team.status == 2" style="margin-top: -3px"> {{team.marks}}/100</h6>
                     </div>
                   </div>
                 </div>

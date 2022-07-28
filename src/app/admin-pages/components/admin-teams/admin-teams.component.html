@@ -1,11 +1,13 @@
 <div class="outer-container-table">
-  <h2 class="teams-heading">Teams</h2>
-<clr-datagrid style="width: 80%">
-  <clr-dg-column>Team Name</clr-dg-column>
-  <clr-dg-column>Members</clr-dg-column>
-  <clr-dg-column>Mentor</clr-dg-column>
+  <h2 class="teams-heading" style="text-align: center">Teams</h2>
+<clr-datagrid style="width: 100%">
+  <clr-dg-column>Team Name
+    <clr-dg-string-filter [clrDgStringFilter]="nameFilter"></clr-dg-string-filter>
+  </clr-dg-column>
+  <clr-dg-column>Members<clr-dg-string-filter [clrDgStringFilter]="nameFilter"></clr-dg-string-filter></clr-dg-column>
+  <clr-dg-column>Mentor<clr-dg-string-filter [clrDgStringFilter]="nameFilter"></clr-dg-string-filter></clr-dg-column>
   <clr-dg-placeholder >
-    Fetching Teams... <span class="spinner spinner-sm"></span>
+    <span class="spinner spinner-sm"></span>
   </clr-dg-placeholder>
 
   <clr-dg-row  *clrDgItems="let team of allteams; let i = index">
