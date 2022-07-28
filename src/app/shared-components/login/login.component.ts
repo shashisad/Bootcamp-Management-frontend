@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder} from '@angular/forms';
 import { TokenStorageService } from './token-storage.service';
 import { AuthService} from './auth.service';
-import {Router} from "@angular/router";
+import { Router} from "@angular/router";
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -25,8 +25,6 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private authService: AuthService, private tokenStorage: TokenStorageService) {
-
-    const navigation = this.router.getCurrentNavigation();
   }
 
   ngOnInit() {

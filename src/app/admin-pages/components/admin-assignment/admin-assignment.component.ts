@@ -89,9 +89,7 @@ export class AdminAssignmentComponent implements OnInit {
 
   reviewAssignment(selected:  Assignment) {
     for(let item of this.allAssignments){
-      console.log("plsss",item._id)
       if(item._id == selected._id) {
-        console.log("fuck",selected._id)
           this.ncgSubmissions = selected.ncgSubmittedLink
         this.assignmentId =  selected._id
       }
@@ -122,9 +120,9 @@ export class AdminAssignmentComponent implements OnInit {
   }
 
   createAssignment() {
-    this.adminAssignmentService.createAssignment(this.form.title,this.form.content,2,this.form.dueDate).subscribe(
+    this.adminAssignmentService.createAssignment(this.form.title,this.form.content,this.form.credit,this.form.dueDate).subscribe(
       data => {
-        console.log("created assgn",data);
+        console.log("Created",data);
       }
     )
   }
@@ -132,7 +130,7 @@ export class AdminAssignmentComponent implements OnInit {
   createTeamAssignment() {
     this.adminAssignmentService. createAllTeamsAssignment(this.form.title,this.form.content,4,this.form.dueDate).subscribe(
       data => {
-        console.log("created team assgn",data);
+        console.log("Created team assignment",data);
       }
     )
   }

@@ -21,7 +21,5 @@ export class AdminMentorComponent implements OnInit {
         this.mentors = data.allUsers;
       }
     )
-
   }
-
 }

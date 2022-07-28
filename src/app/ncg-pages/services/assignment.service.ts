@@ -20,7 +20,7 @@ export class AssignmentService {
   submitAssignment(assignmentId: string, submission: string) : Observable<any>  {
     const body= {
       ncgSubmittedLink:{
-        link:'subm-link'
+        link:submission
       }
     }
     return this.http.post(this.SUBMIT_ASSIGNMENT+assignmentId, body, httpOptions);
@@ -32,7 +32,7 @@ export class AssignmentService {
         link:submission
       }
     }
-    return this.http.post(this.SUBMIT_ASSIGNMENT+teamId, {
+    return this.http.post(this.SUBMIT_TEAM_ASSIGNMENT+teamId, {
       body}, httpOptions);
   }
 

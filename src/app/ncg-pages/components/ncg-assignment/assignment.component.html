@@ -40,36 +40,31 @@
                   </button>
                 </div>
               </div>
-<ng-container *ngIf="selectedAssignment">
-            <clr-wizard #wizardmd [(clrWizardOpen)]="lgOpen" clrWizardSize="md">
-              <clr-wizard-title>Submission</clr-wizard-title>
-              <clr-wizard-button [type]="'cancel'">Cancel</clr-wizard-button>
-              <clr-wizard-button [type]="'previous'">Back</clr-wizard-button>
-              <clr-wizard-button [type]="'next'">Next</clr-wizard-button>
-              <clr-wizard-button [type]="'finish'" (click)="onSubmit(selectedAssignment._id)">Finish</clr-wizard-button>
-
-              <clr-wizard-page>
-                <ng-template clrPageTitle>{{selectedAssignment.title}}</ng-template>
-                <div>{{selectedAssignment.content}}</div>
-              </clr-wizard-page>
-              <clr-wizard-page>
-                <ng-template clrPageTitle>Upload Answer</ng-template>
-                <h3>Last date of submission - {{selectedAssignment.dueDate | date:'short'}} </h3>
-                <form clrForm>
-                  <clr-input-container>
-                    <label>Link</label>
-                    <input [(ngModel)]="link" [ngModelOptions]="{standalone: true} "clrInput placeholder="Fill me in the link"  />
-                  </clr-input-container>
+              <ng-container *ngIf="selectedAssignment">
+                <clr-wizard #wizardmd [(clrWizardOpen)]="lgOpen" clrWizardSize="md">
+                    <clr-wizard-title>Submission</clr-wizard-title>
+                    <clr-wizard-button [type]="'cancel'">Cancel</clr-wizard-button>
+                    <clr-wizard-button [type]="'previous'">Back</clr-wizard-button>
+                    <clr-wizard-button [type]="'next'">Next</clr-wizard-button>
+                    <clr-wizard-button [type]="'finish'" (click)="onSubmit(selectedAssignment._id)">Finish</clr-wizard-button>
+                  <clr-wizard-page><ng-template clrPageTitle>{{selectedAssignment.title}}</ng-template>
+                    <div>{{selectedAssignment.content}}</div>
+                  </clr-wizard-page>
+                  <clr-wizard-page>
+                    <ng-template clrPageTitle>Upload Answer</ng-template><h3>Last date of submission - {{selectedAssignment.dueDate | date:'short'}} </h3>
+                    <form clrForm>
+                      <clr-input-container>
+                      <label>Link</label>
+                      <input [(ngModel)]="link" [ngModelOptions]="{standalone: true} "clrInput placeholder="Fill me in the link"  />
+                    </clr-input-container>
                 </form>
-
-              </clr-wizard-page>
-            </clr-wizard>
-</ng-container>
+                  </clr-wizard-page>
+                </clr-wizard>
+              </ng-container>
             </div>
           </div>
         </clr-tab-content>
       </clr-tab>
-
       <clr-tab>
         <button clrTabLink (click)="getAllTeamAssignments()"> Team Assignments</button>
         <clr-tab-content *clrIfActive>
@@ -78,10 +73,8 @@
               <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
                 <div class="card-header" style="text-align: center">
                   {{assignment.title}}
-<!--                  <clr-icon shape="event" class="has-badge"></clr-icon>-->
-
                   <div *ngFor="let team of assignment.teamSubmittedLink" style="float: left">
-                    <div *ngIf="team.team_id== '62e175a404411fa38767f0d9'">
+                    <div *ngIf="team.team_id== selectedAssignment._id">
                       <app-status-icon *ngIf="team.status == 0" [status]="Status0"></app-status-icon>
                       <app-status-icon *ngIf="team.status == 1" [status]="Status1"></app-status-icon>
                       <h6 *ngIf="team.status == 2" style="margin-top: -3px"> {{team.marks}}/100</h6>
@@ -112,7 +105,6 @@
               <clr-wizard-button [type]="'previous'">Back</clr-wizard-button>
               <clr-wizard-button [type]="'next'">Next</clr-wizard-button>
               <clr-wizard-button [type]="'finish'" (click)="onSubmit(assignment._id)">Finish</clr-wizard-button>
-
               <clr-wizard-page>
                 <ng-template clrPageTitle>{{assignment.title}}</ng-template>
                 {{assignment.content}}
@@ -130,7 +122,6 @@
               </clr-wizard-page>
             </clr-wizard>
           </div>
-
         </clr-tab-content>
       </clr-tab>
     </clr-tabs>

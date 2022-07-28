@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component,OnInit} from '@angular/core';
 import {NcgService} from "../../admin-pages/services/ncg.service";
 import {Ncg} from "../../model/ncg.model";
 import {AdminTeamsService} from "../../admin-pages/services/admin-teams.service";
@@ -19,7 +19,7 @@ export class NameFilter implements ClrDatagridStringFilterInterface<Ncg> {
 })
 export class AdminLandingComponent implements OnInit {
 
-   nameFilter = new NameFilter();
+  nameFilter = new NameFilter();
   allNcgs: any;
   ncgs :Ncg[] = [];
   fileName = '';
@@ -41,24 +41,15 @@ export class AdminLandingComponent implements OnInit {
       });
   }
 
-  onFileInput(event: Event) {
-    // console.log(event)
-  }
-
   onFileSelected(event: Event) {
 
     // @ts-ignore
     const file:File = event.target.files[0];
-
     if (file) {
-
       this.fileName = file.name;
-
       const formData = new FormData();
-
       formData.append("thumbnail", file);
       const upload$ = this.http.post("/api/v1/user/addAll", formData);
-
       upload$.subscribe();
     }
   }

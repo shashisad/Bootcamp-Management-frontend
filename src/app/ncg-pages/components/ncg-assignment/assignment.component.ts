@@ -15,22 +15,20 @@ export class AssignmentComponent implements OnInit {
    readMore = false;
     allAssignments: any;
     teamAssignments: any;
-   link :string= "";
-   userId: string = "";
-   longText = `This is long paragraph text containing several words continued. An example of implementing dynamically limit long text This is long paragraph text containing several words continued. An example of implementing dynamically limit long text This is long paragraph text containing several words continued. An example of implementing dynamically limit long text`;
-   selectedAssignment : Assignment;
-   Status0: Status = Status.RED;
-   Status1: Status = Status.GREEN
-  error:any
+    link :string= "";
+    userId: string = "";
+    longText = `This is long paragraph text containing several words continued. An example of implementing dynamically limit long text This is long paragraph text containing several words continued. An example of implementing dynamically limit long text This is long paragraph text containing several words continued. An example of implementing dynamically limit long text`;
+    selectedAssignment : Assignment;
+    Status0: Status = Status.RED;
+    Status1: Status = Status.GREEN
+    error:any
   showText() {
     this.readMore = !this.readMore
   }
 
-  constructor(private assignmentService: AssignmentService, private adminAssignmentService: AdminAssignmentService, private tokenStorageService:TokenStorageService,
-              private cdRef: ChangeDetectorRef) { }
+  constructor(private assignmentService: AssignmentService, private adminAssignmentService: AdminAssignmentService, private tokenStorageService:TokenStorageService) { }
 
   ngOnInit(): void {
-    // this.model.link = '';
     this.getAllIndividualAssignments();
     this.getAllTeamAssignments();
     this.getUserName();
@@ -58,7 +56,6 @@ export class AssignmentComponent implements OnInit {
     this.adminAssignmentService.getAllAssignments()
       .subscribe(data => {
         this.allAssignments = data.allAssignments;
-        // this.cdRef.detectChanges();
       });
   }
 
@@ -66,16 +63,13 @@ export class AssignmentComponent implements OnInit {
     this.adminAssignmentService.getAllTeamsAssignments()
       .subscribe(data =>{
         this.teamAssignments = data.allAssignments;
-        // this.cdRef.detectChanges();
       })
     console.log(this.teamAssignments)
     }
 
   handleWizard(selected: Assignment) {
     this.lgOpen = true
-    // console.log("selected",selected)
     this.selectedAssignment = selected
-    console.log("selected", this.selectedAssignment)
   }
 
 }

@@ -23,13 +23,6 @@ export class NcgComponent implements OnInit {
     email: '',
     role: ''
   };
-
-  modelUpdate: any = {
-    name: 'Ketki Fadnavis',
-    email: 'ketki@vmware.com',
-    role: 'NCG',
-    id:'62e1753704411fa38767f0b9'
-  };
   selectedUser : Ncg ;
   actionBarConfig: Array<{
     id: string,
@@ -111,7 +104,6 @@ export class NcgComponent implements OnInit {
       case 'CREATE_TEAMS':
         this.confirmed = true
         this.successMessage = "Teams of 3 members created "
-        //this.createAllTeams();
         break;
     }
   }
@@ -120,8 +112,8 @@ export class NcgComponent implements OnInit {
     this.ncgService.getNcg().subscribe(
       data => {
         this.allNcgs = data;
-        var obj = this.adminTeamsService.parsingObject(this.allNcgs)
-        for (var i of obj) {
+        const obj = this.adminTeamsService.parsingObject(this.allNcgs)
+        for (let i of obj) {
           this.ncgs.push(i)
         }
       });
@@ -134,18 +126,10 @@ export class NcgComponent implements OnInit {
     }
     else {
       var indx = this.teamMembers.indexOf(id);
-      if (indx >-1) {
+      if (indx > -1) {
         this.teamMembers.splice(indx,1);
       }
     }
-  }
-
-  createTeam() {
-    this.adminTeamsService.createTeam(1,this.teamMembers).subscribe(
-      data => {
-        // console.log("Team created", data)
-      }
-    )
   }
 
   addUser() {
@@ -162,7 +146,7 @@ export class NcgComponent implements OnInit {
     this.delete = false
     this.ncgService.deleteUser(this.selectedUser._id).subscribe(
       data =>{
-        // console.log("User deleted", data)
+        console.log("User deleted", data)
       }
     )
     this.confirmed= true;
@@ -171,19 +155,13 @@ export class NcgComponent implements OnInit {
   createAllTeams() {
     this.ncgService.createAllTeams().subscribe(
       data => {
-        // console.log("created teams", data)
+        console.log("created teams", data)
       }
     )
   }
 
   updateUser() {
-    const body = {
-      name: 'Ketki Fadnavis',
-      email: 'kfadnavis@vmware.com',
-      role: 'NCG',
-      id: '62e1753704411fa38767f0b9'
-    }
-    this.ncgService.updateUser(body).subscribe(
+    this.ncgService.updateUser(this.model).subscribe(
       data =>{
         console.log("User updated", data)
       }

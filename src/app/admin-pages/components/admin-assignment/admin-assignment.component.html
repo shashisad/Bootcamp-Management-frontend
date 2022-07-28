@@ -4,87 +4,70 @@
       <clr-tab>
         <button clrTabLink (click)="getAllAssignments()">Individual Assignments </button>
         <clr-tab-content *clrIfActive>
-<clr-datagrid style="width: 100%" [(clrDgSingleSelected)]="selectedAssignment" (clrDgSingleSelectedChange)="selectionChanged($event)" [clrDgRowSelection]="true">
-  {{actionBarConfig}}
-  <clr-dg-action-bar>
-    <button *ngFor="let item of actionBarConfig" class="btn btn-sm btn-secondary" (click)="onActionButtonClick(item.id)" [disabled]="item.isDisabled">
-      <clr-icon shape= 'item.iconShape'></clr-icon>
-      {{item.label}}
-    </button>
-  </clr-dg-action-bar>
-  <clr-dg-column>Name</clr-dg-column>
-  <clr-dg-column>Assignment Content</clr-dg-column>
-  <clr-dg-column>Credit</clr-dg-column>
-  <clr-dg-column>Due Date</clr-dg-column>
-  <clr-dg-placeholder >
-    Fetching Assignments... <span class="spinner spinner-sm"></span>
-  </clr-dg-placeholder>
+          <clr-datagrid style="width: 100%" [(clrDgSingleSelected)]="selectedAssignment" (clrDgSingleSelectedChange)="selectionChanged($event)" [clrDgRowSelection]="true">{{actionBarConfig}}
+            <clr-dg-action-bar>
+              <button *ngFor="let item of actionBarConfig" class="btn btn-sm btn-secondary" (click)="onActionButtonClick(item.id)" [disabled]="item.isDisabled">
+                <clr-icon shape= 'item.iconShape'></clr-icon>{{item.label}}
+              </button>
+            </clr-dg-action-bar>
+              <clr-dg-column>Name</clr-dg-column>
+              <clr-dg-column>Assignment Content</clr-dg-column>
+              <clr-dg-column>Credit</clr-dg-column>
+              <clr-dg-column>Due Date</clr-dg-column>
+            <clr-dg-placeholder >Fetching Assignments... <span class="spinner spinner-sm"></span></clr-dg-placeholder>
+            <clr-dg-row  *clrDgItems="let item of allAssignments" [clrDgItem]="item">
+              <clr-dg-cell>{{item.title}}</clr-dg-cell>
+              <clr-dg-cell>{{item.content}}</clr-dg-cell>
+              <clr-dg-cell>{{item.credit}}</clr-dg-cell>
+              <clr-dg-cell>{{item.dueDate | date:'fullDate'}}</clr-dg-cell>
+            </clr-dg-row>
+            <clr-dg-footer>
+              <clr-dg-pagination #pagination [clrDgPageSize]="10">{{pagination.firstItem + 1}} - {{pagination.lastItem + 1}}of {{pagination.totalItems}} assignments</clr-dg-pagination>
+            </clr-dg-footer>
+          </clr-datagrid>
+          <clr-wizard #wizardlg [(clrWizardOpen)]="mdOpen" clrWizardSize="lg">
+            <clr-wizard-title>Create Assignment</clr-wizard-title>
+            <clr-wizard-button [type]="'cancel'">Cancel</clr-wizard-button>
+            <clr-wizard-button [type]="'previous'">Back</clr-wizard-button>
+            <clr-wizard-button [type]="'next'">Next</clr-wizard-button>
+            <clr-wizard-button [type]="'finish'" (click)="createAssignment()">Create</clr-wizard-button>
+            <clr-wizard-page>
+              <ng-template clrPageTitle>Assignment</ng-template>
 
-  <clr-dg-row  *clrDgItems="let item of allAssignments" [clrDgItem]="item">
-    <clr-dg-cell>{{item.title}}</clr-dg-cell>
-    <clr-dg-cell>{{item.content}}</clr-dg-cell>
-    <clr-dg-cell>{{item.credit}}</clr-dg-cell>
-    <clr-dg-cell>{{item.dueDate | date:'fullDate'}}</clr-dg-cell>
-  </clr-dg-row>
+                <form clrForm class="section-content">
+                  <section class="form-block">
+                    <clr-input-container>
+                      <label class="required">Title </label>
+                      <input clrInput type="text" id="aForm_1" required
+                             placeholder="Enter assignment title" name="title" [(ngModel)]="form.title"
+                             #title="ngModel">
+                    </clr-input-container>
+                    <clr-textarea-container><label class="required">Content</label>
+                      <textarea clrTextarea  type="text" id="aForm_2" required placeholder="Enter assignment details" name="content" [(ngModel)]="form.content" #content="ngModel" rows="5">
+                      </textarea>
+                    </clr-textarea-container>
+                    <clr-input-container>
+                      <label class="required">Due Date</label>
+                      <input clrInput type="date" id="aForm_3" name="content" [(ngModel)]="form.dueDate" required    #dueDate="ngModel"></clr-input-container>
+                    <div class="clr-form-control">
+                    <div class="clr-select-wrapper" >
+                    <label class="required credit-style">Credits</label>
+                    <select name="credits" required [ngModel]="form.credit" class="clr-select" #credit = "ngModel">
+                      <option value="1" >1</option>
+                      <option value="2" >2</option>
+                      <option value="3" >3</option>
+                      <option value="4" >4</option>
+                    </select>
+                    </div>
+                  </div>
+                  </section>
+                </form>
+            </clr-wizard-page>
+          </clr-wizard>
 
-  <clr-dg-footer>
-    <clr-dg-pagination #pagination [clrDgPageSize]="10">
-      {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}}
-      of {{pagination.totalItems}} assignments
-    </clr-dg-pagination>
-  </clr-dg-footer>
-</clr-datagrid>
-<clr-wizard #wizardlg [(clrWizardOpen)]="mdOpen" clrWizardSize="lg">
-  <clr-wizard-title>Create Assignment</clr-wizard-title>
-  <clr-wizard-button [type]="'cancel'">Cancel</clr-wizard-button>
-  <clr-wizard-button [type]="'previous'">Back</clr-wizard-button>
-  <clr-wizard-button [type]="'next'">Next</clr-wizard-button>
-  <clr-wizard-button [type]="'finish'" (click)="createAssignment()">Create</clr-wizard-button>
-  <clr-wizard-page>
-    <ng-template clrPageTitle>Assignment</ng-template>
-
-    <form clrForm class="section-content">
-      <section class="form-block">
-        <clr-input-container>
-          <label class="required">Title </label>
-          <input clrInput type="text" id="aForm_1" required
-                 placeholder="Enter assignment title" name="title" [(ngModel)]="form.title"
-                 #title="ngModel">
-        </clr-input-container>
-
-        <clr-textarea-container>
-          <label class="required">Content</label>
-          <textarea clrTextarea  type="text" id="aForm_2" required
-                 placeholder="Enter assignment details" name="content" [(ngModel)]="form.content"
-                    #content="ngModel" rows="5">
-          </textarea>
-        </clr-textarea-container>
-
-        <clr-input-container>
-          <label class="required">Due Date</label>
-          <input clrInput type="date" id="aForm_3" name="content" [(ngModel)]="form.dueDate"
-                required    #dueDate="ngModel">
-        </clr-input-container>
-
-        <div class="clr-form-control">
-          <div class="clr-select-wrapper" >
-          <label class="required credit-style">Credits</label>
-          <select name="credits" required [ngModel]="form.credit" class="clr-select" #credit = "ngModel">
-            <option value="1" >1</option>
-            <option value="2" >2</option>
-            <option value="3" >3</option>
-            <option value="4" >4</option>
-          </select>
-          </div>
-        </div>
-      </section>
-    </form>
-  </clr-wizard-page>
-</clr-wizard>
-
-</clr-tab-content>
-</clr-tab>
-    <clr-tab>
+        </clr-tab-content>
+      </clr-tab>
+      <clr-tab>
       <button clrTabLink (click)="getAllTeamAssignment()">Team Assignments </button>
       <clr-tab-content *clrIfActive>
         <clr-datagrid style="width: 100%" [(clrDgSingleSelected)]="selectedAssignment" (clrDgSingleSelectedChange)="selectionChanged($event)" [clrDgRowSelection]="true">
@@ -211,8 +194,5 @@
         </div>
       </clr-modal>
     </div>
-
-
-
   </div>
 </div>
