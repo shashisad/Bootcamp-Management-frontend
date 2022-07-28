@@ -89,9 +89,7 @@ export class AdminAssignmentComponent implements OnInit {
 
   reviewAssignment(selected:  Assignment) {
     for(let item of this.allAssignments){
-      console.log("plsss",item._id)
       if(item._id == selected._id) {
-        console.log("fuck",selected._id)
           this.ncgSubmissions = selected.ncgSubmittedLink
         this.assignmentId =  selected._id
       }
